@@ -4,7 +4,7 @@ const HomeScreen = () => {
 
     return (
         <View>
-            <Text>Home</Text>
+            <Text>Green Guide</Text>
         </View>
     );
 }
