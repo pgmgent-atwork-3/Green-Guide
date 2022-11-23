@@ -1,5 +1,5 @@
-import HomeScreen from "./HomeScreen";
+import Header from "./Header";
 
 export {
-  HomeScreen,
+  Header,
 }
