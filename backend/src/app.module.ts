@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CompanyRequestModule } from './company-request/company-request.module';
 
 // TODO implement .env file
 @Module({
@@ -47,6 +48,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         }
       },
     }),
+    CompanyRequestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
