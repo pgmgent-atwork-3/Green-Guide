@@ -1,6 +1,59 @@
 //Variables
 
-//Colors
-$red: #ef4b46;
-$blue: dodgerblue;
-$yellow: rgba(239, 181, 67, 1);
+// All used Brand Colors
+
+// Primary colors
+$primary-100: rgba(148, 212, 11, 1);
+$primary-75: rgba(148, 212, 11, 0.75);
+$primary-50: rgba(148, 212, 11, 0.5);
+$primary-25: rgba(148, 212, 11, 0.25);
+
+.bg-primary-100 { background-color: $primary-100; }
+.bg-primary-75 { background-color: $primary-75; }
+.bg-primary-50 { background-color: $primary-50; }
+.bg-primary-25 { background-color: $primary-25; }
+.text-primary-100 { color: $primary-100; }
+.text-primary-75 { color: $primary-75; }
+.text-primary-50 { color: $primary-50; }
+.text-primary-25 { color: $primary-25; }
+
+
+// Secondary colors
+$secondary-100: rgba(26, 86, 50, 1);
+$secondary-75: rgba(26, 86, 50, 0.75);
+$secondary-50: rgba(26, 86, 50, 0.5);
+$secondary-25: rgba(26, 86, 50, 0.25);
+
+.bg-secondary-100 { 
+    background-color: $secondary-100; 
+    .hover { background-color: $secondary-100; } 
+}
+.bg-secondary-75 { background-color: $secondary-75; }
+.bg-secondary-50 { background-color: $secondary-50; }
+.bg-secondary-25 { background-color: $secondary-25; }
+.text-secondary-100 { color: $secondary-100; }
+.text-secondary-75 { color: $secondary-75; }
+.text-secondary-50 { color: $secondary-50; }
+.text-secondary-25 { color: $secondary-25; }
+
+// Accent colors
+$accent-100: rgba(252, 173, 54, 1);
+$accent-75: rgba(252, 173, 54, 0.75);
+$accent-50: rgba(252, 173, 54, 0.5);
+$accent-25: rgba(252, 173, 54, 0.25);
+
+.bg-accent-100 { background-color: $accent-100; }
+.bg-accent-75 { background-color: $accent-75; }
+.bg-accent-50 { background-color: $accent-50; }
+.bg-accent-25 { background-color: $accent-25; }
+
+// background colors
+$bg-100: rgba(221, 212, 195, 1);
+$bg-75: rgba(221, 212, 195, 0.75);
+$bg-50: rgba(221, 212, 195, 0.5);
+$bg-25: rgba(221, 212, 195, 0.25);
+
+.bg-bg-100 { background-color: $bg-100; }
+.bg-bg-75 { background-color: $bg-75; }
+.bg-bg-50 { background-color: $bg-50; }
+.bg-bg-25 { background-color: $bg-25; }
