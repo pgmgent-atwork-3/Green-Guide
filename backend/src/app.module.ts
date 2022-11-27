@@ -4,13 +4,28 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AddressModule } from './address/address.module';
+import { CategoryModule } from './category/category.module';
+import { CompanyModule } from './company/company.module';
+import { CompanyRequestModule } from './company-request/company-request.module';
+import { CompanyTypeModule } from './company-type/company-type.module';
+import { ContactPersonModule } from './contact-person/contact-person.module';
+import { ReviewModule } from './review/review.module';
+import { SectorModule } from './sector/sector.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CompanyRequestModule } from './company-request/company-request.module';
 
 // TODO implement .env file
 @Module({
   imports: [
+    AddressModule,
+    CategoryModule,
+    CompanyModule,
+    CompanyRequestModule,
+    CompanyTypeModule,
+    ContactPersonModule,
+    ReviewModule,
+    SectorModule,
     UserModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -48,7 +63,6 @@ import { CompanyRequestModule } from './company-request/company-request.module';
         }
       },
     }),
-    CompanyRequestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
