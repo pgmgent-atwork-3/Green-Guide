@@ -11,10 +11,10 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Business profile', href: '#', current: true },
-  { name: 'Reward system', href: '#', current: false },
-  { name: 'Green Guide labels', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+    { name: 'Dashboard', href: '/dashboard', current: true },
+    { name: 'Reward system', href: '#', current: false },
+    { name: 'Green Guide labels', href: '#', current: false },
+    { name: 'Reports', href: '#', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -37,11 +37,13 @@ function Dashboard() {
                     <div className="flex h-20 items-center justify-between">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                        <img
-                            className="h-14 w-14"
-                            src="./images/logo.svg"
-                            alt="Green Guide Logo"
-                        />
+                            <a href="/">
+                                <img
+                                    className="h-14 w-14"
+                                    src="./images/logo.svg"
+                                    alt="Green Guide Logo"
+                                />
+                            </a>
                         </div>
                         <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
@@ -180,19 +182,18 @@ function Dashboard() {
             </Disclosure>
 
             {/* <header className="bg-white shadow">
-            <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-                <h1 className="text-4xl font-bold tracking-tight text-primary-100 primary-font">Dashboard</h1>
-            </div>
+
             </header> */}
 
             <main>
                 <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                 {/* Replace with your content */}
-
+                <h1 className="pb-6 text-4xl font-bold tracking-tight text-primary-100 primary-font">Dashboard</h1>
+                <hr />
             <div>
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
-                    <div className="px-4 sm:px-0">
+                    <div className="mt-4 px-4 sm:px-0">
                     <h3 className="text-lg font-medium leading-6 text-gray-900">Business profile</h3>
                     <p className="mt-1 text-sm text-gray-600">
                         This information will be displayed publicly so be careful what you share.
@@ -670,24 +671,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-{/* <h1 class="text-3xl font-bold ">
-Hello world!
-</h1>      
-<nav>
-<div>
-  <a href="./index.html">
-     <img src="../static/images/logo-gg-white.svg" alt="logo-white">
-  </a>
-  <ul class="nav-list">
-    <li class="nav-link"><a href="#about">about</a></li>
-    <li class="nav-link"><a href="#download">download</a></li>
-    <li class="nav-link"><a href="#business">business</a></li>
-    <li class="nav-link"><a href="#contact">contact</a></li>
-  </ul>
-</div>
-<div>
-  <a href="./dashboard.html" class="btn btn-primary">Log in</a>
-  <a href="./dashboard.html" class="btn btn-secondary">Sign up</a>
-</div>
-</nav> */}
