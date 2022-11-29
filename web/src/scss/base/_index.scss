@@ -4,5 +4,5 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 */
 
 //Import Base files
-@import "reset";
-@import "typography";
+@use "reset";
+@use "typography";

@@ -4,5 +4,5 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 */
 
 //Import Layout files
-@import "navbar";
-@import "footer";
+@use "navbar";
+@use "footer";
