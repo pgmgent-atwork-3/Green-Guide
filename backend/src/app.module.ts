@@ -14,11 +14,6 @@ import { ReviewModule } from './review/review.module';
 import { SectorModule } from './sector/sector.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ReviewModule } from './review/review.module';
-import { SectorModule } from './sector/sector.module';
-import { CategoryModule } from './category/category.module';
-import { ContactPersonModule } from './contact-person/contact-person.module';
-import { AddressModule } from './address/address.module';
 
 // TODO implement .env file
 @Module({
