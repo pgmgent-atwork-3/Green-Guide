@@ -1,4 +1,4 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmail } from 'class-validator';
 
@@ -6,7 +6,7 @@ import { IsEmail } from 'class-validator';
 @ObjectType()
 export class ContactPerson {
   @PrimaryGeneratedColumn()
-  @Field(() => IntersectionObserverEntry)
+  @Field(() => Int)
   id: number;
 
   @Column()

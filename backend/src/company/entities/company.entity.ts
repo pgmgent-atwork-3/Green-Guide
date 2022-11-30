@@ -26,5 +26,5 @@ export class Company {
 
   @Column()
   @Field()
-  openingHours: [[number]];
+  openingHours: string;
 }

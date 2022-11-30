@@ -1,10 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
 export class Sector {
-  @Column()
+  @PrimaryColumn()
   @Field(() => Int)
   id: number;
 

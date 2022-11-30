@@ -1,0 +1,241 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  id: Int!
+  streetName: String!
+  Number: String!
+  city: String!
+  zipCode: String!
+}
+
+type Category {
+  id: Int!
+  name: String!
+}
+
+type Company {
+  id: Int!
+  btwNumber: Int!
+  name: String!
+  summary: String!
+  established: Timestamp!
+  openingHours: String!
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type CompanyRequest {
+  id: Int!
+  btwNumber: Int!
+  companyName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  tel: Float!
+  customerCard: Boolean!
+  comment: String!
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibility: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
+}
+
+type CompanyType {
+  id: Int!
+  name: String!
+}
+
+type ContactPerson {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+}
+
+type Review {
+  id: Int!
+  content: String!
+  rating: Float!
+}
+
+type Sector {
+  id: Int!
+  name: String!
+}
+
+type User {
+  id: Int!
+  userName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  role: String!
+}
+
+type Query {
+  address(id: Int!): Address!
+  category(id: Int!): Category!
+  company(id: Int!): Company!
+  companyRequest(id: Int!): CompanyRequest!
+  companyType(id: Int!): CompanyType!
+  contactPerson(id: Int!): ContactPerson!
+  review(id: Int!): Review!
+  sector(id: Int!): Sector!
+  user(id: Int!): User!
+}
+
+type Mutation {
+  createAddress(createAddressInput: CreateAddressInput!): Address!
+  updateAddress(updateAddressInput: UpdateAddressInput!): Address!
+  removeAddress(id: Int!): Address!
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  removeCategory(id: Int!): Category!
+  createCompany(createCompanyInput: CreateCompanyInput!): Company!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
+  removeCompany(id: Int!): Company!
+  createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
+  updateCompanyRequest(updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
+  removeCompanyRequest(id: Int!): CompanyRequest!
+  createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
+  updateCompanyType(updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
+  removeCompanyType(id: Int!): CompanyType!
+  createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
+  updateContactPerson(updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
+  removeContactPerson(id: Int!): ContactPerson!
+  createReview(createReviewInput: CreateReviewInput!): Review!
+  updateReview(updateReviewInput: UpdateReviewInput!): Review!
+  removeReview(id: Int!): Review!
+  createSector(createSectorInput: CreateSectorInput!): Sector!
+  updateSector(updateSectorInput: UpdateSectorInput!): Sector!
+  removeSector(id: Int!): Sector!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreateAddressInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAddressInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCompanyInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCompanyRequestInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCompanyRequestInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCompanyTypeInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCompanyTypeInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateContactPersonInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateContactPersonInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateReviewInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateReviewInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateSectorInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateSectorInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUserInput {
+  userName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  role: String!
+}
+
+input UpdateUserInput {
+  userName: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  role: String
+  id: Int!
+}
