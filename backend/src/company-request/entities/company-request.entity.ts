@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Company } from 'src/company/entities/company.entity';
+import { Column, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 export class CompanyRequest {
@@ -104,4 +105,8 @@ export class CompanyRequest {
   @Column()
   @Field({ nullable: true })
   reusingWater: string;
+
+  @OneToOne(() => Company, (company) => company.companyRequest)
+  @Field(() => Company)
+  company?: Company;
 }
