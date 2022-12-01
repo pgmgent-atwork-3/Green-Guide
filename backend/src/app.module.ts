@@ -56,7 +56,7 @@ import { RewardModule } from './reward/reward.module';
             type: 'postgres',
             host: 'localhost',
             port: 5432,
-            username: 'server',
+            username: 'postgres',
             password: 'secret123',
             database: 'green_guide',
             synchronize: true,

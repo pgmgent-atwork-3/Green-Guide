@@ -9,23 +9,28 @@ export class SectorResolver {
   constructor(private readonly sectorService: SectorService) {}
 
   @Mutation(() => Sector)
-  createSector(@Args('createSectorInput') createSectorInput: CreateSectorInput) {
+  createSector(
+    @Args('createSectorInput') createSectorInput: CreateSectorInput,
+  ): Promise<Sector> {
     return this.sectorService.create(createSectorInput);
   }
 
-  @Query(() => [Sector], { name: 'sector' })
-  findAll() {
+  @Query(() => [Sector], { name: 'sectors' })
+  findAll(): Promise<Sector[]> {
     return this.sectorService.findAll();
   }
 
   @Query(() => Sector, { name: 'sector' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<Sector> {
     return this.sectorService.findOne(id);
   }
 
   @Mutation(() => Sector)
-  updateSector(@Args('updateSectorInput') updateSectorInput: UpdateSectorInput) {
-    return this.sectorService.update(updateSectorInput.id, updateSectorInput);
+  updateSector(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateSectorInput') updateSectorInput: UpdateSectorInput,
+  ): Promise<Sector> {
+    return this.sectorService.update(id, updateSectorInput);
   }
 
   @Mutation(() => Sector)

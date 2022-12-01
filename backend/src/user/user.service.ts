@@ -9,26 +9,26 @@ import { User } from './entities/user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private userRepository: Repository<User>,
   ) {}
 
   findOneByEmail(email: string): Promise<User> {
-    return this.usersRepository.findOne({
+    return this.userRepository.findOne({
       where: { email },
     });
   }
 
   create(createUserInput: CreateUserInput): Promise<User> {
-    const user = this.usersRepository.create(createUserInput);
-    return this.usersRepository.save(user);
+    const user = this.userRepository.create(createUserInput);
+    return this.userRepository.save(user);
   }
 
   findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.userRepository.find();
   }
 
   findOne(id: number): Promise<User> {
-    return this.usersRepository.findOne({
+    return this.userRepository.findOne({
       where: { id },
     });
   }
@@ -37,23 +37,23 @@ export class UserService {
     id: number,
     updateUserInput: UpdateUserInput,
   ): Promise<User> | null {
-    const user = await this.usersRepository.findOne({
+    const user = await this.userRepository.findOne({
       where: { id },
     });
     if (user) {
-      this.usersRepository.merge(user, updateUserInput);
-      return this.usersRepository.save(user);
+      this.userRepository.merge(user, updateUserInput);
+      return this.userRepository.save(user);
     } else {
       throw new Error('User not found');
     }
   }
 
   async remove(id: number): Promise<User> | null {
-    const user = await this.usersRepository.findOne({
+    const user = await this.userRepository.findOne({
       where: { id },
     });
     if (user) {
-      return this.usersRepository.remove(user);
+      return this.userRepository.remove(user);
     } else {
       throw new Error('User not found');
     }

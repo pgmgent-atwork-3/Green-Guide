@@ -137,6 +137,7 @@ type Query {
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
+  sectors: [Sector!]!
   sector(id: Int!): Sector!
   users: [User!]!
   user(id: Int!): User!
@@ -168,7 +169,7 @@ type Mutation {
   updateReview(updateReviewInput: UpdateReviewInput!): Review!
   removeReview(id: Int!): Review!
   createSector(createSectorInput: CreateSectorInput!): Sector!
-  updateSector(updateSectorInput: UpdateSectorInput!): Sector!
+  updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
   removeSector(id: Int!): Sector!
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
@@ -259,14 +260,11 @@ input UpdateReviewInput {
 }
 
 input CreateSectorInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
 }
 
 input UpdateSectorInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  name: String
 }
 
 input CreateUserInput {

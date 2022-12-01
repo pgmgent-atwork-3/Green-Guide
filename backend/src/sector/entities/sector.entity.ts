@@ -7,13 +7,13 @@ import {
   JoinTable,
   ManyToMany,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity()
 @ObjectType()
 export class Sector {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   @Field(() => Int)
   id: number;
 
