@@ -1,3 +1,4 @@
+import { Review } from './../../review/entities/review.entity';
 import { Point } from './../../point/entities/point.entity';
 import { Test } from '@nestjs/testing';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
@@ -69,4 +70,8 @@ export class User {
   @OneToMany(() => Point, (point) => point.user)
   @Field(() => [Point], { nullable: true })
   points?: Point[];
+
+  @OneToMany(() => Review, (review) => review.user)
+  @Field(() => [Review], { nullable: true })
+  reviews?: Review[];
 }

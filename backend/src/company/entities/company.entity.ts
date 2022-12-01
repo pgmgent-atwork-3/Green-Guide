@@ -1,3 +1,5 @@
+import { CompanyType } from './../../company-type/entities/company-type.entity';
+import { Review } from './../../review/entities/review.entity';
 import { Reward } from './../../reward/entities/reward.entity';
 import { Point } from './../../point/entities/point.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
@@ -6,6 +8,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToMany,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -50,4 +53,12 @@ export class Company {
   @OneToMany(() => Reward, (reward) => reward.company)
   @Field(() => [Reward])
   rewards?: Reward[];
+
+  @OneToMany(() => Review, (review) => review.company)
+  @Field(() => [Review], { nullable: true })
+  reviews?: Review[];
+
+  @ManyToMany(() => CompanyType, (companyType) => companyType.companies)
+  @Field(() => [CompanyType])
+  companyTypes?: CompanyType[];
 }
