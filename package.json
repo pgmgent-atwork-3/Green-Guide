@@ -10,9 +10,9 @@
     "backend"
   ],
   "scripts": {
-      "start:dev": "concurrently \"yarn workspace backend start:dev\" \"yarn workspace web start:dev\" \"yarn workspace mobile start\"",
+      "start:dev": "concurrently \"yarn workspace backend start:dev\" \"yarn workspace web start:dev\" \"yarn workspace mobile dev\"",
       "start:dev-web": "concurrently \"yarn workspace backend start:dev\" \"yarn workspace web start:dev\"",
-      "start:dev-mobile": "yarn workspace mobile build && yarn workspace mobile start",
+      "start:dev-mobile": "concurrently \"yarn workspace backend start:dev\" \"yarn workspace mobile dev\"",
       "start:dev-backend": "yarn workspace backend start:dev"
   },
   "devDependencies": {
