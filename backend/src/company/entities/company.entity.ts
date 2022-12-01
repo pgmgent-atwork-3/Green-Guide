@@ -1,3 +1,4 @@
+import { Category } from './../../category/entities/category.entity';
 import { Sector } from './../../sector/entities/sector.entity';
 import { ContactPerson } from './../../contact-person/entities/contact-person.entity';
 import { CompanyType } from './../../company-type/entities/company-type.entity';
@@ -73,7 +74,11 @@ export class Company {
   @Field(() => Address)
   address?: Address;
 
-  @OneToOne(() => Sector, (sector) => sector.company)
-  @Field(() => Sector)
-  sector?: Sector;
+  @ManyToMany(() => Sector, (sector) => sector.companies)
+  @Field(() => [Sector])
+  sectors?: Sector[];
+
+  @ManyToMany(() => Category, (category) => category.companies)
+  @Field(() => [Category])
+  categories?: Category[];
 }
