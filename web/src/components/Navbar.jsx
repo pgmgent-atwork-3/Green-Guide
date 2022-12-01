@@ -11,10 +11,10 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'About', href: '#', current: true },
-  { name: 'Download', href: '#', current: false },
-  { name: 'Business', href: '#', current: false },
-  { name: 'Contact', href: '#', current: false },
+  { name: 'About Green Guide', href: '#about', current: true },
+  { name: 'Download the app', href: '#download', current: false },
+  { name: 'For your business', href: '#business', current: false },
+  { name: 'Contact us', href: '#contact', current: false },
 ]
 
 const userNavigation = [
@@ -30,11 +30,11 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-100">
+    <Disclosure as="nav" className="bg-25">
     {({ open }) => (
         <>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-20 items-center justify-between">
+            <div className="flex h-28 items-center justify-between">
             <div className="flex items-center">
                 <div className="flex-shrink-0">
                 <img
@@ -52,7 +52,7 @@ function Navbar() {
                         className={classNames(
                         item.current
                             ? 'bg-secondary-100 text-white'
-                            : 'text-secondary-50 hover:bg-gray-200 hover:text-secondary-100',
+                            : 'text-secondary-50 hover:bg-neutral-200 hover:text-secondary-100',
                         'px-3 py-2 rounded-md text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
@@ -71,7 +71,7 @@ function Navbar() {
                     <div>
                     <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                        <img className="h-12 w-12 rounded-full" src={user.imageUrl} alt="" />
                     </Menu.Button>
                     </div>
                     <Transition
@@ -109,7 +109,7 @@ function Navbar() {
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-secondary-100 hover:bg-secondary-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2">
                 <span className="sr-only">Open main menu</span>
                 {open ? (
-                    <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
+                    <XMarkIcon className="block h-10 w-10" aria-hidden="true" />
                 ) : (
                     <Bars3Icon className="block h-8 w-8" aria-hidden="true" />
                 )}

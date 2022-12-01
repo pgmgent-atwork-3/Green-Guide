@@ -46,6 +46,7 @@ $accent-25: rgba(252, 173, 54, 0.25);
 .bg-accent-75 { background-color: $accent-75; }
 .bg-accent-50 { background-color: $accent-50; }
 .bg-accent-25 { background-color: $accent-25; }
+.text-accent-100 { color: $accent-100; }
 
 // background colors
 $bg-100: rgba(221, 212, 195, 1);
@@ -57,3 +58,7 @@ $bg-25: rgba(221, 212, 195, 0.25);
 .bg-75 { background-color: $bg-75; }
 .bg-50 { background-color: $bg-50; }
 .bg-25 { background-color: $bg-25; }
+
+
+
+.bg-50:hover { background-color: $bg-50;}
