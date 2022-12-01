@@ -1,8 +1,9 @@
 import { Company } from 'src/company/entities/company.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Min } from 'class-validator';
-import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 @ObjectType()
 export class Reward {
   @PrimaryGeneratedColumn()

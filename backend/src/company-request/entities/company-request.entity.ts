@@ -1,8 +1,9 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
 import { Company } from 'src/company/entities/company.entity';
-import { Column, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 @ObjectType()
 export class CompanyRequest {
   @PrimaryGeneratedColumn()

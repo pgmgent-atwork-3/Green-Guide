@@ -2,32 +2,79 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Sector {
+  id: Int!
+  name: String!
+  companies: [Company!]
+  categories: [Category!]
+}
+
+type Category {
+  id: Int!
+  name: String!
+  companies: [Company!]
+  sector: Sector!
+}
+
+type ContactPerson {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  company: Company!
+}
+
+type CompanyType {
+  id: Int!
+  name: String!
+  companies: [Company!]
+}
+
+type Point {
+  id: Int!
+  amount: Float!
+  user: User!
+  company: Company!
+}
+
+type User {
+  id: Int!
+  userName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  role: String!
+  company: Company
+  points: [Point!]
+  reviews: [Review!]
+}
+
+type Review {
+  id: Int!
+  content: String!
+  rating: Float!
+  user: User!
+  company: Company!
+}
+
+type Reward {
+  id: Int!
+  name: String!
+  description: String!
+  points: Float!
+  company: Company!
+}
+
 type Address {
   id: Int!
   streetName: String!
   Number: String!
   city: String!
   zipCode: String!
+  company: Company!
 }
-
-type Category {
-  id: Int!
-  name: String!
-}
-
-type Company {
-  id: Int!
-  btwNumber: Int!
-  name: String!
-  summary: String!
-  established: Timestamp!
-  openingHours: String!
-}
-
-"""
-`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
-"""
-scalar Timestamp
 
 type CompanyRequest {
   id: Int!
@@ -55,41 +102,32 @@ type CompanyRequest {
   garbageSorting: String
   wasteFree: String
   reusingWater: String
+  company: Company!
 }
 
-type CompanyType {
+type Company {
   id: Int!
+  btwNumber: Int!
   name: String!
+  summary: String!
+  established: Timestamp!
+  openingHours: String!
+  user: User!
+  points: [Point!]!
+  rewards: [Reward!]!
+  reviews: [Review!]
+  companyTypes: [CompanyType!]!
+  contactPerson: ContactPerson!
+  address: Address!
+  sectors: [Sector!]!
+  categories: [Category!]!
+  companyRequest: CompanyRequest!
 }
 
-type ContactPerson {
-  id: Int!
-  firstName: String!
-  lastName: String!
-  email: String!
-  phoneNumber: String!
-}
-
-type Review {
-  id: Int!
-  content: String!
-  rating: Float!
-}
-
-type Sector {
-  id: Int!
-  name: String!
-}
-
-type User {
-  id: Int!
-  userName: String!
-  firstName: String!
-  lastName: String!
-  email: String!
-  password: String!
-  role: String!
-}
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
 
 type Query {
   address(id: Int!): Address!
@@ -103,6 +141,8 @@ type Query {
   users: [User!]!
   user(id: Int!): User!
   userByMail(email: String!): User!
+  point(id: Int!): Point!
+  reward(id: Int!): Reward!
 }
 
 type Mutation {
@@ -133,6 +173,12 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createPoint(createPointInput: CreatePointInput!): Point!
+  updatePoint(updatePointInput: UpdatePointInput!): Point!
+  removePoint(id: Int!): Point!
+  createReward(createRewardInput: CreateRewardInput!): Reward!
+  updateReward(updateRewardInput: UpdateRewardInput!): Reward!
+  removeReward(id: Int!): Reward!
 }
 
 input CreateAddressInput {
@@ -239,4 +285,26 @@ input UpdateUserInput {
   email: String
   password: String
   role: String
+}
+
+input CreatePointInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdatePointInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateRewardInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateRewardInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
