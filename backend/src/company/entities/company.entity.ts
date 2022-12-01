@@ -1,3 +1,4 @@
+import { ContactPerson } from './../../contact-person/entities/contact-person.entity';
 import { CompanyType } from './../../company-type/entities/company-type.entity';
 import { Review } from './../../review/entities/review.entity';
 import { Reward } from './../../reward/entities/reward.entity';
@@ -61,4 +62,8 @@ export class Company {
   @ManyToMany(() => CompanyType, (companyType) => companyType.companies)
   @Field(() => [CompanyType])
   companyTypes?: CompanyType[];
+
+  @OneToOne(() => ContactPerson, (contactPerson) => contactPerson.company)
+  @Field(() => ContactPerson)
+  contactPerson?: ContactPerson;
 }
