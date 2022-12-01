@@ -1,3 +1,4 @@
+import { Sector } from './../../sector/entities/sector.entity';
 import { ContactPerson } from './../../contact-person/entities/contact-person.entity';
 import { CompanyType } from './../../company-type/entities/company-type.entity';
 import { Review } from './../../review/entities/review.entity';
@@ -71,4 +72,8 @@ export class Company {
   @OneToOne(() => Address, (address) => address.company)
   @Field(() => Address)
   address?: Address;
+
+  @OneToOne(() => Sector, (sector) => sector.company)
+  @Field(() => Sector)
+  sector?: Sector;
 }
