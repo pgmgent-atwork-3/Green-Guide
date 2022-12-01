@@ -1,5 +1,15 @@
+import { Reward } from './../../reward/entities/reward.entity';
+import { Point } from './../../point/entities/point.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/entities/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -27,4 +37,17 @@ export class Company {
   @Column()
   @Field()
   openingHours: string;
+
+  @OneToOne(() => User, (user) => user.company)
+  @Field(() => User)
+  @JoinColumn()
+  user?: User;
+
+  @OneToMany(() => Point, (point) => point.company)
+  @Field(() => [Point])
+  points?: Point[];
+
+  @OneToMany(() => Reward, (reward) => reward.company)
+  @Field(() => [Reward])
+  rewards?: Reward[];
 }

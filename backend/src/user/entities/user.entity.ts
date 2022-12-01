@@ -1,7 +1,17 @@
+import { Point } from './../../point/entities/point.entity';
+import { Test } from '@nestjs/testing';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { IsEmail, MaxLength, MinLength } from 'class-validator';
+import { Company } from 'src/company/entities/company.entity';
 
 export enum role {
   USER = 'user',
@@ -51,4 +61,12 @@ export class User {
   })
   @Field()
   role: string;
+
+  @OneToOne(() => Company, (company) => company.user)
+  @Field(() => Company, { nullable: true })
+  company?: Company;
+
+  @OneToMany(() => Point, (point) => point.user)
+  @Field(() => [Point], { nullable: true })
+  points?: Point[];
 }

@@ -14,6 +14,8 @@ import { ReviewModule } from './review/review.module';
 import { SectorModule } from './sector/sector.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PointModule } from './point/point.module';
+import { RewardModule } from './reward/reward.module';
 
 // TODO implement .env file
 @Module({
@@ -68,6 +70,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     CategoryModule,
     ContactPersonModule,
     AddressModule,
+    PointModule,
+    RewardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
