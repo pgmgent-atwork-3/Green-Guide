@@ -14,6 +14,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Address } from 'src/address/entities/address.entity';
 
 @Entity()
 @ObjectType()
@@ -66,4 +67,8 @@ export class Company {
   @OneToOne(() => ContactPerson, (contactPerson) => contactPerson.company)
   @Field(() => ContactPerson)
   contactPerson?: ContactPerson;
+
+  @OneToOne(() => Address, (address) => address.company)
+  @Field(() => Address)
+  address?: Address;
 }
