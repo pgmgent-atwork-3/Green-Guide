@@ -100,7 +100,9 @@ type Query {
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
   sector(id: Int!): Sector!
+  users: [User!]!
   user(id: Int!): User!
+  userByMail(email: String!): User!
 }
 
 type Mutation {
@@ -129,7 +131,7 @@ type Mutation {
   updateSector(updateSectorInput: UpdateSectorInput!): Sector!
   removeSector(id: Int!): Sector!
   createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
 }
 
@@ -237,5 +239,4 @@ input UpdateUserInput {
   email: String
   password: String
   role: String
-  id: Int!
 }

@@ -50,5 +50,5 @@ export class User {
     enum: role,
   })
   @Field()
-  role: role;
+  role: string;
 }

@@ -1,26 +1,61 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-  create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
+  ) {}
+
+  findOneByEmail(email: string): Promise<User> {
+    return this.usersRepository.findOne({
+      where: { email },
+    });
   }
 
-  findAll() {
-    return `This action returns all user`;
+  create(createUserInput: CreateUserInput): Promise<User> {
+    const user = this.usersRepository.create(createUserInput);
+    return this.usersRepository.save(user);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findAll(): Promise<User[]> {
+    return this.usersRepository.find();
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
+  findOne(id: number): Promise<User> {
+    return this.usersRepository.findOne({
+      where: { id },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async update(
+    id: number,
+    updateUserInput: UpdateUserInput,
+  ): Promise<User> | null {
+    const user = await this.usersRepository.findOne({
+      where: { id },
+    });
+    if (user) {
+      this.usersRepository.merge(user, updateUserInput);
+      return this.usersRepository.save(user);
+    } else {
+      throw new Error('User not found');
+    }
+  }
+
+  async remove(id: number): Promise<User> | null {
+    const user = await this.usersRepository.findOne({
+      where: { id },
+    });
+    if (user) {
+      return this.usersRepository.remove(user);
+    } else {
+      throw new Error('User not found');
+    }
   }
 }

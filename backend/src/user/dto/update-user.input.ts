@@ -1,8 +1,35 @@
 import { CreateUserInput } from './create-user.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { Column } from 'typeorm';
+import { role } from '../entities/user.entity';
 
 @InputType()
 export class UpdateUserInput extends PartialType(CreateUserInput) {
-  @Field(() => Int)
-  id: number;
+  @Column()
+  @Field({ nullable: true })
+  userName: string;
+
+  @Column()
+  @Field({ nullable: true })
+  firstName: string;
+
+  @Column()
+  @Field({ nullable: true })
+  lastName: string;
+
+  @Column()
+  @Field({ nullable: true })
+  email: string;
+
+  @Column()
+  @Field({ nullable: true })
+  password: string;
+
+  @Column({
+    default: 'user',
+    type: 'enum',
+    enum: role,
+  })
+  @Field({ nullable: true })
+  role: string;
 }
