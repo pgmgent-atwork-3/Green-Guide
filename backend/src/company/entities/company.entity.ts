@@ -17,6 +17,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Address } from 'src/address/entities/address.entity';
+import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
 
 @Entity()
 @ObjectType()
@@ -81,4 +82,8 @@ export class Company {
   @ManyToMany(() => Category, (category) => category.companies)
   @Field(() => [Category])
   categories?: Category[];
+
+  @OneToOne(() => CompanyRequest, (companyRequest) => companyRequest.company)
+  @Field(() => CompanyRequest)
+  companyRequest?: CompanyRequest;
 }
