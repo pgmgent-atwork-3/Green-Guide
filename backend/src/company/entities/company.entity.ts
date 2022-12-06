@@ -11,6 +11,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
   ManyToMany,
   OneToMany,
   OneToOne,
@@ -46,11 +47,6 @@ export class Company {
   @Field()
   openingHours: string;
 
-  @OneToOne(() => User, (user) => user.company)
-  @Field(() => User)
-  @JoinColumn()
-  user?: User;
-
   @OneToMany(() => Point, (point) => point.company)
   @Field(() => [Point])
   points?: Point[];
@@ -63,27 +59,32 @@ export class Company {
   @Field(() => [Review], { nullable: true })
   reviews?: Review[];
 
-  @ManyToMany(() => CompanyType, (companyType) => companyType.companies)
+  @ManyToMany(() => CompanyType)
   @Field(() => [CompanyType])
   companyTypes?: CompanyType[];
 
-  @OneToOne(() => ContactPerson, (contactPerson) => contactPerson.company)
+  @OneToOne(() => ContactPerson)
   @Field(() => ContactPerson)
+  @JoinColumn()
   contactPerson?: ContactPerson;
 
-  @OneToOne(() => Address, (address) => address.company)
+  @OneToOne(() => Address)
   @Field(() => Address)
+  @JoinColumn()
   address?: Address;
 
-  @ManyToMany(() => Sector, (sector) => sector.companies)
+  @ManyToMany(() => Sector)
   @Field(() => [Sector])
+  @JoinTable()
   sectors?: Sector[];
 
-  @ManyToMany(() => Category, (category) => category.companies)
+  @ManyToMany(() => Category)
   @Field(() => [Category])
+  @JoinTable()
   categories?: Category[];
 
-  @OneToOne(() => CompanyRequest, (companyRequest) => companyRequest.company)
+  @OneToOne(() => CompanyRequest)
   @Field(() => CompanyRequest)
+  @JoinColumn()
   companyRequest?: CompanyRequest;
 }

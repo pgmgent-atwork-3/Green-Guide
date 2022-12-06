@@ -26,8 +26,4 @@ export class ContactPerson {
   @Column()
   @Field()
   phoneNumber: string;
-
-  @OneToOne(() => Company, (company) => company.contactPerson)
-  @Field(() => Company)
-  company?: Company;
 }

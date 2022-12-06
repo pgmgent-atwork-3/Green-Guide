@@ -24,8 +24,4 @@ export class Address {
   @Column()
   @Field()
   zipCode: string;
-
-  @OneToOne(() => Company, (company) => company.address)
-  @Field(() => Company)
-  company?: Company;
 }

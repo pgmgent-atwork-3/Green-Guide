@@ -5,14 +5,12 @@
 type Sector {
   id: Int!
   name: String!
-  companies: [Company!]
   categories: [Category!]
 }
 
 type Category {
   id: Int!
   name: String!
-  companies: [Company!]
   sector: Sector!
 }
 
@@ -22,13 +20,11 @@ type ContactPerson {
   lastName: String!
   email: String!
   phoneNumber: String!
-  company: Company!
 }
 
 type CompanyType {
   id: Int!
   name: String!
-  companies: [Company!]
 }
 
 type Point {
@@ -73,7 +69,6 @@ type Address {
   Number: String!
   city: String!
   zipCode: String!
-  company: Company!
 }
 
 type CompanyRequest {
@@ -102,7 +97,6 @@ type CompanyRequest {
   garbageSorting: String
   wasteFree: String
   reusingWater: String
-  company: Company!
 }
 
 type Company {
@@ -112,7 +106,6 @@ type Company {
   summary: String!
   established: Timestamp!
   openingHours: String!
-  user: User!
   points: [Point!]!
   rewards: [Reward!]!
   reviews: [Review!]

@@ -106,8 +106,4 @@ export class CompanyRequest {
   @Column()
   @Field({ nullable: true })
   reusingWater: string;
-
-  @OneToOne(() => Company, (company) => company.companyRequest)
-  @Field(() => Company)
-  company?: Company;
 }

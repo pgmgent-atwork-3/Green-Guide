@@ -21,11 +21,6 @@ export class Sector {
   @Field()
   name: string;
 
-  @ManyToMany(() => Company, (company) => company.sectors)
-  @Field(() => [Company], { nullable: true })
-  @JoinTable({ name: 'company_sector' })
-  companies?: Company[];
-
   @OneToMany(() => Category, (category) => category.sector)
   @Field(() => [Category], { nullable: true })
   categories?: Category[];

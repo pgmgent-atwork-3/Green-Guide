@@ -6,6 +6,7 @@ import {
   BeforeInsert,
   Column,
   Entity,
+  JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -63,8 +64,9 @@ export class User {
   @Field()
   role: string;
 
-  @OneToOne(() => Company, (company) => company.user)
+  @OneToOne(() => Company)
   @Field(() => Company, { nullable: true })
+  @JoinColumn()
   company?: Company;
 
   @OneToMany(() => Point, (point) => point.user)

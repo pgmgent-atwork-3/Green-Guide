@@ -12,8 +12,4 @@ export class CompanyType {
   @Column()
   @Field()
   name: string;
-
-  @ManyToMany(() => Company, (company) => company.companyTypes)
-  @Field(() => [Company], { nullable: true })
-  companies?: Company[];
 }

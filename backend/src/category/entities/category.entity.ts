@@ -14,10 +14,6 @@ export class Category {
   @Field()
   name: string;
 
-  @ManyToMany(() => Company, (company) => company.categories)
-  @Field(() => [Company], { nullable: true })
-  companies?: Company[];
-
   @ManyToOne(() => Sector, (sector) => sector.categories)
   @Field(() => Sector)
   sector?: Sector;
