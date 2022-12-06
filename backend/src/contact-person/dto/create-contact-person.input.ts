@@ -1,7 +1,21 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
+import { Column } from 'typeorm';
 
 @InputType()
 export class CreateContactPersonInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Column()
+  @Field()
+  firstName: string;
+
+  @Column()
+  @Field()
+  lastName: string;
+
+  @Column()
+  @Field()
+  email: string;
+
+  @Column()
+  @Field()
+  phoneNumber: string;
 }
