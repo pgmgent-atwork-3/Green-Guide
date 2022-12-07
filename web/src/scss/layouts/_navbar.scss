@@ -1,25 +1,7 @@
-// nav {
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-//     padding: 1rem 4rem;
-//     border-radius: 0 0 10px 10px;
-//     background-color: #FFF;
-// }
-
-// .nav-list {
-//     display: flex;
-//     align-items: center;
-//     list-style: none;
-// }
-
-// li {
-//     list-style: none;
-//     margin: 0 2rem;
-// }
-
-// a {
-//     color: #1A5632;
-//     text-decoration: none;
-//     font-weight: 700;
-// }
+.nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}

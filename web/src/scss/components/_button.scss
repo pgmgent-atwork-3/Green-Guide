@@ -1,21 +1,22 @@
+@use '../abstracts/variables' as v;
+
 .btn {
     padding: .5rem 1rem;
-    font-weight: 700;
-    border-radius: 1rem;
-  }
-  
-  .btn-primary {
-    background-color: white;
-    color: #4E5E43;
-  }
-  
-  .btn-tertiary {
-    font-family: sculpin, sans-serif;
     font-weight: 600;
-    font-size: 1rem;
-    margin-top: 3rem;
-    background-color:#4E5E43;
-    border: none;
-    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.btn-primary {
     color: white;
-  }
+    background-color: v.$primary-100;
+}
+
+.btn-secondary {
+    color: white;
+    background-color: v.$secondary-100;
+}
+
+.btn-accent {
+    color: white;
+    background-color: v.$accent-100;
+}
