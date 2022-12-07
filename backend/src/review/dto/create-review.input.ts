@@ -1,7 +1,21 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
+import { Column } from 'typeorm';
 
 @InputType()
 export class CreateReviewInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Column()
+  @Field()
+  content: string;
+
+  @Column()
+  @Field()
+  rating: number;
+
+  @Column()
+  @Field(() => Int)
+  userId: number;
+
+  @Column()
+  @Field(() => Int)
+  companyId: number;
 }

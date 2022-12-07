@@ -4,8 +4,6 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 import {
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';

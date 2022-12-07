@@ -1,4 +1,4 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 import { role } from '../entities/user.entity';
 
@@ -31,4 +31,8 @@ export class CreateUserInput {
   })
   @Field()
   role: string;
+
+  @Column()
+  @Field(() => Int, { nullable: true })
+  companyId: number;
 }

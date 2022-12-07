@@ -198,66 +198,126 @@ input UpdateCategoryInput {
 }
 
 input CreateCompanyInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  summary: String!
+  established: Timestamp!
+  openingHours: String!
+  btwNumber: Float!
+  points: Float!
 }
 
 input UpdateCompanyInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  summary: String
+  established: Timestamp
+  openingHours: String
+  btwNumber: Float
+  points: Float
   id: Int!
 }
 
 input CreateCompanyRequestInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  btwNumber: Float!
+  companyName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  tel: Float!
+  customerCard: Boolean!
+  comment: String!
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibliity: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
 }
 
 input UpdateCompanyRequestInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  btwNumber: Float
+  companyName: String
+  firstName: String
+  lastName: String
+  email: String
+  tel: Float
+  customerCard: Boolean
+  comment: String
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibliity: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
   id: Int!
 }
 
 input CreateCompanyTypeInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
 }
 
 input UpdateCompanyTypeInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
   id: Int!
 }
 
 input CreateContactPersonInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
 }
 
 input UpdateContactPersonInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  firstName: String
+  lastName: String
+  email: String
+  phoneNumber: String
   id: Int!
 }
 
 input CreateReviewInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  content: String!
+  rating: Float!
+  userId: Int!
+  companyId: Int!
 }
 
 input UpdateReviewInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  content: String
+  rating: Float
+  userId: Int
+  companyId: Int
   id: Int!
 }
 
 input CreateSectorInput {
   name: String!
+  categorieIds: [Int!]
 }
 
 input UpdateSectorInput {
   name: String
+  categorieIds: [Int!]
 }
 
 input CreateUserInput {
@@ -267,6 +327,7 @@ input CreateUserInput {
   email: String!
   password: String!
   role: String!
+  companyId: Int
 }
 
 input UpdateUserInput {
@@ -276,26 +337,33 @@ input UpdateUserInput {
   email: String
   password: String
   role: String
+  companyId: Int
 }
 
 input CreatePointInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  amount: Float!
+  userId: Int!
+  companyId: Int!
 }
 
 input UpdatePointInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  amount: Float
+  userId: Int
+  companyId: Int
   id: Int!
 }
 
 input CreateRewardInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  description: String!
+  points: Int!
+  companyId: Int!
 }
 
 input UpdateRewardInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  description: String
+  points: Int
+  companyId: Int
   id: Int!
 }
