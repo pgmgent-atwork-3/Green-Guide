@@ -18,7 +18,7 @@ function Form() {
             if (!values.password) {
                 errors.password = 'Required';
                 } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.password)
+                !/^[A-Z0-9._%+-]{2,}$/i.test(values.password)
                 ) {
                 errors.password = 'Invalid password';
                 }
@@ -28,7 +28,7 @@ function Form() {
         onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+            setSubmitting(true);
             }, 400);
         }}
         >
@@ -45,8 +45,11 @@ function Form() {
             <form onSubmit={handleSubmit} action="#" method="POST">
                 <div className="shadow sm:overflow-hidden sm:rounded-md">
                     <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
-                        <div className="grid grid-cols-3 gap-6">
-                            <div className="col-span-3 sm:col-span-2">
+                        <div className="grid grid-cols-4 gap-6">
+                            <div className="col-span-2 sm:row-span-2">
+                                <img src="https://opendoodles.s3-us-west-1.amazonaws.com/plant.svg" alt="" />
+                            </div>
+                            <div className="col-span-2 sm:row-span-2">
                                 <div className="mt-1 flex rounded-md shadow-sm"></div>
                                 <label htmlFor="company-website" className="block text-sm font-bold text-gray-700">
                                     E-mail address
