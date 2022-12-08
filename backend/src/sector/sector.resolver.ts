@@ -34,7 +34,9 @@ export class SectorResolver {
   }
 
   @Mutation(() => Sector)
-  removeSector(@Args('id', { type: () => Int }) id: number) {
+  removeSector(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<Sector> | null {
     return this.sectorService.remove(id);
   }
 }
