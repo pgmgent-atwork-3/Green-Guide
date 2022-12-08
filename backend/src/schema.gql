@@ -176,24 +176,28 @@ type Mutation {
 }
 
 input CreateAddressInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  streetName: String!
+  Number: String!
+  city: String!
+  zipCode: String!
 }
 
 input UpdateAddressInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  streetName: String
+  Number: String
+  city: String
+  zipCode: String
   id: Int!
 }
 
 input CreateCategoryInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  sectorId: Float!
 }
 
 input UpdateCategoryInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  sectorId: Float
   id: Int!
 }
 
@@ -203,7 +207,15 @@ input CreateCompanyInput {
   established: Timestamp!
   openingHours: String!
   btwNumber: Float!
-  points: Float!
+  pointIds: Int!
+  rewardIds: Int!
+  reviewIds: Int!
+  companyTypeIds: Int!
+  contactPersonId: Int!
+  addressId: Int!
+  sectorIds: Int!
+  categoryIds: Int!
+  companyRequestId: Int!
 }
 
 input UpdateCompanyInput {
@@ -212,7 +224,15 @@ input UpdateCompanyInput {
   established: Timestamp
   openingHours: String
   btwNumber: Float
-  points: Float
+  pointIds: Int
+  rewardIds: Int
+  reviewIds: Int
+  companyTypeIds: Int
+  contactPersonId: Int
+  addressId: Int
+  sectorIds: Int
+  categoryIds: Int
+  companyRequestId: Int
   id: Int!
 }
 
