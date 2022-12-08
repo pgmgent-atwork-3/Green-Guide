@@ -9,27 +9,35 @@ export class AddressResolver {
   constructor(private readonly addressService: AddressService) {}
 
   @Mutation(() => Address)
-  createAddress(@Args('createAddressInput') createAddressInput: CreateAddressInput) {
+  createAddress(
+    @Args('createAddressInput') createAddressInput: CreateAddressInput
+    ): Promise<Address> {
     return this.addressService.create(createAddressInput);
   }
 
   @Query(() => [Address], { name: 'address' })
-  findAll() {
+  findAll(): Promise<Address[]> {
     return this.addressService.findAll();
   }
 
   @Query(() => Address, { name: 'address' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(
+    @Args('id', { type: () => Int }) id: number
+    ): Promise<Address> {
     return this.addressService.findOne(id);
   }
 
   @Mutation(() => Address)
-  updateAddress(@Args('updateAddressInput') updateAddressInput: UpdateAddressInput) {
+  updateAddress(
+    @Args('updateAddressInput') updateAddressInput: UpdateAddressInput
+    ): Promise<Address> | null {
     return this.addressService.update(updateAddressInput.id, updateAddressInput);
   }
 
   @Mutation(() => Address)
-  removeAddress(@Args('id', { type: () => Int }) id: number) {
+  removeAddress(
+    @Args('id', { type: () => Int }) id: number
+    ): Promise<Address> | null {
     return this.addressService.remove(id);
   }
 }
