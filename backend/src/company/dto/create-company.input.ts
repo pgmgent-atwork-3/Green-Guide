@@ -24,19 +24,19 @@ export class CreateCompanyInput {
   btwNumber: number;
 
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   pointIds: number[];
 
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   rewardIds: number[];
 
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   reviewIds: number[];
 
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   companyTypeIds: number[];
 
   @Column()

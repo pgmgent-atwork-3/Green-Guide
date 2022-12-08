@@ -1,11 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateCompanyTypeInput } from './dto/create-company-type.input';
 import { UpdateCompanyTypeInput } from './dto/update-company-type.input';
+import { CompanyType } from './entities/company-type.entity';
 
 @Injectable()
 export class CompanyTypeService {
-  create(createCompanyTypeInput: CreateCompanyTypeInput) {
-    return 'This action adds a new companyType';
+
+  constructor(
+    @InjectRepository(CompanyType)
+    private companyTypeRepository: Repository<CompanyType>,
+  ) {}
+
+  create(createCompanyTypeInput: CreateCompanyTypeInput): Promise<CompanyType> {
+    const companyType =  this.companyTypeRepository.create(createCompanyTypeInput);
+    return this.companyTypeRepository.save(companyType);
   }
 
   findAll() {

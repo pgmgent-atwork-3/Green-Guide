@@ -9,27 +9,35 @@ export class ContactPersonResolver {
   constructor(private readonly contactPersonService: ContactPersonService) {}
 
   @Mutation(() => ContactPerson)
-  createContactPerson(@Args('createContactPersonInput') createContactPersonInput: CreateContactPersonInput) {
+  createContactPerson(
+    @Args('createContactPersonInput') createContactPersonInput: CreateContactPersonInput
+    ): Promise<ContactPerson> {
     return this.contactPersonService.create(createContactPersonInput);
   }
 
   @Query(() => [ContactPerson], { name: 'contactPerson' })
-  findAll() {
+  findAll(): Promise<ContactPerson[]> {
     return this.contactPersonService.findAll();
   }
 
   @Query(() => ContactPerson, { name: 'contactPerson' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(
+    @Args('id', { type: () => Int }) id: number
+    ): Promise<ContactPerson> {
     return this.contactPersonService.findOne(id);
   }
 
   @Mutation(() => ContactPerson)
-  updateContactPerson(@Args('updateContactPersonInput') updateContactPersonInput: UpdateContactPersonInput) {
+  updateContactPerson(
+    @Args('updateContactPersonInput') updateContactPersonInput: UpdateContactPersonInput
+    ): Promise<ContactPerson> {
     return this.contactPersonService.update(updateContactPersonInput.id, updateContactPersonInput);
   }
 
   @Mutation(() => ContactPerson)
-  removeContactPerson(@Args('id', { type: () => Int }) id: number) {
+  removeContactPerson(
+    @Args('id', { type: () => Int }) id: number
+    ): Promise<ContactPerson> {
     return this.contactPersonService.remove(id);
   }
 }
