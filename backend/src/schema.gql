@@ -106,10 +106,10 @@ type Company {
   summary: String!
   established: Timestamp!
   openingHours: String!
-  points: [Point!]!
-  rewards: [Reward!]!
+  points: [Point!]
+  rewards: [Reward!]
   reviews: [Review!]
-  companyTypes: [CompanyType!]!
+  companyTypes: [CompanyType!]
   contactPerson: ContactPerson!
   address: Address!
   sectors: [Sector!]!
@@ -207,10 +207,10 @@ input CreateCompanyInput {
   established: Timestamp!
   openingHours: String!
   btwNumber: Float!
-  pointIds: Int!
-  rewardIds: Int!
-  reviewIds: Int!
-  companyTypeIds: Int!
+  pointIds: Int
+  rewardIds: Int
+  reviewIds: Int
+  companyTypeIds: Int
   contactPersonId: Int!
   addressId: Int!
   sectorIds: Int!
@@ -293,10 +293,12 @@ input UpdateCompanyRequestInput {
 
 input CreateCompanyTypeInput {
   name: String!
+  description: String!
 }
 
 input UpdateCompanyTypeInput {
   name: String
+  description: String
   id: Int!
 }
 

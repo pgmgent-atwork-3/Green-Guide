@@ -6,4 +6,8 @@ export class CreateCompanyTypeInput {
   @Column()
   @Field()
   name: string;
+
+  @Column()
+  @Field()
+  description: string;
 }

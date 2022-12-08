@@ -9,7 +9,9 @@ export class CompanyTypeResolver {
   constructor(private readonly companyTypeService: CompanyTypeService) {}
 
   @Mutation(() => CompanyType)
-  createCompanyType(@Args('createCompanyTypeInput') createCompanyTypeInput: CreateCompanyTypeInput) {
+  createCompanyType(
+    @Args('createCompanyTypeInput') createCompanyTypeInput: CreateCompanyTypeInput
+    ): Promise<CompanyType> {
     return this.companyTypeService.create(createCompanyTypeInput);
   }
 
