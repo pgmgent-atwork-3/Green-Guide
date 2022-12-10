@@ -24,38 +24,38 @@ export class CreateCompanyInput {
   btwNumber: number;
 
   @Column()
-  @Field()
+  @Field(() => Int, { nullable: true })
   pointIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int, { nullable: true })
   rewardIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int, { nullable: true })
   reviewIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int, { nullable: true })
   companyTypeIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int)
   contactPersonId: number;
 
   @Column()
-  @Field()
+  @Field(() => Int)
   addressId: number;
 
   @Column()
-  @Field()
+  @Field(() => Int)
   sectorIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int)
   categoryIds: number[];
 
   @Column()
-  @Field()
+  @Field(() => Int)
   companyRequestId: number;
 }

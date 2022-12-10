@@ -1,4 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 
 @InputType()
@@ -8,6 +8,6 @@ export class CreateCategoryInput {
   name: string;
 
   @Column()
-  @Field()
+  @Field(() => Int)
   sectorId: number;
 }

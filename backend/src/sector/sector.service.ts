@@ -37,9 +37,8 @@ export class SectorService {
     if (sector) {
       this.sectorRepository.merge(sector, updateSectorInput);
       return this.sectorRepository.save(sector);
-    } else {
-      throw new Error('Sector not found');
     }
+    throw new Error('Sector not found');
   }
 
   async remove(id: number): Promise<Sector> | null {
@@ -48,8 +47,7 @@ export class SectorService {
     });
     if (sector) {
       return this.sectorRepository.remove(sector);
-    } else {
-      throw new Error('Sector not found');
     }
+    throw new Error('Sector not found');
   }
 }

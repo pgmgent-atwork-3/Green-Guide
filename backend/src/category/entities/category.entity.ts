@@ -1,12 +1,11 @@
 import { Sector } from './../../sector/entities/sector.entity';
-import { Company } from 'src/company/entities/company.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { PrimaryColumn, Column, Entity, ManyToMany, ManyToOne } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
 
 @Entity()
 @ObjectType()
 export class Category {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   @Field(() => Int)
   id: number;
 
@@ -14,7 +13,11 @@ export class Category {
   @Field()
   name: string;
 
+  @Column()
+  @Field(() => Int)
+  sectorId: number;
+
   @ManyToOne(() => Sector, (sector) => sector.categories)
   @Field(() => Sector)
-  sector?: Sector;
+  sector: Sector;
 }

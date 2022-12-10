@@ -48,11 +48,11 @@ export class Company {
   openingHours: string;
 
   @OneToMany(() => Point, (point) => point.company)
-  @Field(() => [Point])
+  @Field(() => [Point],  { nullable: true })
   points?: Point[];
 
   @OneToMany(() => Reward, (reward) => reward.company)
-  @Field(() => [Reward])
+  @Field(() => [Reward], { nullable: true })
   rewards?: Reward[];
 
   @OneToMany(() => Review, (review) => review.company)
@@ -60,7 +60,7 @@ export class Company {
   reviews?: Review[];
 
   @ManyToMany(() => CompanyType)
-  @Field(() => [CompanyType])
+  @Field(() => [CompanyType], { nullable: true })
   companyTypes?: CompanyType[];
 
   @OneToOne(() => ContactPerson)

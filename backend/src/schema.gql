@@ -11,6 +11,7 @@ type Sector {
 type Category {
   id: Int!
   name: String!
+  sectorId: Int!
   sector: Sector!
 }
 
@@ -106,10 +107,10 @@ type Company {
   summary: String!
   established: Timestamp!
   openingHours: String!
-  points: [Point!]!
-  rewards: [Reward!]!
+  points: [Point!]
+  rewards: [Reward!]
   reviews: [Review!]
-  companyTypes: [CompanyType!]!
+  companyTypes: [CompanyType!]
   contactPerson: ContactPerson!
   address: Address!
   sectors: [Sector!]!
@@ -124,14 +125,15 @@ scalar Timestamp
 
 type Query {
   address(id: Int!): Address!
+  categories: [Category!]!
   category(id: Int!): Category!
+  sectors: [Sector!]!
+  sector(id: Int!): Sector!
   company(id: Int!): Company!
   companyRequest(id: Int!): CompanyRequest!
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
-  sectors: [Sector!]!
-  sector(id: Int!): Sector!
   users: [User!]!
   user(id: Int!): User!
   userByMail(email: String!): User!
@@ -144,8 +146,11 @@ type Mutation {
   updateAddress(updateAddressInput: UpdateAddressInput!): Address!
   removeAddress(id: Int!): Address!
   createCategory(createCategoryInput: CreateCategoryInput!): Category!
-  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  updateCategory(id: Int!, updateCategoryInput: UpdateCategoryInput!): Category!
   removeCategory(id: Int!): Category!
+  createSector(createSectorInput: CreateSectorInput!): Sector!
+  updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
+  removeSector(id: Int!): Sector!
   createCompany(createCompanyInput: CreateCompanyInput!): Company!
   updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
   removeCompany(id: Int!): Company!
@@ -161,9 +166,6 @@ type Mutation {
   createReview(createReviewInput: CreateReviewInput!): Review!
   updateReview(updateReviewInput: UpdateReviewInput!): Review!
   removeReview(id: Int!): Review!
-  createSector(createSectorInput: CreateSectorInput!): Sector!
-  updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
-  removeSector(id: Int!): Sector!
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
@@ -176,25 +178,38 @@ type Mutation {
 }
 
 input CreateAddressInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  streetName: String!
+  Number: String!
+  city: String!
+  zipCode: String!
 }
 
 input UpdateAddressInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  streetName: String
+  Number: String
+  city: String
+  zipCode: String
   id: Int!
 }
 
 input CreateCategoryInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  sectorId: Int!
 }
 
 input UpdateCategoryInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  name: String
+  sectorId: Float
+}
+
+input CreateSectorInput {
+  name: String!
+  categorieIds: [Int!]
+}
+
+input UpdateSectorInput {
+  name: String
+  categorieIds: [Int!]
 }
 
 input CreateCompanyInput {
@@ -203,7 +218,15 @@ input CreateCompanyInput {
   established: Timestamp!
   openingHours: String!
   btwNumber: Float!
-  points: Float!
+  pointIds: Int
+  rewardIds: Int
+  reviewIds: Int
+  companyTypeIds: Int
+  contactPersonId: Int!
+  addressId: Int!
+  sectorIds: Int!
+  categoryIds: Int!
+  companyRequestId: Int!
 }
 
 input UpdateCompanyInput {
@@ -212,7 +235,15 @@ input UpdateCompanyInput {
   established: Timestamp
   openingHours: String
   btwNumber: Float
-  points: Float
+  pointIds: Int
+  rewardIds: Int
+  reviewIds: Int
+  companyTypeIds: Int
+  contactPersonId: Int
+  addressId: Int
+  sectorIds: Int
+  categoryIds: Int
+  companyRequestId: Int
   id: Int!
 }
 
@@ -273,10 +304,12 @@ input UpdateCompanyRequestInput {
 
 input CreateCompanyTypeInput {
   name: String!
+  description: String!
 }
 
 input UpdateCompanyTypeInput {
   name: String
+  description: String
   id: Int!
 }
 
@@ -308,16 +341,6 @@ input UpdateReviewInput {
   userId: Int
   companyId: Int
   id: Int!
-}
-
-input CreateSectorInput {
-  name: String!
-  categorieIds: [Int!]
-}
-
-input UpdateSectorInput {
-  name: String
-  categorieIds: [Int!]
 }
 
 input CreateUserInput {
