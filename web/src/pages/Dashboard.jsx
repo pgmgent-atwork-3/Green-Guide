@@ -1,5 +1,4 @@
 import '../scss/main.scss';
-
 import Navbar from '../components/Navbar';
 
 function Dashboard() {
@@ -14,8 +13,13 @@ function Dashboard() {
                 <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
 
                     {/* Replace with your content */}
-                    <h1 className="pb-6 text-4xl font-bold tracking-tight text-primary-100 primary-font">Dashboard</h1>
-                    <hr />
+                    <h1 className="text-4xl font-bold tracking-tight text-primary-100 primary-font">Dashboard</h1>
+                    
+                    <div className="hidden sm:block" aria-hidden="true">
+                        <div className="py-5">
+                            <div className="border-t border-gray-200" />
+                        </div>
+                    </div>
                     
                     <div>
                         <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -63,26 +67,6 @@ function Dashboard() {
                                         </div>
                                         </div>
                                     </div>
-
-                                    {/* <div className="grid grid-cols-3 gap-6">
-                                        <div className="col-span-3 sm:col-span-2">
-                                        <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
-                                            Website
-                                        </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center rounded-l-md bg-gray-100 px-3 text-sm text-gray-500">
-                                            http://
-                                            </span>
-                                            <input
-                                            type="text"
-                                            name="company-website"
-                                            id="company-website"
-                                            className="p-3 block w-full flex-1 rounded-none rounded-r-md bg-gray-50 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="www.example.com"
-                                            />
-                                        </div>
-                                        </div>
-                                    </div> */}
 
                                     <div>
                                         <label htmlFor="about" className="block text-sm font-medium text-gray-700">
