@@ -9,27 +9,38 @@ export class CompanyRequestResolver {
   constructor(private readonly companyRequestService: CompanyRequestService) {}
 
   @Mutation(() => CompanyRequest)
-  createCompanyRequest(@Args('createCompanyRequestInput') createCompanyRequestInput: CreateCompanyRequestInput) {
+  createCompanyRequest(
+    @Args('createCompanyRequestInput')
+    createCompanyRequestInput: CreateCompanyRequestInput,
+  ): Promise<CompanyRequest> {
     return this.companyRequestService.create(createCompanyRequestInput);
   }
 
-  @Query(() => [CompanyRequest], { name: 'companyRequest' })
-  findAll() {
+  @Query(() => [CompanyRequest], { name: 'companyRequests' })
+  findAll(): Promise<CompanyRequest[]> {
     return this.companyRequestService.findAll();
   }
 
   @Query(() => CompanyRequest, { name: 'companyRequest' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<CompanyRequest> {
     return this.companyRequestService.findOne(id);
   }
 
   @Mutation(() => CompanyRequest)
-  updateCompanyRequest(@Args('updateCompanyRequestInput') updateCompanyRequestInput: UpdateCompanyRequestInput) {
-    return this.companyRequestService.update(updateCompanyRequestInput.id, updateCompanyRequestInput);
+  updateCompanyRequest(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateCompanyRequestInput')
+    updateCompanyRequestInput: UpdateCompanyRequestInput,
+  ): Promise<CompanyRequest> {
+    return this.companyRequestService.update(id, updateCompanyRequestInput);
   }
 
   @Mutation(() => CompanyRequest)
-  removeCompanyRequest(@Args('id', { type: () => Int }) id: number) {
+  removeCompanyRequest(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<CompanyRequest> | null {
     return this.companyRequestService.remove(id);
   }
 }

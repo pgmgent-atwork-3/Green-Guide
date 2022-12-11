@@ -79,9 +79,9 @@ type CompanyRequest {
   firstName: String!
   lastName: String!
   email: String!
-  tel: Float!
+  tel: String!
   customerCard: Boolean!
-  comment: String!
+  comment: String
   localProduct: String
   fairtrade: String
   biological: String
@@ -98,6 +98,7 @@ type CompanyRequest {
   garbageSorting: String
   wasteFree: String
   reusingWater: String
+  approved: Boolean!
 }
 
 type Company {
@@ -130,6 +131,7 @@ type Query {
   sectors: [Sector!]!
   sector(id: Int!): Sector!
   company(id: Int!): Company!
+  companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
@@ -155,7 +157,7 @@ type Mutation {
   updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
   removeCompany(id: Int!): Company!
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
-  updateCompanyRequest(updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
+  updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
   createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
   updateCompanyType(updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
@@ -253,9 +255,9 @@ input CreateCompanyRequestInput {
   firstName: String!
   lastName: String!
   email: String!
-  tel: Float!
+  tel: String!
   customerCard: Boolean!
-  comment: String!
+  comment: String
   localProduct: String
   fairtrade: String
   biological: String
@@ -265,7 +267,7 @@ input CreateCompanyRequestInput {
   fairSalary: String
   inclusion: String
   durableTransport: String
-  accessibliity: String
+  accessibility: String
   renewableEnergy: String
   ethicalBanking: String
   recycling: String
@@ -280,7 +282,7 @@ input UpdateCompanyRequestInput {
   firstName: String
   lastName: String
   email: String
-  tel: Float
+  tel: String
   customerCard: Boolean
   comment: String
   localProduct: String
@@ -292,14 +294,14 @@ input UpdateCompanyRequestInput {
   fairSalary: String
   inclusion: String
   durableTransport: String
-  accessibliity: String
+  accessibility: String
   renewableEnergy: String
   ethicalBanking: String
   recycling: String
   garbageSorting: String
   wasteFree: String
   reusingWater: String
-  id: Int!
+  approved: Boolean
 }
 
 input CreateCompanyTypeInput {

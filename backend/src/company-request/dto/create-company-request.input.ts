@@ -1,4 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 
 @InputType()
@@ -6,7 +6,7 @@ export class CreateCompanyRequestInput {
   @Column()
   @Field()
   btwNumber: number;
-  
+
   @Column()
   @Field()
   companyName: string;
@@ -25,77 +25,77 @@ export class CreateCompanyRequestInput {
 
   @Column()
   @Field()
-  tel: number;
+  tel: string;
 
   @Column()
   @Field()
   customerCard: boolean;
 
   @Column()
-  @Field()
-  comment: string;
+  @Field({ nullable: true })
+  comment?: string;
 
   @Column()
   @Field({ nullable: true })
-  localProduct: string;
+  localProduct?: string;
 
   @Column()
   @Field({ nullable: true })
-  fairtrade: string;
+  fairtrade?: string;
 
   @Column()
   @Field({ nullable: true })
-  biological: string;
+  biological?: string;
 
   @Column()
   @Field({ nullable: true })
-  secondHand: string;
+  secondHand?: string;
 
   @Column()
   @Field({ nullable: true })
-  socialEmployment: string;
+  socialEmployment?: string;
 
   @Column()
   @Field({ nullable: true })
-  civilCooperative: string;
+  civilCooperative?: string;
 
   @Column()
   @Field({ nullable: true })
-  fairSalary: string;
+  fairSalary?: string;
 
   @Column()
   @Field({ nullable: true })
-  inclusion: string;
+  inclusion?: string;
 
   @Column()
   @Field({ nullable: true })
-  durableTransport: string;
+  durableTransport?: string;
 
   @Column()
   @Field({ nullable: true })
-  accessibliity: string;
+  accessibility?: string;
 
   @Column()
   @Field({ nullable: true })
-  renewableEnergy: string;
+  renewableEnergy?: string;
 
   @Column()
   @Field({ nullable: true })
-  ethicalBanking: string;
+  ethicalBanking?: string;
 
   @Column()
   @Field({ nullable: true })
-  recycling: string;
+  recycling?: string;
 
   @Column()
   @Field({ nullable: true })
-  garbageSorting: string;
+  garbageSorting?: string;
 
   @Column()
   @Field({ nullable: true })
-  wasteFree: string;
+  wasteFree?: string;
 
   @Column()
   @Field({ nullable: true })
-  reusingWater: string;
+  reusingWater?: string;
 }
