@@ -16,7 +16,8 @@
     "sass": "^1.56.1",
     "tailwindcss": "^3.2.4",
     "web-vitals": "^2.1.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "yup-password": "^0.2.2"
   },
   "scripts": {
     "dev": "react-scripts start",
