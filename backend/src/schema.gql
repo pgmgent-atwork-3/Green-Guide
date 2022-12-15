@@ -140,9 +140,6 @@ type Query {
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
-  users: [User!]!
-  user(id: Int!): User!
-  userByMail(email: String!): User!
   point(id: Int!): Point!
   reward(id: Int!): Reward!
 }
