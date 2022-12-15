@@ -16,10 +16,12 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PointModule } from './point/point.module';
 import { RewardModule } from './reward/reward.module';
+import { AuthModule } from './auth/auth.module';
 
 // TODO implement .env file
 @Module({
   imports: [
+    AuthModule,
     AddressModule,
     CategoryModule,
     CompanyModule,
