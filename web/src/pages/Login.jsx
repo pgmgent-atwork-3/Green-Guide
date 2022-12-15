@@ -2,6 +2,8 @@ import { Form, Formik } from 'formik';
 import '../scss/main.scss';
 import * as yup from 'yup'
 import YupPassword from 'yup-password'
+import { GET_USERS } from '../gql/queries';
+import useCustomHook from '../hooks/useCustomHook';
 YupPassword(yup) // extend yup
 
 const loginValidationSchema = yup.object({
@@ -10,6 +12,8 @@ const loginValidationSchema = yup.object({
 });
 
 function Login() {
+    const data = useCustomHook(GET_USERS);
+    console.log(data?.users)
 
 return (
     <div className="Login bg-25">
