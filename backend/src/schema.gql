@@ -11,6 +11,7 @@ type Sector {
 type Category {
   id: Int!
   name: String!
+  sectorId: Int!
   sector: Sector!
 }
 
@@ -57,9 +58,9 @@ type CompanyRequest {
   firstName: String!
   lastName: String!
   email: String!
-  tel: Float!
+  tel: String!
   customerCard: Boolean!
-  comment: String!
+  comment: String
   localProduct: String
   fairtrade: String
   biological: String
@@ -76,6 +77,7 @@ type CompanyRequest {
   garbageSorting: String
   wasteFree: String
   reusingWater: String
+  approved: Boolean!
 }
 
 type Company {
@@ -128,14 +130,19 @@ type Query {
   userByMail(email: String!): User!
   userByUserName(userName: String!): User!
   address(id: Int!): Address!
+  categories: [Category!]!
   category(id: Int!): Category!
+  sectors: [Sector!]!
+  sector(id: Int!): Sector!
   company(id: Int!): Company!
+  companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
-  sectors: [Sector!]!
-  sector(id: Int!): Sector!
+  users: [User!]!
+  user(id: Int!): User!
+  userByMail(email: String!): User!
   point(id: Int!): Point!
   reward(id: Int!): Reward!
 }
@@ -148,13 +155,16 @@ type Mutation {
   updateAddress(updateAddressInput: UpdateAddressInput!): Address!
   removeAddress(id: Int!): Address!
   createCategory(createCategoryInput: CreateCategoryInput!): Category!
-  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  updateCategory(id: Int!, updateCategoryInput: UpdateCategoryInput!): Category!
   removeCategory(id: Int!): Category!
+  createSector(createSectorInput: CreateSectorInput!): Sector!
+  updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
+  removeSector(id: Int!): Sector!
   createCompany(createCompanyInput: CreateCompanyInput!): Company!
   updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
   removeCompany(id: Int!): Company!
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
-  updateCompanyRequest(updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
+  updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
   createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
   updateCompanyType(updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
@@ -165,9 +175,6 @@ type Mutation {
   createReview(createReviewInput: CreateReviewInput!): Review!
   updateReview(updateReviewInput: UpdateReviewInput!): Review!
   removeReview(id: Int!): Review!
-  createSector(createSectorInput: CreateSectorInput!): Sector!
-  updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
-  removeSector(id: Int!): Sector!
   createPoint(createPointInput: CreatePointInput!): Point!
   updatePoint(updatePointInput: UpdatePointInput!): Point!
   removePoint(id: Int!): Point!
@@ -213,13 +220,22 @@ input UpdateAddressInput {
 
 input CreateCategoryInput {
   name: String!
-  sectorId: Float!
+  sectorId: Int!
 }
 
 input UpdateCategoryInput {
   name: String
   sectorId: Float
-  id: Int!
+}
+
+input CreateSectorInput {
+  name: String!
+  categorieIds: [Int!]
+}
+
+input UpdateSectorInput {
+  name: String
+  categorieIds: [Int!]
 }
 
 input CreateCompanyInput {
@@ -263,9 +279,9 @@ input CreateCompanyRequestInput {
   firstName: String!
   lastName: String!
   email: String!
-  tel: Float!
+  tel: String!
   customerCard: Boolean!
-  comment: String!
+  comment: String
   localProduct: String
   fairtrade: String
   biological: String
@@ -275,7 +291,7 @@ input CreateCompanyRequestInput {
   fairSalary: String
   inclusion: String
   durableTransport: String
-  accessibliity: String
+  accessibility: String
   renewableEnergy: String
   ethicalBanking: String
   recycling: String
@@ -290,7 +306,7 @@ input UpdateCompanyRequestInput {
   firstName: String
   lastName: String
   email: String
-  tel: Float
+  tel: String
   customerCard: Boolean
   comment: String
   localProduct: String
@@ -302,14 +318,14 @@ input UpdateCompanyRequestInput {
   fairSalary: String
   inclusion: String
   durableTransport: String
-  accessibliity: String
+  accessibility: String
   renewableEnergy: String
   ethicalBanking: String
   recycling: String
   garbageSorting: String
   wasteFree: String
   reusingWater: String
-  id: Int!
+  approved: Boolean
 }
 
 input CreateCompanyTypeInput {
@@ -351,16 +367,6 @@ input UpdateReviewInput {
   userId: Int
   companyId: Int
   id: Int!
-}
-
-input CreateSectorInput {
-  name: String!
-  categorieIds: [Int!]
-}
-
-input UpdateSectorInput {
-  name: String
-  categorieIds: [Int!]
 }
 
 input CreatePointInput {

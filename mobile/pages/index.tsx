@@ -10,12 +10,14 @@ const Home = () => {
         height: 98,
     }
 
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(480);
+    const [height, setHeight] = useState(800 / 5.3);
 
     useEffect(() => {
-        setWidth(container.current.offsetWidth);
-        setHeight(container.current.offsetHeight/5.3);
+        if (container.current !== null){
+            setWidth(container.current.offsetWidth);
+            setHeight(container.current.offsetHeight/5.3);
+        }
     }, []);
 
   return (

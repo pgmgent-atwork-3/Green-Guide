@@ -6,7 +6,6 @@ import { Review } from './../../review/entities/review.entity';
 import { Reward } from './../../reward/entities/reward.entity';
 import { Point } from './../../point/entities/point.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { User } from 'src/user/entities/user.entity';
 import {
   Column,
   Entity,
@@ -48,43 +47,43 @@ export class Company {
   openingHours: string;
 
   @OneToMany(() => Point, (point) => point.company)
-  @Field(() => [Point],  { nullable: true })
-  points?: Point[];
+  @Field(() => [Point], { nullable: true })
+  points: Point[];
 
   @OneToMany(() => Reward, (reward) => reward.company)
   @Field(() => [Reward], { nullable: true })
-  rewards?: Reward[];
+  rewards: Reward[];
 
   @OneToMany(() => Review, (review) => review.company)
   @Field(() => [Review], { nullable: true })
-  reviews?: Review[];
+  reviews: Review[];
 
   @ManyToMany(() => CompanyType)
   @Field(() => [CompanyType], { nullable: true })
-  companyTypes?: CompanyType[];
+  companyTypes: CompanyType[];
 
   @OneToOne(() => ContactPerson)
   @Field(() => ContactPerson)
   @JoinColumn()
-  contactPerson?: ContactPerson;
+  contactPerson: ContactPerson;
 
   @OneToOne(() => Address)
   @Field(() => Address)
   @JoinColumn()
-  address?: Address;
+  address: Address;
 
   @ManyToMany(() => Sector)
   @Field(() => [Sector])
   @JoinTable()
-  sectors?: Sector[];
+  sectors: Sector[];
 
   @ManyToMany(() => Category)
   @Field(() => [Category])
   @JoinTable()
-  categories?: Category[];
+  categories: Category[];
 
   @OneToOne(() => CompanyRequest)
   @Field(() => CompanyRequest)
   @JoinColumn()
-  companyRequest?: CompanyRequest;
+  companyRequest: CompanyRequest;
 }
