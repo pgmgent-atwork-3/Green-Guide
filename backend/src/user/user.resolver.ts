@@ -4,8 +4,11 @@ import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UseGuards } from '@nestjs/common';
-import { CurrentUser } from 'src/Decorators/currentUser';
+import { CurrentUser } from 'src/Decorators/currentUser.decorator';
 import { GqlAuthGuard } from 'src/auth/gql-auth.guard';
+import { Roles } from 'src/Decorators/roles.decorator';
+import { Role } from 'src/role.enum';
+import { RolesGuard } from 'src/auth/role.guard';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -19,7 +22,8 @@ export class UserResolver {
   }
 
   @Query(() => [User], { name: 'users' })
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   findAll(@CurrentUser() user: User): Promise<User[]> {
     return this.userService.findAll();
   }

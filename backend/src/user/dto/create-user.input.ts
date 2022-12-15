@@ -1,6 +1,6 @@
 import { InputType, Field, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
-import { role } from '../entities/user.entity';
+import { Role } from 'src/role.enum';
 
 @InputType()
 export class CreateUserInput {
@@ -27,7 +27,7 @@ export class CreateUserInput {
   @Column({
     default: 'user',
     type: 'enum',
-    enum: role,
+    enum: Role,
   })
   @Field()
   role: string;

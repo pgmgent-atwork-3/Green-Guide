@@ -17,10 +17,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PointModule } from './point/point.module';
 import { RewardModule } from './reward/reward.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
-// TODO implement .env file
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     AuthModule,
     AddressModule,
     CategoryModule,
@@ -40,6 +41,10 @@ import { AuthModule } from './auth/auth.module';
       buildSchemaOptions: {
         dateScalarMode: 'timestamp',
       },
+      cors: {
+        origin: 'http://localhost:3000',
+        credentials: true,
+      },
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => {
@@ -58,9 +63,9 @@ import { AuthModule } from './auth/auth.module';
             type: 'postgres',
             host: 'localhost',
             port: 5432,
-            username: 'postgres',
-            password: 'postgres',
-            database: 'green_guide',
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
             synchronize: true,
             entities: ['dist/**/*.entity{.ts,.js}'],
           };
