@@ -1,6 +1,5 @@
-import { Company } from 'src/company/entities/company.entity';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -15,7 +14,7 @@ export class Address {
 
   @Column()
   @Field()
-  Number: string;
+  number: string;
 
   @Column()
   @Field()
