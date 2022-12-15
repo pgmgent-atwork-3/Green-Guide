@@ -17,6 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PointModule } from './point/point.module';
 import { RewardModule } from './reward/reward.module';
 import { AuthModule } from './auth/auth.module';
+import { LabelModule } from './label/label.module';
 
 // TODO implement .env file
 @Module({
@@ -74,6 +75,7 @@ import { AuthModule } from './auth/auth.module';
     AddressModule,
     PointModule,
     RewardModule,
+    LabelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
