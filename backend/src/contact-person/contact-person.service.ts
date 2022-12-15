@@ -7,14 +7,17 @@ import { ContactPerson } from './entities/contact-person.entity';
 
 @Injectable()
 export class ContactPersonService {
-
   constructor(
     @InjectRepository(ContactPerson)
     private contactPersonRepository: Repository<ContactPerson>,
   ) {}
 
-  create(createContactPersonInput: CreateContactPersonInput): Promise<ContactPerson> {
-    const contactPerson = this.contactPersonRepository.create(createContactPersonInput);
+  create(
+    createContactPersonInput: CreateContactPersonInput,
+  ): Promise<ContactPerson> {
+    const contactPerson = this.contactPersonRepository.create(
+      createContactPersonInput,
+    );
     return this.contactPersonRepository.save(contactPerson);
   }
 
@@ -25,16 +28,21 @@ export class ContactPersonService {
   findOne(id: number): Promise<ContactPerson> {
     return this.contactPersonRepository.findOne({
       where: { id },
-      });
+    });
   }
 
-  async update(id: number, updateContactPersonInput: UpdateContactPersonInput
-    ): Promise<ContactPerson> {
+  async update(
+    id: number,
+    updateContactPersonInput: UpdateContactPersonInput,
+  ): Promise<ContactPerson> | null {
     const contactPerson = await this.contactPersonRepository.findOne({
-      where: {id}
+      where: { id },
     });
     if (contactPerson) {
-      this.contactPersonRepository.merge(contactPerson, updateContactPersonInput);
+      this.contactPersonRepository.merge(
+        contactPerson,
+        updateContactPersonInput,
+      );
       return this.contactPersonRepository.save(contactPerson);
     } else {
       throw new Error('ContactPerson not found');
@@ -43,7 +51,7 @@ export class ContactPersonService {
 
   async remove(id: number): Promise<ContactPerson> | null {
     const contactPerson = await this.contactPersonRepository.findOne({
-      where: {id}
+      where: { id },
     });
     if (contactPerson) {
       return this.contactPersonRepository.remove(contactPerson);
