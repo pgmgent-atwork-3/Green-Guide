@@ -9,7 +9,6 @@ const signUpValidationSchema = yup.object({
     password: yup.string().required().min(5),
     text: yup.string().required(),
     date: yup.string().required(),
-
 });
 
 function Signup() {
