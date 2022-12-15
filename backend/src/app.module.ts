@@ -17,7 +17,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PointModule } from './point/point.module';
 import { RewardModule } from './reward/reward.module';
 import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -79,6 +78,7 @@ import { ConfigModule } from '@nestjs/config';
     AddressModule,
     PointModule,
     RewardModule,
+    LabelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

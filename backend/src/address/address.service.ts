@@ -7,7 +7,6 @@ import { Address } from './entities/address.entity';
 
 @Injectable()
 export class AddressService {
-
   constructor(
     @InjectRepository(Address)
     private addressRepository: Repository<Address>,
@@ -28,7 +27,10 @@ export class AddressService {
     });
   }
 
-  async update(id: number, updateAddressInput: UpdateAddressInput): Promise<Address> | null {
+  async update(
+    id: number,
+    updateAddressInput: UpdateAddressInput,
+  ): Promise<Address> | null {
     const address = await this.addressRepository.findOne({
       where: { id },
     });

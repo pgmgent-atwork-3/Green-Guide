@@ -3,24 +3,12 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
-export class Address {
+export class Label {
   @PrimaryGeneratedColumn()
   @Field(() => Int)
   id: number;
 
   @Column()
   @Field()
-  streetName: string;
-
-  @Column()
-  @Field()
-  number: string;
-
-  @Column()
-  @Field()
-  city: string;
-
-  @Column()
-  @Field()
-  zipCode: string;
+  name: string;
 }

@@ -10,28 +10,35 @@ export class CompanyTypeResolver {
 
   @Mutation(() => CompanyType)
   createCompanyType(
-    @Args('createCompanyTypeInput') createCompanyTypeInput: CreateCompanyTypeInput
-    ): Promise<CompanyType> {
+    @Args('createCompanyTypeInput')
+    createCompanyTypeInput: CreateCompanyTypeInput,
+  ): Promise<CompanyType> {
     return this.companyTypeService.create(createCompanyTypeInput);
   }
 
-  @Query(() => [CompanyType], { name: 'companyType' })
-  findAll() {
+  @Query(() => [CompanyType], { name: 'companyTypes' })
+  findAll(): Promise<CompanyType[]> {
     return this.companyTypeService.findAll();
   }
 
   @Query(() => CompanyType, { name: 'companyType' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<CompanyType> {
     return this.companyTypeService.findOne(id);
   }
 
   @Mutation(() => CompanyType)
-  updateCompanyType(@Args('updateCompanyTypeInput') updateCompanyTypeInput: UpdateCompanyTypeInput) {
-    return this.companyTypeService.update(updateCompanyTypeInput.id, updateCompanyTypeInput);
+  updateCompanyType(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateCompanyTypeInput')
+    updateCompanyTypeInput: UpdateCompanyTypeInput,
+  ) {
+    return this.companyTypeService.update(id, updateCompanyTypeInput);
   }
 
   @Mutation(() => CompanyType)
-  removeCompanyType(@Args('id', { type: () => Int }) id: number) {
+  removeCompanyType(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<CompanyType> | null {
     return this.companyTypeService.remove(id);
   }
 }

@@ -1,8 +1,16 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+} from '@nestjs/graphql';
 import { SectorService } from './sector.service';
 import { Sector } from './entities/sector.entity';
 import { CreateSectorInput } from './dto/create-sector.input';
 import { UpdateSectorInput } from './dto/update-sector.input';
+import { Category } from 'src/category/entities/category.entity';
 
 @Resolver(() => Sector)
 export class SectorResolver {
@@ -38,5 +46,10 @@ export class SectorResolver {
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Sector> | null {
     return this.sectorService.remove(id);
+  }
+
+  @ResolveField(() => Category)
+  categories(): Promise<Category[]> {
+    return this.sectorService.getCategories();
   }
 }

@@ -1,4 +1,4 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 
 @InputType()
@@ -9,7 +9,7 @@ export class CreateAddressInput {
 
   @Column()
   @Field()
-  Number: string;
+  number: string;
 
   @Column()
   @Field()

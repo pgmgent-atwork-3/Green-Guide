@@ -46,7 +46,7 @@ type Point {
 type Address {
   id: Int!
   streetName: String!
-  Number: String!
+  number: String!
   city: String!
   zipCode: String!
 }
@@ -124,11 +124,17 @@ type User {
   reviews: [Review!]
 }
 
+type Label {
+  id: Int!
+  name: String!
+}
+
 type Query {
   users: [User!]!
   user(id: Int!): User!
   userByMail(email: String!): User!
   userByUserName(userName: String!): User!
+  addresses: [Address!]!
   address(id: Int!): Address!
   categories: [Category!]!
   category(id: Int!): Category!
@@ -137,11 +143,14 @@ type Query {
   company(id: Int!): Company!
   companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
+  companyTypes: [CompanyType!]!
   companyType(id: Int!): CompanyType!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
   point(id: Int!): Point!
   reward(id: Int!): Reward!
+  labels: [Label!]!
+  label(id: Int!): Label!
 }
 
 type Mutation {
@@ -149,7 +158,7 @@ type Mutation {
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
   createAddress(createAddressInput: CreateAddressInput!): Address!
-  updateAddress(updateAddressInput: UpdateAddressInput!): Address!
+  updateAddress(id: Int!, updateAddressInput: UpdateAddressInput!): Address!
   removeAddress(id: Int!): Address!
   createCategory(createCategoryInput: CreateCategoryInput!): Category!
   updateCategory(id: Int!, updateCategoryInput: UpdateCategoryInput!): Category!
@@ -164,7 +173,7 @@ type Mutation {
   updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
   createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
-  updateCompanyType(updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
+  updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
   removeCompanyType(id: Int!): CompanyType!
   createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
   updateContactPerson(updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
@@ -178,6 +187,9 @@ type Mutation {
   createReward(createRewardInput: CreateRewardInput!): Reward!
   updateReward(updateRewardInput: UpdateRewardInput!): Reward!
   removeReward(id: Int!): Reward!
+  createLabel(createLabelInput: CreateLabelInput!): Label!
+  updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
+  removeLabel(id: Int!): Label!
 }
 
 input CreateUserInput {
@@ -202,17 +214,16 @@ input UpdateUserInput {
 
 input CreateAddressInput {
   streetName: String!
-  Number: String!
+  number: String!
   city: String!
   zipCode: String!
 }
 
 input UpdateAddressInput {
   streetName: String
-  Number: String
+  number: String
   city: String
   zipCode: String
-  id: Int!
 }
 
 input CreateCategoryInput {
@@ -327,13 +338,10 @@ input UpdateCompanyRequestInput {
 
 input CreateCompanyTypeInput {
   name: String!
-  description: String!
 }
 
 input UpdateCompanyTypeInput {
-  name: String
-  description: String
-  id: Int!
+  name: String!
 }
 
 input CreateContactPersonInput {
@@ -392,4 +400,12 @@ input UpdateRewardInput {
   points: Int
   companyId: Int
   id: Int!
+}
+
+input CreateLabelInput {
+  name: String!
+}
+
+input UpdateLabelInput {
+  name: String!
 }
