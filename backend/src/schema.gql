@@ -145,6 +145,7 @@ type Query {
   companyRequest(id: Int!): CompanyRequest!
   companyTypes: [CompanyType!]!
   companyType(id: Int!): CompanyType!
+  contactPersons: [ContactPerson!]!
   contactPerson(id: Int!): ContactPerson!
   review(id: Int!): Review!
   point(id: Int!): Point!
@@ -176,7 +177,7 @@ type Mutation {
   updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
   removeCompanyType(id: Int!): CompanyType!
   createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
-  updateContactPerson(updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
+  updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
   removeContactPerson(id: Int!): ContactPerson!
   createReview(createReviewInput: CreateReviewInput!): Review!
   updateReview(updateReviewInput: UpdateReviewInput!): Review!
@@ -356,7 +357,6 @@ input UpdateContactPersonInput {
   lastName: String
   email: String
   phoneNumber: String
-  id: Int!
 }
 
 input CreateReviewInput {
