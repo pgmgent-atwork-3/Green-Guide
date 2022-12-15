@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CategoryService } from 'src/category/category.service';
+import { Category } from 'src/category/entities/category.entity';
 import { Repository } from 'typeorm';
 import { CreateSectorInput } from './dto/create-sector.input';
 import { UpdateSectorInput } from './dto/update-sector.input';
@@ -10,6 +12,8 @@ export class SectorService {
   constructor(
     @InjectRepository(Sector)
     private sectorRepository: Repository<Sector>,
+    @Inject(forwardRef(() => CategoryService))
+    private categoryService: CategoryService,
   ) {}
 
   create(createSectorInput: CreateSectorInput): Promise<Sector> {
@@ -49,5 +53,9 @@ export class SectorService {
       return this.sectorRepository.remove(sector);
     }
     throw new Error('Sector not found');
+  }
+
+  getCategories(): Promise<Category[]> {
+    return this.categoryService.findAll();
   }
 }
