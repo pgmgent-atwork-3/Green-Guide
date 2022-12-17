@@ -10,34 +10,33 @@ export class AddressResolver {
 
   @Mutation(() => Address)
   createAddress(
-    @Args('createAddressInput') createAddressInput: CreateAddressInput
-    ): Promise<Address> {
+    @Args('createAddressInput') createAddressInput: CreateAddressInput,
+  ): Promise<Address> {
     return this.addressService.create(createAddressInput);
   }
 
-  @Query(() => [Address], { name: 'address' })
+  @Query(() => [Address], { name: 'addresses' })
   findAll(): Promise<Address[]> {
     return this.addressService.findAll();
   }
 
   @Query(() => Address, { name: 'address' })
-  findOne(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<Address> {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<Address> {
     return this.addressService.findOne(id);
   }
 
   @Mutation(() => Address)
   updateAddress(
-    @Args('updateAddressInput') updateAddressInput: UpdateAddressInput
-    ): Promise<Address> | null {
-    return this.addressService.update(updateAddressInput.id, updateAddressInput);
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateAddressInput') updateAddressInput: UpdateAddressInput,
+  ): Promise<Address> | null {
+    return this.addressService.update(id, updateAddressInput);
   }
 
   @Mutation(() => Address)
   removeAddress(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<Address> | null {
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<Address> | null {
     return this.addressService.remove(id);
   }
 }

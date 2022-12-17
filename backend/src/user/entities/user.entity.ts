@@ -1,6 +1,5 @@
 import { Review } from './../../review/entities/review.entity';
 import { Point } from './../../point/entities/point.entity';
-import { Test } from '@nestjs/testing';
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import {
   BeforeInsert,
@@ -14,13 +13,7 @@ import {
 import * as bcrypt from 'bcrypt';
 import { IsEmail, MaxLength, MinLength } from 'class-validator';
 import { Company } from 'src/company/entities/company.entity';
-
-export enum role {
-  USER = 'user',
-  COMPANY = 'company',
-  ADMIN = 'admin',
-  SUPERADMIN = 'superAdmin',
-}
+import { Role } from 'src/role.enum';
 
 @Entity()
 @ObjectType()
@@ -59,7 +52,7 @@ export class User {
   @Column({
     default: 'user',
     type: 'enum',
-    enum: role,
+    enum: Role,
   })
   @Field()
   role: string;

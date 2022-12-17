@@ -1,8 +1,12 @@
 import { CreateCompanyTypeInput } from './create-company-type.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field, PartialType } from '@nestjs/graphql';
+import { Column } from 'typeorm';
 
 @InputType()
-export class UpdateCompanyTypeInput extends PartialType(CreateCompanyTypeInput) {
-  @Field(() => Int)
-  id: number;
+export class UpdateCompanyTypeInput extends PartialType(
+  CreateCompanyTypeInput,
+) {
+  @Column()
+  @Field()
+  name: string;
 }

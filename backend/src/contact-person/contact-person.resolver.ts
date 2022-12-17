@@ -10,34 +10,35 @@ export class ContactPersonResolver {
 
   @Mutation(() => ContactPerson)
   createContactPerson(
-    @Args('createContactPersonInput') createContactPersonInput: CreateContactPersonInput
-    ): Promise<ContactPerson> {
+    @Args('createContactPersonInput')
+    createContactPersonInput: CreateContactPersonInput,
+  ): Promise<ContactPerson> {
     return this.contactPersonService.create(createContactPersonInput);
   }
 
-  @Query(() => [ContactPerson], { name: 'contactPerson' })
+  @Query(() => [ContactPerson], { name: 'contactPersons' })
   findAll(): Promise<ContactPerson[]> {
     return this.contactPersonService.findAll();
   }
 
   @Query(() => ContactPerson, { name: 'contactPerson' })
-  findOne(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<ContactPerson> {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<ContactPerson> {
     return this.contactPersonService.findOne(id);
   }
 
   @Mutation(() => ContactPerson)
   updateContactPerson(
-    @Args('updateContactPersonInput') updateContactPersonInput: UpdateContactPersonInput
-    ): Promise<ContactPerson> {
-    return this.contactPersonService.update(updateContactPersonInput.id, updateContactPersonInput);
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateContactPersonInput')
+    updateContactPersonInput: UpdateContactPersonInput,
+  ): Promise<ContactPerson> {
+    return this.contactPersonService.update(id, updateContactPersonInput);
   }
 
   @Mutation(() => ContactPerson)
   removeContactPerson(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<ContactPerson> {
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<ContactPerson> | null {
     return this.contactPersonService.remove(id);
   }
 }

@@ -18,6 +18,12 @@ export class UserService {
     });
   }
 
+  findOneByUserName(userName: string): Promise<User> {
+    return this.userRepository.findOne({
+      where: { userName },
+    });
+  }
+
   create(createUserInput: CreateUserInput): Promise<User> {
     const user = this.userRepository.create(createUserInput);
     return this.userRepository.save(user);
