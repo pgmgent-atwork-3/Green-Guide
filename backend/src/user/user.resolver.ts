@@ -29,38 +29,48 @@ export class UserResolver {
   }
 
   @Query(() => User, { name: 'user' })
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   findOne(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<User> {
+    @Args('id', { type: () => Int }) id: number,
+    @CurrentUser() user: User,
+  ): Promise<User> {
     return this.userService.findOne(id);
   }
 
   @Query(() => User, { name: 'userByMail' })
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   findOneByEmail(
-    @Args('email') email: string
-    ): Promise<User> {
+    @Args('email') email: string,
+    @CurrentUser() user: User,
+  ): Promise<User> {
     return this.userService.findOneByEmail(email);
   }
 
   @Query(() => User, { name: 'userByUserName' })
-  findOneByUserName(
-    @Args('userName') userName: string
-    ): Promise<User> {
+  findOneByUserName(@Args('userName') userName: string): Promise<User> {
     return this.userService.findOneByUserName(userName);
   }
 
   @Mutation(() => User)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   updateUser(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateUserInput') updateUserInput: UpdateUserInput,
+    @CurrentUser() user: User,
   ): Promise<User> {
     return this.userService.update(id, updateUserInput);
   }
 
   @Mutation(() => User)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   removeUser(
-    @Args('id', { type: () => Int }) id: number
-    ): Promise<User> {
+    @Args('id', { type: () => Int }) id: number,
+    @CurrentUser() user: User,
+  ): Promise<User> {
     return this.userService.remove(id);
   }
 }
