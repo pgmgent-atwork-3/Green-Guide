@@ -11,14 +11,24 @@ import { Sector } from './entities/sector.entity';
 import { CreateSectorInput } from './dto/create-sector.input';
 import { UpdateSectorInput } from './dto/update-sector.input';
 import { Category } from 'src/category/entities/category.entity';
+import { Role } from '../role.enum';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from '../auth/gql-auth.guard';
+import { Roles } from '../Decorators/roles.decorator';
+import { RolesGuard } from '../auth/role.guard';
+import { User } from '../user/entities/user.entity';
+import { CurrentUser } from '../Decorators/currentUser.decorator';
 
 @Resolver(() => Sector)
 export class SectorResolver {
   constructor(private readonly sectorService: SectorService) {}
 
   @Mutation(() => Sector)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   createSector(
     @Args('createSectorInput') createSectorInput: CreateSectorInput,
+    @CurrentUser() user: User,
   ): Promise<Sector> {
     return this.sectorService.create(createSectorInput);
   }
@@ -34,6 +44,8 @@ export class SectorResolver {
   }
 
   @Mutation(() => Sector)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   updateSector(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateSectorInput') updateSectorInput: UpdateSectorInput,
@@ -42,6 +54,8 @@ export class SectorResolver {
   }
 
   @Mutation(() => Sector)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUEPERADMIN, Role.ADMIN)
   removeSector(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Sector> | null {
