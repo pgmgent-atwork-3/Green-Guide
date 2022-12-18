@@ -25,7 +25,7 @@ export class SectorResolver {
 
   @Mutation(() => Sector)
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   createSector(
     @Args('createSectorInput') createSectorInput: CreateSectorInput,
     @CurrentUser() user: User,
@@ -45,7 +45,7 @@ export class SectorResolver {
 
   @Mutation(() => Sector)
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   updateSector(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateSectorInput') updateSectorInput: UpdateSectorInput,
@@ -55,7 +55,7 @@ export class SectorResolver {
 
   @Mutation(() => Sector)
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   removeSector(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Sector> | null {

@@ -23,14 +23,14 @@ export class UserResolver {
 
   @Query(() => [User], { name: 'users' })
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   findAll(@CurrentUser() user: User): Promise<User[]> {
     return this.userService.findAll();
   }
 
   @Query(() => User, { name: 'user' })
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   findOne(
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
@@ -40,7 +40,7 @@ export class UserResolver {
 
   @Query(() => User, { name: 'userByMail' })
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   findOneByEmail(
     @Args('email') email: string,
     @CurrentUser() user: User,
@@ -55,7 +55,7 @@ export class UserResolver {
 
   @Mutation(() => User)
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   updateUser(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateUserInput') updateUserInput: UpdateUserInput,
@@ -66,7 +66,7 @@ export class UserResolver {
 
   @Mutation(() => User)
   @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUEPERADMIN, Role.ADMIN)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   removeUser(
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
