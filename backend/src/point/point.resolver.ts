@@ -3,33 +3,56 @@ import { PointService } from './point.service';
 import { Point } from './entities/point.entity';
 import { CreatePointInput } from './dto/create-point.input';
 import { UpdatePointInput } from './dto/update-point.input';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from '../auth/gql-auth.guard';
+import { RolesGuard } from '../auth/role.guard';
+import { Roles } from '../Decorators/roles.decorator';
+import { Role } from '../role.enum';
+import { User } from '../user/entities/user.entity';
+import { CurrentUser } from '../Decorators/currentUser.decorator';
 
 @Resolver(() => Point)
 export class PointResolver {
   constructor(private readonly pointService: PointService) {}
 
   @Mutation(() => Point)
-  createPoint(@Args('createPointInput') createPointInput: CreatePointInput) {
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  createPoint(
+    @Args('createPointInput') createPointInput: CreatePointInput,
+    @CurrentUser() user: User,
+  ): Promise<Point> {
     return this.pointService.create(createPointInput);
   }
 
   @Query(() => [Point], { name: 'point' })
-  findAll() {
+  findAll(): Promise<Point[]> {
     return this.pointService.findAll();
   }
 
   @Query(() => Point, { name: 'point' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<Point> {
     return this.pointService.findOne(id);
   }
 
   @Mutation(() => Point)
-  updatePoint(@Args('updatePointInput') updatePointInput: UpdatePointInput) {
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  updatePoint(
+    @Args('updatePointInput') updatePointInput: UpdatePointInput,
+    @Args('id') id: number,
+    @CurrentUser() user: User,
+  ): Promise<Point> {
     return this.pointService.update(updatePointInput.id, updatePointInput);
   }
 
   @Mutation(() => Point)
-  removePoint(@Args('id', { type: () => Int }) id: number) {
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  removePoint(
+    @Args('id', { type: () => Int }) id: number,
+    @CurrentUser() user: User,
+  ): Promise<Point> {
     return this.pointService.remove(id);
   }
 }
