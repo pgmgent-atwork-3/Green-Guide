@@ -1,6 +1,7 @@
 import { CreateCompanyRequestInput } from './create-company-request.input';
-import { InputType, Field, PartialType } from '@nestjs/graphql';
+import { InputType, Field, PartialType, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
+import { IsEmail } from 'class-validator';
 
 @InputType()
 export class UpdateCompanyRequestInput extends PartialType(
@@ -8,11 +9,27 @@ export class UpdateCompanyRequestInput extends PartialType(
 ) {
   @Column()
   @Field({ nullable: true })
-  btwNumber: number;
+  approved: boolean;
 
   @Column()
   @Field({ nullable: true })
   companyName: string;
+
+  @Column()
+  @Field({ nullable: true })
+  summary: string;
+
+  @Column()
+  @Field({ nullable: true })
+  established: Date;
+
+  @Column()
+  @Field({ nullable: true })
+  openingHours: string;
+
+  @Column()
+  @Field({ nullable: true })
+  comment: string;
 
   @Column()
   @Field({ nullable: true })
@@ -24,85 +41,42 @@ export class UpdateCompanyRequestInput extends PartialType(
 
   @Column()
   @Field({ nullable: true })
+  @IsEmail()
   email: string;
 
   @Column()
   @Field({ nullable: true })
-  tel: string;
+  phoneNumber: string;
 
   @Column()
   @Field({ nullable: true })
-  customerCard: boolean;
+  streetName: string;
 
   @Column()
   @Field({ nullable: true })
-  comment: string;
+  houseNumber: string;
 
   @Column()
   @Field({ nullable: true })
-  localProduct: string;
+  city: string;
 
   @Column()
   @Field({ nullable: true })
-  fairtrade: string;
+  zipCode: string;
 
   @Column()
-  @Field({ nullable: true })
-  biological: string;
+  @Field(() => [Int], { nullable: true })
+  labelIds: number;
 
   @Column()
-  @Field({ nullable: true })
-  secondHand: string;
+  @Field(() => [Int], { nullable: true })
+  companyTypeIds: number;
 
   @Column()
-  @Field({ nullable: true })
-  socialEmployment: string;
+  @Field(() => [Int], { nullable: true })
+  sectorIds: number;
 
   @Column()
-  @Field({ nullable: true })
-  civilCooperative: string;
-
-  @Column()
-  @Field({ nullable: true })
-  fairSalary: string;
-
-  @Column()
-  @Field({ nullable: true })
-  inclusion: string;
-
-  @Column()
-  @Field({ nullable: true })
-  durableTransport: string;
-
-  @Column()
-  @Field({ nullable: true })
-  accessibility: string;
-
-  @Column()
-  @Field({ nullable: true })
-  renewableEnergy: string;
-
-  @Column()
-  @Field({ nullable: true })
-  ethicalBanking: string;
-
-  @Column()
-  @Field({ nullable: true })
-  recycling: string;
-
-  @Column()
-  @Field({ nullable: true })
-  garbageSorting: string;
-
-  @Column()
-  @Field({ nullable: true })
-  wasteFree: string;
-
-  @Column()
-  @Field({ nullable: true })
-  reusingWater: string;
-
-  @Column()
-  @Field({ nullable: true })
-  approved?: boolean;
+  @Field(() => [Int], { nullable: true })
+  categoryIds: number;
 }
