@@ -14,6 +14,6 @@ export class Sector {
   name: string;
 
   @OneToMany(() => Category, (category) => category.sector)
-  @Field(() => [Category], { nullable: true })
+  @Field(() => [Category])
   categories: Category[];
 }

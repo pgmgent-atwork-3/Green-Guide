@@ -23,9 +23,9 @@ export class Review {
 
   @ManyToOne(() => User, (user) => user.reviews)
   @Field(() => User)
-  user?: User;
+  user: User;
 
   @ManyToOne(() => Company, (company) => company.reviews)
   @Field(() => Company)
-  company?: Company;
+  company: Company;
 }

@@ -78,21 +78,21 @@ export class CompanyRequest {
 
   @ManyToMany(() => Label, { cascade: true })
   @JoinTable({ name: 'company_request_labels' })
-  @Field(() => [Label], { nullable: true })
+  @Field(() => [Label])
   labels: Label[];
 
   @ManyToMany(() => CompanyType, { cascade: true })
   @JoinTable({ name: 'company_request_company_types' })
-  @Field(() => [CompanyType], { nullable: true })
+  @Field(() => [CompanyType])
   companyTypes: CompanyType[];
 
   @ManyToMany(() => Sector, { cascade: true })
   @JoinTable({ name: 'company_request_sectors' })
-  @Field(() => [Sector], { nullable: true })
+  @Field(() => [Sector])
   sectors: Sector[];
 
   @ManyToMany(() => Category, { cascade: true })
   @JoinTable({ name: 'company_request_categories' })
-  @Field(() => [Category], { nullable: true })
+  @Field(() => [Category])
   categories: Category[];
 }
