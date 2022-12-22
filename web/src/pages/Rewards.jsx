@@ -20,19 +20,55 @@ function Rewards() {
                         </div>
                     </div>
 
-                    <div>
-                        <div className="md:grid md:grid-cols-3 md:gap-6">
-                            <div className="md:col-span-1">
-                                <div className="mt-4 px-4 sm:px-0">
-                                    <h3 className="text-lg font-medium leading-6 text-gray-900">Point system</h3>
-                                    <p className="mt-1 text-sm text-gray-600">
-                                        Here you can manually set your point system.
-                                    </p>
-                                </div>
+                    <div className="md:grid md:grid-cols-3 md:gap-6">
+                        <div className="md:col-span-1">
+                            <div className="mt-4 px-4 sm:px-0">
+                                <h3 className="text-lg font-medium leading-6 text-gray-900">Point system</h3>
+                                <p className="mt-1 text-sm text-gray-600">
+                                    Here you can manually set your point system.
+                                </p>
                             </div>
-                            <div className="mt-5 md:col-span-2 md:mt-0">
-                                <form action="#" method="POST">
-                                <div className="shadow sm:overflow-hidden sm:rounded-md">
+                        </div>
+                        <div className="mt-5 md:col-span-2 md:mt-0">
+                            <form action="#" method="POST">
+                                    <div className="shadow sm:overflow-hidden sm:rounded-md">
+                                        <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
+                                            <div className="grid grid-cols-3 gap-6 slider">
+                                                <h4 className="text-lg font-medium leading-6 text-gray-900">€5 equals</h4>
+                                                <input type="range" min="0" max="100" />
+                                                <p>10 points</p>
+                                            </div>
+                                        </div>
+                                        <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                                            <button
+                                                type="submit"
+                                                className="inline-flex justify-center rounded-md border border-transparent bg-orange-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div className="hidden sm:block" aria-hidden="true">
+                        <div className="py-5">
+                            <div className="border-t border-gray-200" />
+                        </div>
+                    </div>
+
+                    <div className="md:grid md:grid-cols-3 md:gap-6">
+                        <div className="md:col-span-1">
+                            <div className="mt-4 px-4 sm:px-0">
+                                <h3 className="text-lg font-medium leading-6 text-gray-900">Rewards</h3>
+                                <p className="mt-1 text-sm text-gray-600">
+                                    Here you can manually set your rewards.
+                                </p>
+                            </div>
+                        </div>
+                    <div className="mt-5 md:col-span-2 md:mt-0">
+                        <form action="#" method="POST">
+                            <div className="shadow sm:overflow-hidden sm:rounded-md">
                                     <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
                                         <div className="grid grid-cols-3 gap-6">
                                             <div className="col-span-3 sm:col-span-2">
@@ -79,12 +115,11 @@ function Rewards() {
                                         Save
                                     </button>
                                     </div>
-                                </div>
-                                </form>
                             </div>
+                        </form>
+                    </div>
 
-                        </div>
-                            <div class="mt-20 max-w-lg sm:mx-auto md:max-w-none">
+                    <div class="mt-20 max-w-lg sm:mx-auto md:max-w-none">
                                 <h1 className="text-4xl font-bold tracking-tight text-primary-100 primary-font">Current rewards</h1>
                                 <p className="pb-8 mt-1 text-sm text-gray-600">
                                     This are all the rewards you have created and are visible in the app.
@@ -142,81 +177,9 @@ function Rewards() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                     </div>
-
-                    <div className="hidden sm:block" aria-hidden="true">
-                        <div className="py-5">
-                            <div className="border-t border-gray-200" />
-                        </div>
+                    
                     </div>
-
-                    <div>
-                        <div className="md:grid md:grid-cols-3 md:gap-6">
-                            <div className="md:col-span-1">
-                                <div className="mt-4 px-4 sm:px-0">
-                                    <h3 className="text-lg font-medium leading-6 text-gray-900">Rewards</h3>
-                                    <p className="mt-1 text-sm text-gray-600">
-                                        Here you can manually set your rewards.
-                                    </p>
-                                </div>
-                            </div>
-                        <div className="mt-5 md:col-span-2 md:mt-0">
-                            <form action="#" method="POST">
-                            <div className="shadow sm:overflow-hidden sm:rounded-md">
-                                <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
-                                    <div className="grid grid-cols-3 gap-6">
-                                        <div className="col-span-3 sm:col-span-2">
-                                        <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
-                                            Name
-                                        </label>
-                                        <div className="mt-1 flex rounded-md shadow-sm">
-                                            <input
-                                            type="text"
-                                            name="company-website"
-                                            id="company-website"
-                                            className="p-3 block w-full flex-1 rounded-none rounded-r-md bg-gray-50 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Example"
-                                            />
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                                        Description
-                                        </label>
-                                        <div className="mt-1">
-                                        <textarea
-                                            id="about"
-                                            name="about"
-                                            rows={3}
-                                            className="p-3 mt-1 block w-full rounded-md bg-gray-50 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="This is a reward for..."
-                                            defaultValue={''}
-                                        />
-                                        </div>
-                                        <p className="mt-2 text-sm text-gray-500">
-                                        Brief description for your reward.
-                                        </p>
-                                    </div>
-
-
-                                </div>
-                                <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                <button
-                                    type="submit"
-                                    className="inline-flex justify-center rounded-md border border-transparent bg-orange-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                >
-                                    Save
-                                </button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-
-
                     {/* /End replace */}
                     </div>
                 </main>

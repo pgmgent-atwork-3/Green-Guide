@@ -2,8 +2,8 @@ import { Form, Formik } from 'formik';
 import '../scss/main.scss';
 import * as yup from 'yup'
 import YupPassword from 'yup-password'
-import { GET_USERS } from '../gql/queries';
-import useCustomHook from '../hooks/useCustomHook';
+// import { GET_USERS } from '../gql/queries';
+// import useCustomHook from '../hooks/useCustomHook';
 YupPassword(yup) // extend yup
 
 const loginValidationSchema = yup.object({
@@ -12,8 +12,8 @@ const loginValidationSchema = yup.object({
 });
 
 function Login() {
-    const data = useCustomHook(GET_USERS);
-    console.log(data?.users)
+    //const data = useCustomHook(GET_USERS);
+    //console.log(data?.users)
 
 return (
     <div className="Login bg-25">
@@ -33,11 +33,18 @@ return (
                     <Formik
                         initialValues={{ email: '', password: '' }}
                         validationSchema={loginValidationSchema}
-                        onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(true);
-                            }, 400);
+                        onSubmit={ async (values, { setSubmitting }) => {
+                           await fetch('http://localhost:3001/auth/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(values)
+                            })
+                            .then(res => res.json())
+                            .then(data => { localStorage.setItem('token', data.access_token) })
+                            .catch(err => console.error(err))
+                            setSubmitting(false);
                         }}
                         >
                         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
