@@ -10,9 +10,8 @@ const user = {
 }
 
 const userNavigation = [
-    { name: 'Your Profile', href: '#' },
     { name: 'Dashboard', href: '/dashboard' },
-    { name: 'Settings', href: '#' },
+    { name: 'Settings', href: '/settings' },
     { name: 'Sign out', href: '#' },
 ]
 
@@ -27,7 +26,7 @@ const navType = (type) => {
                 { name: 'Dashboard', href: '/dashboard', current: true },
                 { name: 'Reward system', href: '/rewards', current: false },
                 { name: 'Green Guide labels', href: '/labels', current: false },
-                { name: 'Reports', href: '/reports', current: false },
+                { name: 'Notifications', href: '/notifications', current: false },
             ]
             
         default:
