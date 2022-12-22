@@ -60,13 +60,13 @@ export class User {
   @OneToOne(() => Company)
   @Field(() => Company, { nullable: true })
   @JoinColumn()
-  company?: Company;
+  company: Company;
 
   @OneToMany(() => Point, (point) => point.user)
   @Field(() => [Point], { nullable: true })
-  points?: Point[];
+  points: Point[];
 
   @OneToMany(() => Review, (review) => review.user)
   @Field(() => [Review], { nullable: true })
-  reviews?: Review[];
+  reviews: Review[];
 }

@@ -5,6 +5,6 @@ import { Column } from 'typeorm';
 @InputType()
 export class UpdateSectorInput extends PartialType(CreateSectorInput) {
   @Column()
-  @Field({ nullable: true })
+  @Field()
   name: string;
 }

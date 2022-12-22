@@ -38,17 +38,17 @@ type Reward {
 
 type Point {
   id: Int!
-  amount: Float!
+  amount: Int!
   user: User!
   company: Company!
 }
 
 type Address {
   id: Int!
-  streetName: String!
-  number: String!
-  city: String!
-  zipCode: String!
+  streetName: String
+  number: String
+  city: String
+  zipCode: String
 }
 
 type Label {

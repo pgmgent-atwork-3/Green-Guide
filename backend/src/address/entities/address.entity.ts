@@ -9,18 +9,18 @@ export class Address {
   id: number;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   streetName: string;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   number: string;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   city: string;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   zipCode: string;
 }

@@ -4,7 +4,7 @@ import { Column } from 'typeorm';
 @InputType()
 export class CreatePointInput {
   @Column()
-  @Field()
+  @Field(() => Int)
   amount: number;
 
   @Column()
