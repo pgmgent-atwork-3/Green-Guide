@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
+import styles from '../../styles/Home.module.css'
 
 const Home = () => {
     const container = useRef(null);
@@ -20,15 +21,15 @@ const Home = () => {
     // }, []);
 
     return (
-        <div className='app-container' ref={container}>
-            <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className='blob'/>
-            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className='logo' style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
+        <div className={styles.app_container} ref={container}>
+            <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
+            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className='content-container'>
-                <h1>Welcome</h1>
-                <div className="btn-group">
-                    <button className='btn btn-primary'><a href="/login">Login</a></button>
-                    <button className='btn btn-secondary'><a href="/register">Register</a></button>
+            <div className={styles.content_container}>
+                <h1 className={styles.title}>Welcome</h1>
+                <div className={styles.btn_group}>
+                    <button className={`${styles.btn} ${styles.btn_primary}`}><a className={styles.link} href="/login">Login</a></button>
+                    <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/register">Register</a></button>
                 </div>
             </div>
         </div>
