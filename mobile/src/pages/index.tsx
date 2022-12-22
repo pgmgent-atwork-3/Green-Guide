@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 const Home = () => {
     const container = useRef(null);
@@ -19,20 +19,20 @@ const Home = () => {
     //     }
     // }, []);
 
-  return (
-    <div className='app-container' ref={container}>
-        <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className='blob'/>
-        <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className='logo' style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
-        
-        <div className='content-container'>
-            <h1>Welcome</h1>
-            <div className="btn-group">
-                <button className='btn btn-primary'>Login</button>
-                <button className='btn btn-secondary'>Register</button>
+    return (
+        <div className='app-container' ref={container}>
+            <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className='blob'/>
+            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className='logo' style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
+            
+            <div className='content-container'>
+                <h1>Welcome</h1>
+                <div className="btn-group">
+                    <button className='btn btn-primary'><a href="/login">Login</a></button>
+                    <button className='btn btn-secondary'><a href="/register">Register</a></button>
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Home;

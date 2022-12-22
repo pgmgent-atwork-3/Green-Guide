@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRef, useState } from 'react';
 
-const Login = () => {
+const Register = () => {
     const container = useRef(null);
     const logoDimensions = {
         width: 98,
@@ -18,27 +18,33 @@ const Login = () => {
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className='logo' style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
             <div className='content-container'>
-                <h1>Login</h1>
+                <h1>Register</h1>
                 <form action="">
+                    <label htmlFor="">First name</label>
+                    <input type="text" name="text" id="firstName" placeholder="First name"/>
+
+                    <label htmlFor="">Last name</label>
+                    <input type="text" name="text" id="lastName" placeholder="Last name"/>
+
                     <label htmlFor="">E-mail</label>
                     <input type="email" name="email" id="email" placeholder="E-mail"/>
 
                     <label htmlFor="">Password</label>
                     <input type="password" name="password" id="password" placeholder="Password"/>
 
-                    <input type="checkbox" name="remember" id="remember"/>
-                    <label htmlFor="remember">Remember me</label>
+                    <label htmlFor="">Birth date</label>
+                    <input type="date" name="date" id="date" placeholder="Date"/>
 
-                    <span>Forgot your password?</span>
-                    <button>Sign in with Google</button>
+                    <label htmlFor="">Phone number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone number"/>
 
-                    <button className='btn btn-primary'>Login</button>
+                    <button className='btn btn-primary'>Register</button>
                 </form>
-                <span>Dont have an account yet?</span>
-                <button className='btn btn-secondary'><a href="/register">Register</a></button>
+                <span>Already have an account?</span>
+                <button className='btn btn-secondary'><a href="/login">Login</a></button>
             </div>
         </div>
     )
 }
 
-export default Login
+export default Register
