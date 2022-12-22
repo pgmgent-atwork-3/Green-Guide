@@ -76,36 +76,20 @@ export class CompanyRequest {
   @Field()
   zipCode: string;
 
-  //   @Column({ nullable: true, array: true })
-  //   @Field(() => [Int], { nullable: true })
-  //   labelIds: number;
-
   @ManyToMany(() => Label, { cascade: true })
   @JoinTable({ name: 'company_request_labels' })
   @Field(() => [Label], { nullable: true })
   labels: Label[];
-
-  //   @Column({ nullable: true, array: true })
-  //   @Field(() => [Int], { nullable: true })
-  //   companyTypeIds: number;
 
   @ManyToMany(() => CompanyType, { cascade: true })
   @JoinTable({ name: 'company_request_company_types' })
   @Field(() => [CompanyType], { nullable: true })
   companyTypes: CompanyType[];
 
-  //   @Column({ nullable: true, array: true })
-  //   @Field(() => [Int], { nullable: true })
-  //   sectorIds: number;
-
   @ManyToMany(() => Sector, { cascade: true })
   @JoinTable({ name: 'company_request_sectors' })
   @Field(() => [Sector], { nullable: true })
   sectors: Sector[];
-
-  //   @Column({ nullable: true, array: true })
-  //   @Field(() => [Int], { nullable: true })
-  //   categoryIds: number;
 
   @ManyToMany(() => Category, { cascade: true })
   @JoinTable({ name: 'company_request_categories' })

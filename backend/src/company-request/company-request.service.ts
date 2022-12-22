@@ -30,10 +30,10 @@ export class CompanyRequestService {
 
   create(
     createCompanyRequestInput: CreateCompanyRequestInput,
-    labels: Label[] | null,
-    companyTypes: CompanyType[] | null,
-    sectors: Sector[] | null,
-    categories: Category[] | null,
+    labels: Label[],
+    companyTypes: CompanyType[],
+    sectors: Sector[],
+    categories: Category[],
   ): Promise<CompanyRequest> {
     const companyRequest = this.companyRequestRepository.create({
       ...createCompanyRequestInput,
@@ -59,6 +59,10 @@ export class CompanyRequestService {
   async update(
     id: number,
     updateCompanyRequestInput: UpdateCompanyRequestInput,
+    labels: Label[],
+    companyTypes: CompanyType[],
+    sectors: Sector[],
+    categories: Category[],
   ): Promise<CompanyRequest> | null {
     const companyRequest = await this.companyRequestRepository.findOne({
       where: { id },
@@ -68,7 +72,13 @@ export class CompanyRequestService {
         companyRequest,
         updateCompanyRequestInput,
       );
-      return this.companyRequestRepository.save(companyRequest);
+      return this.companyRequestRepository.save({
+        ...companyRequest,
+        labels,
+        companyTypes,
+        sectors,
+        categories,
+      });
     }
     throw new Error('Company-request not found');
   }
@@ -84,19 +94,54 @@ export class CompanyRequestService {
   }
 
   getLabel(labelId): Promise<Label> {
-    console.log('labelId', labelId);
     return this.labelService.findOne(labelId);
+  }
+
+  getLabels(companyRequestId): Promise<Label[]> {
+    return this.companyRequestRepository
+      .createQueryBuilder('companyRequest')
+      .leftJoinAndSelect('companyRequest.labels', 'label')
+      .where('companyRequest.id = :id', { id: companyRequestId })
+      .getOne()
+      .then((companyRequest) => companyRequest.labels);
   }
 
   getCompanyType(companyTypeId): Promise<CompanyType> {
     return this.companyTypeService.findOne(companyTypeId);
   }
 
+  getCompanyTypes(companyRequestId): Promise<CompanyType[]> {
+    return this.companyRequestRepository
+      .createQueryBuilder('companyRequest')
+      .leftJoinAndSelect('companyRequest.companyTypes', 'companyType')
+      .where('companyRequest.id = :id', { id: companyRequestId })
+      .getOne()
+      .then((companyRequest) => companyRequest.companyTypes);
+  }
+
   getSector(sectorId): Promise<Sector> {
     return this.sectorService.findOne(sectorId);
   }
 
+  getSectors(companyRequestId): Promise<Sector[]> {
+    return this.companyRequestRepository
+      .createQueryBuilder('companyRequest')
+      .leftJoinAndSelect('companyRequest.sectors', 'sector')
+      .where('companyRequest.id = :id', { id: companyRequestId })
+      .getOne()
+      .then((companyRequest) => companyRequest.sectors);
+  }
+
   getCategory(categoryId): Promise<Category> {
     return this.categoryService.findOne(categoryId);
+  }
+
+  getCategories(companyRequestId): Promise<Category[]> {
+    return this.companyRequestRepository
+      .createQueryBuilder('companyRequest')
+      .leftJoinAndSelect('companyRequest.categories', 'category')
+      .where('companyRequest.id = :id', { id: companyRequestId })
+      .getOne()
+      .then((companyRequest) => companyRequest.categories);
   }
 }

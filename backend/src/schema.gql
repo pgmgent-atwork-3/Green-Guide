@@ -133,7 +133,6 @@ type Query {
   category(id: Int!): Category!
   sectors: [Sector!]!
   sector(id: Int!): Sector!
-  company(id: Int!): Company!
   companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
   labels: [Label!]!
@@ -142,9 +141,6 @@ type Query {
   companyType(id: Int!): CompanyType!
   contactPersons: [ContactPerson!]!
   contactPerson(id: Int!): ContactPerson!
-  review(id: Int!): Review!
-  point(id: Int!): Point!
-  reward(id: Int!): Reward!
 }
 
 type Mutation {
@@ -160,9 +156,6 @@ type Mutation {
   createSector(createSectorInput: CreateSectorInput!): Sector!
   updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
   removeSector(id: Int!): Sector!
-  createCompany(createCompanyInput: CreateCompanyInput!): Company!
-  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
-  removeCompany(id: Int!): Company!
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
   updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
@@ -175,15 +168,6 @@ type Mutation {
   createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
   updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
   removeContactPerson(id: Int!): ContactPerson!
-  createReview(createReviewInput: CreateReviewInput!): Review!
-  updateReview(updateReviewInput: UpdateReviewInput!): Review!
-  removeReview(id: Int!): Review!
-  createPoint(createPointInput: CreatePointInput!): Point!
-  updatePoint(updatePointInput: UpdatePointInput!): Point!
-  removePoint(id: Int!): Point!
-  createReward(createRewardInput: CreateRewardInput!): Reward!
-  updateReward(updateRewardInput: UpdateRewardInput!): Reward!
-  removeReward(id: Int!): Reward!
 }
 
 input CreateUserInput {
@@ -238,41 +222,6 @@ input CreateSectorInput {
 input UpdateSectorInput {
   name: String
   categorieIds: [Int!]
-}
-
-input CreateCompanyInput {
-  name: String!
-  summary: String!
-  established: Timestamp!
-  openingHours: String!
-  btwNumber: Float!
-  pointIds: Int
-  rewardIds: Int
-  reviewIds: Int
-  companyTypeIds: Int
-  contactPersonId: Int!
-  addressId: Int!
-  sectorIds: Int!
-  categoryIds: Int!
-  companyRequestId: Int!
-}
-
-input UpdateCompanyInput {
-  name: String
-  summary: String
-  established: Timestamp
-  openingHours: String
-  btwNumber: Float
-  pointIds: Int
-  rewardIds: Int
-  reviewIds: Int
-  companyTypeIds: Int
-  contactPersonId: Int
-  addressId: Int
-  sectorIds: Int
-  categoryIds: Int
-  companyRequestId: Int
-  id: Int!
 }
 
 input CreateCompanyRequestInput {
@@ -344,47 +293,4 @@ input UpdateContactPersonInput {
   lastName: String
   email: String
   phoneNumber: String
-}
-
-input CreateReviewInput {
-  content: String!
-  rating: Float!
-  userId: Int!
-  companyId: Int!
-}
-
-input UpdateReviewInput {
-  content: String
-  rating: Float
-  userId: Int
-  companyId: Int
-  id: Int!
-}
-
-input CreatePointInput {
-  amount: Float!
-  userId: Int!
-  companyId: Int!
-}
-
-input UpdatePointInput {
-  amount: Float
-  userId: Int
-  companyId: Int
-  id: Int!
-}
-
-input CreateRewardInput {
-  name: String!
-  description: String!
-  points: Int!
-  companyId: Int!
-}
-
-input UpdateRewardInput {
-  name: String
-  description: String
-  points: Int
-  companyId: Int
-  id: Int!
 }
