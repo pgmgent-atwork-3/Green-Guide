@@ -1,6 +1,7 @@
-// import '../src/scss/main.scss'
+import '../src/scss/main.scss'
 // import styles from '../styles/Home.module.scss'
-import './styles/globals.css'
+// import './styles/globals.css'
+// import './styles/Home.module.css'
 import type { AppProps } from 'next/app'
 
 
