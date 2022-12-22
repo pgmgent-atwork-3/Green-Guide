@@ -59,17 +59,17 @@ export class CreateCompanyRequestInput {
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  labelIds: number;
+  labelIds: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  companyTypeIds: number;
+  companyTypeIds: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  sectorIds: number;
+  sectorIds: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  categoryIds: number;
+  categoryIds: number[];
 }
