@@ -1,6 +1,16 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Category } from 'src/category/entities/category.entity';
+import { CompanyType } from 'src/company-type/entities/company-type.entity';
+import { Label } from 'src/label/entities/label.entity';
+import { Sector } from 'src/sector/entities/sector.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -10,12 +20,28 @@ export class CompanyRequest {
   id: number;
 
   @Column()
-  @Field(() => Int)
-  btwNumber: number;
+  @Field()
+  approved: boolean;
 
   @Column()
   @Field()
   companyName: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  summary: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  established: Date;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  openingHours: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  comment: string;
 
   @Column()
   @Field()
@@ -32,81 +58,41 @@ export class CompanyRequest {
 
   @Column()
   @Field()
-  tel: string;
+  phoneNumber: string;
 
   @Column()
   @Field()
-  customerCard: boolean;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  comment?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  localProduct?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  fairtrade?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  biological?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  secondHand?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  socialEmployment?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  civilCooperative?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  fairSalary?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  inclusion?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  durableTransport?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  accessibility?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  renewableEnergy?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  ethicalBanking?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  recycling?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  garbageSorting?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  wasteFree?: string;
-
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  reusingWater?: string;
+  streetName: string;
 
   @Column()
   @Field()
-  approved: boolean;
+  houseNumber: string;
+
+  @Column()
+  @Field()
+  city: string;
+
+  @Column()
+  @Field()
+  zipCode: string;
+
+  @ManyToMany(() => Label, { cascade: true })
+  @JoinTable({ name: 'company_request_labels' })
+  @Field(() => [Label], { nullable: true })
+  labels: Label[];
+
+  @ManyToMany(() => CompanyType, { cascade: true })
+  @JoinTable({ name: 'company_request_company_types' })
+  @Field(() => [CompanyType], { nullable: true })
+  companyTypes: CompanyType[];
+
+  @ManyToMany(() => Sector, { cascade: true })
+  @JoinTable({ name: 'company_request_sectors' })
+  @Field(() => [Sector], { nullable: true })
+  sectors: Sector[];
+
+  @ManyToMany(() => Category, { cascade: true })
+  @JoinTable({ name: 'company_request_categories' })
+  @Field(() => [Category], { nullable: true })
+  categories: Category[];
 }
