@@ -25,5 +25,5 @@ export class Reward {
 
   @ManyToOne(() => Company, (company) => company.rewards)
   @Field(() => Company)
-  company?: Company;
+  company: Company;
 }

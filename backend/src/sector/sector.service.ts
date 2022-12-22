@@ -55,7 +55,7 @@ export class SectorService {
     throw new Error('Sector not found');
   }
 
-  getCategories(): Promise<Category[]> {
-    return this.categoryService.findAll();
+  getCategoriesBySectorId(sectorId: number): Promise<Category[]> {
+    return this.categoryService.findBySectorId(sectorId);
   }
 }

@@ -5,6 +5,7 @@ import {
   Args,
   Int,
   ResolveField,
+  Parent,
 } from '@nestjs/graphql';
 import { SectorService } from './sector.service';
 import { Sector } from './entities/sector.entity';
@@ -63,7 +64,7 @@ export class SectorResolver {
   }
 
   @ResolveField(() => Category)
-  categories(): Promise<Category[]> {
-    return this.sectorService.getCategories();
+  categories(@Parent() sector: Sector): Promise<Category[]> {
+    return this.sectorService.getCategoriesBySectorId(sector.id);
   }
 }

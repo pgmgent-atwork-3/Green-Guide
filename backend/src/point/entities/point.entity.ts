@@ -11,14 +11,14 @@ export class Point {
   id: number;
 
   @Column()
-  @Field()
+  @Field(() => Int)
   amount: number;
 
   @ManyToOne(() => User, (user) => user.points)
   @Field(() => User)
-  user?: User;
+  user: User;
 
   @ManyToOne(() => Company, (company) => company.points)
   @Field(() => Company)
-  company?: Company;
+  company: Company;
 }

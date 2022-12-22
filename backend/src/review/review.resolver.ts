@@ -15,44 +15,44 @@ import { User } from '../user/entities/user.entity';
 export class ReviewResolver {
   constructor(private readonly reviewService: ReviewService) {}
 
-  @Mutation(() => Review)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.USER)
-  createReview(
-    @Args('createReviewInput') createReviewInput: CreateReviewInput,
-    @CurrentUser() user: User,
-  ): Promise<Review> {
-    return this.reviewService.create(createReviewInput);
-  }
+  //   @Mutation(() => Review)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.USER)
+  //   createReview(
+  //     @Args('createReviewInput') createReviewInput: CreateReviewInput,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Review> {
+  //     return this.reviewService.create(createReviewInput);
+  //   }
 
-  @Query(() => [Review], { name: 'review' })
-  findAll(): Promise<Review[]> {
-    return this.reviewService.findAll();
-  }
+  //   @Query(() => [Review], { name: 'review' })
+  //   findAll(): Promise<Review[]> {
+  //     return this.reviewService.findAll();
+  //   }
 
-  @Query(() => Review, { name: 'review' })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<Review> {
-    return this.reviewService.findOne(id);
-  }
+  //   @Query(() => Review, { name: 'review' })
+  //   findOne(@Args('id', { type: () => Int }) id: number): Promise<Review> {
+  //     return this.reviewService.findOne(id);
+  //   }
 
-  @Mutation(() => Review)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.USER)
-  updateReview(
-    @Args('updateReviewInput') updateReviewInput: UpdateReviewInput,
-    @Args('id') id: number,
-    @CurrentUser() user: User,
-  ): Promise<Review> {
-    return this.reviewService.update(updateReviewInput.id, updateReviewInput);
-  }
+  //   @Mutation(() => Review)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.USER)
+  //   updateReview(
+  //     @Args('updateReviewInput') updateReviewInput: UpdateReviewInput,
+  //     @Args('id') id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Review> {
+  //     return this.reviewService.update(updateReviewInput.id, updateReviewInput);
+  //   }
 
-  @Mutation(() => Review)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.SUPERADMIN, Role.ADMIN, Role.USER)
-  removeReview(
-    @Args('id', { type: () => Int }) id: number,
-    @CurrentUser() user: User,
-  ): Promise<Review> {
-    return this.reviewService.remove(id);
-  }
+  //   @Mutation(() => Review)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.SUPERADMIN, Role.ADMIN, Role.USER)
+  //   removeReview(
+  //     @Args('id', { type: () => Int }) id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Review> {
+  //     return this.reviewService.remove(id);
+  //   }
 }

@@ -27,75 +27,36 @@ import { Category } from 'src/category/entities/category.entity';
 export class CompanyRequestResolver {
   constructor(private readonly companyRequestService: CompanyRequestService) {}
 
-  //  Since the labelIds, companyTypeIds, sectorIds and the categoryIds aren't considered an array, default array functions won't work and we need a workaround.
-  //  By passing the function we won't have to have to create a new array as a temporary storage for the values.
-  //   noArrayHack = async <T>(input: number, func): Promise<T[]> => {
-  //     const array: T[] = [];
-  //     let i = 0;
-  //     while (input[i]) {
-  //       array.push(func(input[i]));
-  //       i++;
-  //     }
-  //     return array;
-  //   };
-
   @Mutation(() => CompanyRequest)
   async createCompanyRequest(
     @Args('createCompanyRequestInput')
     createCompanyRequestInput: CreateCompanyRequestInput,
   ): Promise<CompanyRequest> {
-    // const labels = createCompanyRequestInput.labelIds
-    //   ? await this.noArrayHack<Label>(
-    //       createCompanyRequestInput.labelIds,
-    //       this.companyRequestService.getLabel,
-    //     )
-    //   : null;
     const labels: Label[] = [];
     if (createCompanyRequestInput.labelIds) {
-      let i = 0;
-      while (createCompanyRequestInput.labelIds[i]) {
-        labels.push(
-          await this.companyRequestService.getLabel(
-            createCompanyRequestInput.labelIds[i],
-          ),
-        );
-        i++;
+      for (const id of createCompanyRequestInput.labelIds) {
+        labels.push(await this.companyRequestService.getLabel(id));
       }
     }
+
     const companyTypes: CompanyType[] = [];
     if (createCompanyRequestInput.companyTypeIds) {
-      let i = 0;
-      while (createCompanyRequestInput.companyTypeIds[i]) {
-        companyTypes.push(
-          await this.companyRequestService.getCompanyType(
-            createCompanyRequestInput.companyTypeIds[i],
-          ),
-        );
-        i++;
+      for (const id of createCompanyRequestInput.companyTypeIds) {
+        companyTypes.push(await this.companyRequestService.getCompanyType(id));
       }
     }
+
     const sectors: Sector[] = [];
     if (createCompanyRequestInput.sectorIds) {
-      let i = 0;
-      while (createCompanyRequestInput.sectorIds[i]) {
-        sectors.push(
-          await this.companyRequestService.getSector(
-            createCompanyRequestInput.sectorIds[i],
-          ),
-        );
-        i++;
+      for (const id of createCompanyRequestInput.sectorIds) {
+        sectors.push(await this.companyRequestService.getSector(id));
       }
     }
+
     const categories: Category[] = [];
     if (createCompanyRequestInput.categoryIds) {
-      let i = 0;
-      while (createCompanyRequestInput.categoryIds[i]) {
-        categories.push(
-          await this.companyRequestService.getCategory(
-            createCompanyRequestInput.categoryIds[i],
-          ),
-        );
-        i++;
+      for (const id of createCompanyRequestInput.categoryIds) {
+        categories.push(await this.companyRequestService.getCategory(id));
       }
     }
 
@@ -131,52 +92,32 @@ export class CompanyRequestResolver {
   ): Promise<CompanyRequest> {
     const labels: Label[] = [];
     if (updateCompanyRequestInput.labelIds) {
-      let i = 0;
-      while (updateCompanyRequestInput.labelIds[i]) {
-        labels.push(
-          await this.companyRequestService.getLabel(
-            updateCompanyRequestInput.labelIds[i],
-          ),
-        );
-        i++;
+      for (const id of updateCompanyRequestInput.labelIds) {
+        labels.push(await this.companyRequestService.getLabel(id));
       }
     }
+
     const companyTypes: CompanyType[] = [];
     if (updateCompanyRequestInput.companyTypeIds) {
-      let i = 0;
-      while (updateCompanyRequestInput.companyTypeIds[i]) {
-        companyTypes.push(
-          await this.companyRequestService.getCompanyType(
-            updateCompanyRequestInput.companyTypeIds[i],
-          ),
-        );
-        i++;
+      for (const id of updateCompanyRequestInput.companyTypeIds) {
+        companyTypes.push(await this.companyRequestService.getCompanyType(id));
       }
     }
+
     const sectors: Sector[] = [];
     if (updateCompanyRequestInput.sectorIds) {
-      let i = 0;
-      while (updateCompanyRequestInput.sectorIds[i]) {
-        sectors.push(
-          await this.companyRequestService.getSector(
-            updateCompanyRequestInput.sectorIds[i],
-          ),
-        );
-        i++;
+      for (const id of updateCompanyRequestInput.sectorIds) {
+        sectors.push(await this.companyRequestService.getSector(id));
       }
     }
+
     const categories: Category[] = [];
     if (updateCompanyRequestInput.categoryIds) {
-      let i = 0;
-      while (updateCompanyRequestInput.categoryIds[i]) {
-        categories.push(
-          await this.companyRequestService.getCategory(
-            updateCompanyRequestInput.categoryIds[i],
-          ),
-        );
-        i++;
+      for (const id of updateCompanyRequestInput.categoryIds) {
+        categories.push(await this.companyRequestService.getCategory(id));
       }
     }
+
     return this.companyRequestService.update(
       id,
       updateCompanyRequestInput,
@@ -198,7 +139,9 @@ export class CompanyRequestResolver {
   }
 
   @ResolveField(() => Label)
-  async labels(@Parent() companyRequest: CompanyRequest): Promise<Label[]> {
+  async labels(
+    @Parent() companyRequest: CompanyRequest,
+  ): Promise<Label[]> | null {
     return this.companyRequestService.getLabels(companyRequest.id);
   }
 
@@ -220,24 +163,4 @@ export class CompanyRequestResolver {
   ): Promise<Category[]> {
     return this.companyRequestService.getCategories(companyRequest.id);
   }
-
-  //   @ResolveField(() => Label)
-  //   async labels(
-  //     @Parent() companyRequest: CompanyRequest,
-  //   ): Promise<Label[]> {
-  //     if (companyRequest.labelIds) {
-  //       const labels: Label[] = [];
-  //       let i = 0;
-  //       while (companyRequest.labelIds[i]) {
-  //         labels.push(
-  //           await this.companyRequestService.getLabel(
-  //             companyRequest.labelIds[i],
-  //           ),
-  //         );
-  //         i++;
-  //       }
-  //       return labels;
-  //     }
-  //     return null;
-  //   }
 }
