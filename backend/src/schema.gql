@@ -51,37 +51,34 @@ type Address {
   zipCode: String!
 }
 
-type Label {
-  id: Int!
-  name: String!
-}
-
 type CompanyRequest {
   id: Int!
-  approved: Boolean!
+  btwNumber: Int!
   companyName: String!
-  summary: String
-  established: Timestamp
-  openingHours: String
-  comment: String
   firstName: String!
   lastName: String!
   email: String!
-  phoneNumber: String!
-  streetName: String!
-  houseNumber: String!
-  city: String!
-  zipCode: String!
-  labels: [Label!]
-  companyTypes: [CompanyType!]
-  sectors: [Sector!]
-  categories: [Category!]
+  tel: String!
+  customerCard: Boolean!
+  comment: String
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibility: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
+  approved: Boolean!
 }
-
-"""
-`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
-"""
-scalar Timestamp
 
 type Company {
   id: Int!
@@ -100,6 +97,11 @@ type Company {
   categories: [Category!]!
   companyRequest: CompanyRequest!
 }
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
 
 type Review {
   id: Int!
@@ -122,6 +124,11 @@ type User {
   reviews: [Review!]
 }
 
+type Label {
+  id: Int!
+  name: String!
+}
+
 type Query {
   users: [User!]!
   user(id: Int!): User!
@@ -136,8 +143,6 @@ type Query {
   company(id: Int!): Company!
   companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
-  labels: [Label!]!
-  label(id: Int!): Label!
   companyTypes: [CompanyType!]!
   companyType(id: Int!): CompanyType!
   contactPersons: [ContactPerson!]!
@@ -145,6 +150,8 @@ type Query {
   review(id: Int!): Review!
   point(id: Int!): Point!
   reward(id: Int!): Reward!
+  labels: [Label!]!
+  label(id: Int!): Label!
 }
 
 type Mutation {
@@ -161,14 +168,11 @@ type Mutation {
   updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
   removeSector(id: Int!): Sector!
   createCompany(createCompanyInput: CreateCompanyInput!): Company!
-  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!, id: Int!): Company!
   removeCompany(id: Int!): Company!
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
   updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
-  createLabel(createLabelInput: CreateLabelInput!): Label!
-  updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
-  removeLabel(id: Int!): Label!
   createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
   updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
   removeCompanyType(id: Int!): CompanyType!
@@ -176,14 +180,17 @@ type Mutation {
   updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
   removeContactPerson(id: Int!): ContactPerson!
   createReview(createReviewInput: CreateReviewInput!): Review!
-  updateReview(updateReviewInput: UpdateReviewInput!): Review!
+  updateReview(updateReviewInput: UpdateReviewInput!, id: Float!): Review!
   removeReview(id: Int!): Review!
   createPoint(createPointInput: CreatePointInput!): Point!
-  updatePoint(updatePointInput: UpdatePointInput!): Point!
+  updatePoint(updatePointInput: UpdatePointInput!, id: Float!): Point!
   removePoint(id: Int!): Point!
   createReward(createRewardInput: CreateRewardInput!): Reward!
-  updateReward(updateRewardInput: UpdateRewardInput!): Reward!
+  updateReward(updateRewardInput: UpdateRewardInput!, id: Float!): Reward!
   removeReward(id: Int!): Reward!
+  createLabel(createLabelInput: CreateLabelInput!): Label!
+  updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
+  removeLabel(id: Int!): Label!
 }
 
 input CreateUserInput {
@@ -276,52 +283,58 @@ input UpdateCompanyInput {
 }
 
 input CreateCompanyRequestInput {
+  btwNumber: Float!
   companyName: String!
-  summary: String
-  established: Timestamp
-  openingHours: String
-  comment: String
   firstName: String!
   lastName: String!
   email: String!
-  phoneNumber: String!
-  streetName: String!
-  houseNumber: String!
-  city: String!
-  zipCode: String!
-  labelIds: [Int!]
-  companyTypeIds: [Int!]
-  sectorIds: [Int!]
-  categoryIds: [Int!]
+  tel: String!
+  customerCard: Boolean!
+  comment: String
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibility: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
 }
 
 input UpdateCompanyRequestInput {
+  btwNumber: Float
   companyName: String
-  summary: String
-  established: Timestamp
-  openingHours: String
-  comment: String
   firstName: String
   lastName: String
   email: String
-  phoneNumber: String
-  streetName: String
-  houseNumber: String
-  city: String
-  zipCode: String
-  labelIds: [Int!]
-  companyTypeIds: [Int!]
-  sectorIds: [Int!]
-  categoryIds: [Int!]
+  tel: String
+  customerCard: Boolean
+  comment: String
+  localProduct: String
+  fairtrade: String
+  biological: String
+  secondHand: String
+  socialEmployment: String
+  civilCooperative: String
+  fairSalary: String
+  inclusion: String
+  durableTransport: String
+  accessibility: String
+  renewableEnergy: String
+  ethicalBanking: String
+  recycling: String
+  garbageSorting: String
+  wasteFree: String
+  reusingWater: String
   approved: Boolean
-}
-
-input CreateLabelInput {
-  name: String!
-}
-
-input UpdateLabelInput {
-  name: String!
 }
 
 input CreateCompanyTypeInput {
@@ -387,4 +400,12 @@ input UpdateRewardInput {
   points: Int
   companyId: Int
   id: Int!
+}
+
+input CreateLabelInput {
+  name: String!
+}
+
+input UpdateLabelInput {
+  name: String!
 }
