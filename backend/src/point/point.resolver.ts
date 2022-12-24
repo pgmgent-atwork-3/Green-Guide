@@ -15,44 +15,44 @@ import { CurrentUser } from '../Decorators/currentUser.decorator';
 export class PointResolver {
   constructor(private readonly pointService: PointService) {}
 
-  @Mutation(() => Point)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
-  createPoint(
-    @Args('createPointInput') createPointInput: CreatePointInput,
-    @CurrentUser() user: User,
-  ): Promise<Point> {
-    return this.pointService.create(createPointInput);
-  }
+  //   @Mutation(() => Point)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  //   createPoint(
+  //     @Args('createPointInput') createPointInput: CreatePointInput,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Point> {
+  //     return this.pointService.create(createPointInput);
+  //   }
 
-  @Query(() => [Point], { name: 'point' })
-  findAll(): Promise<Point[]> {
-    return this.pointService.findAll();
-  }
+  //   @Query(() => [Point], { name: 'point' })
+  //   findAll(): Promise<Point[]> {
+  //     return this.pointService.findAll();
+  //   }
 
-  @Query(() => Point, { name: 'point' })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<Point> {
-    return this.pointService.findOne(id);
-  }
+  //   @Query(() => Point, { name: 'point' })
+  //   findOne(@Args('id', { type: () => Int }) id: number): Promise<Point> {
+  //     return this.pointService.findOne(id);
+  //   }
 
-  @Mutation(() => Point)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
-  updatePoint(
-    @Args('updatePointInput') updatePointInput: UpdatePointInput,
-    @Args('id') id: number,
-    @CurrentUser() user: User,
-  ): Promise<Point> {
-    return this.pointService.update(updatePointInput.id, updatePointInput);
-  }
+  //   @Mutation(() => Point)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  //   updatePoint(
+  //     @Args('updatePointInput') updatePointInput: UpdatePointInput,
+  //     @Args('id') id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Point> {
+  //     return this.pointService.update(updatePointInput.id, updatePointInput);
+  //   }
 
-  @Mutation(() => Point)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
-  removePoint(
-    @Args('id', { type: () => Int }) id: number,
-    @CurrentUser() user: User,
-  ): Promise<Point> {
-    return this.pointService.remove(id);
-  }
+  //   @Mutation(() => Point)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  //   removePoint(
+  //     @Args('id', { type: () => Int }) id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Point> {
+  //     return this.pointService.remove(id);
+  //   }
 }

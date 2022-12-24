@@ -5,7 +5,7 @@
 type Sector {
   id: Int!
   name: String!
-  categories: [Category!]
+  categories: [Category!]!
 }
 
 type Category {
@@ -72,10 +72,10 @@ type CompanyRequest {
   houseNumber: String!
   city: String!
   zipCode: String!
-  labels: [Label!]
-  companyTypes: [CompanyType!]
-  sectors: [Sector!]
-  categories: [Category!]
+  labels: [Label!]!
+  companyTypes: [CompanyType!]!
+  sectors: [Sector!]!
+  categories: [Category!]!
 }
 
 """
@@ -219,7 +219,7 @@ input CreateSectorInput {
 }
 
 input UpdateSectorInput {
-  name: String
+  name: String!
 }
 
 input CreateCompanyRequestInput {

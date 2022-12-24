@@ -15,44 +15,44 @@ import { User } from '../user/entities/user.entity';
 export class RewardResolver {
   constructor(private readonly rewardService: RewardService) {}
 
-  @Mutation(() => Reward)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY)
-  createReward(
-    @Args('createRewardInput') createRewardInput: CreateRewardInput,
-    @CurrentUser() user: User,
-  ): Promise<Reward> {
-    return this.rewardService.create(createRewardInput);
-  }
+  //   @Mutation(() => Reward)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY)
+  //   createReward(
+  //     @Args('createRewardInput') createRewardInput: CreateRewardInput,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Reward> {
+  //     return this.rewardService.create(createRewardInput);
+  //   }
 
-  @Query(() => [Reward], { name: 'reward' })
-  findAll(): Promise<Reward[]> {
-    return this.rewardService.findAll();
-  }
+  //   @Query(() => [Reward], { name: 'reward' })
+  //   findAll(): Promise<Reward[]> {
+  //     return this.rewardService.findAll();
+  //   }
 
-  @Query(() => Reward, { name: 'reward' })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<Reward> {
-    return this.rewardService.findOne(id);
-  }
+  //   @Query(() => Reward, { name: 'reward' })
+  //   findOne(@Args('id', { type: () => Int }) id: number): Promise<Reward> {
+  //     return this.rewardService.findOne(id);
+  //   }
 
-  @Mutation(() => Reward)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY)
-  updateReward(
-    @Args('updateRewardInput') updateRewardInput: UpdateRewardInput,
-    @Args('id') id: number,
-    @CurrentUser() user: User,
-  ): Promise<Reward> {
-    return this.rewardService.update(updateRewardInput.id, updateRewardInput);
-  }
+  //   @Mutation(() => Reward)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY)
+  //   updateReward(
+  //     @Args('updateRewardInput') updateRewardInput: UpdateRewardInput,
+  //     @Args('id') id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Reward> {
+  //     return this.rewardService.update(updateRewardInput.id, updateRewardInput);
+  //   }
 
-  @Mutation(() => Reward)
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
-  removeReward(
-    @Args('id', { type: () => Int }) id: number,
-    @CurrentUser() user: User,
-  ): Promise<Reward> {
-    return this.rewardService.remove(id);
-  }
+  //   @Mutation(() => Reward)
+  //   @UseGuards(GqlAuthGuard, RolesGuard)
+  //   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  //   removeReward(
+  //     @Args('id', { type: () => Int }) id: number,
+  //     @CurrentUser() user: User,
+  //   ): Promise<Reward> {
+  //     return this.rewardService.remove(id);
+  //   }
 }
