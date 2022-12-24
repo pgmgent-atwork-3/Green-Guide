@@ -1,5 +1,7 @@
 import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
+import { AddCompanyLabelInput } from 'src/company-label/dto/add-company-label.input';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 import { Column } from 'typeorm';
 
 @InputType()
@@ -58,8 +60,8 @@ export class CreateCompanyRequestInput {
   zipCode: string;
 
   @Column()
-  @Field(() => [Int], { nullable: true })
-  labelIds: number[];
+  @Field(() => [AddCompanyLabelInput], { nullable: true })
+  labels: CompanyLabel[];
 
   @Column()
   @Field(() => [Int], { nullable: true })

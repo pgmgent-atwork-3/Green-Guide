@@ -1,0 +1,62 @@
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import { CompanyLabelService } from './company-label.service';
+import { CompanyLabel } from './entities/company-label.entity';
+import { CreateCompanyLabelInput } from './dto/create-company-label.input';
+import { UpdateCompanyLabelInput } from './dto/update-company-label.input';
+import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
+
+@Resolver(() => CompanyLabel)
+export class CompanyLabelResolver {
+  constructor(private readonly companyLabelService: CompanyLabelService) {}
+
+  @Mutation(() => CompanyLabel)
+  createCompanyLabel(
+    @Args('createCompanyLabelInput')
+    createCompanyLabelInput: CreateCompanyLabelInput,
+  ): Promise<CompanyLabel> {
+    return this.companyLabelService.create(createCompanyLabelInput);
+  }
+
+  @Query(() => [CompanyLabel], { name: 'companyLabel' })
+  findAll(): Promise<CompanyLabel[]> {
+    return this.companyLabelService.findAll();
+  }
+
+  @Query(() => CompanyLabel, { name: 'companyLabel' })
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<CompanyLabel> {
+    return this.companyLabelService.findOne(id);
+  }
+
+  @Mutation(() => CompanyLabel)
+  updateCompanyLabel(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('updateCompanyLabelInput')
+    updateCompanyLabelInput: UpdateCompanyLabelInput,
+  ): Promise<CompanyLabel> {
+    return this.companyLabelService.update(id, updateCompanyLabelInput);
+  }
+
+  @Mutation(() => CompanyLabel)
+  removeCompanyLabel(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<CompanyLabel> | null {
+    return this.companyLabelService.remove(id);
+  }
+
+  @ResolveField(() => CompanyRequest)
+  companyRequest(
+    @Parent() companyLabel: CompanyLabel,
+  ): Promise<CompanyRequest> {
+    return this.companyLabelService.getCompanyRequest(
+      companyLabel.companyRequestId,
+    );
+  }
+}

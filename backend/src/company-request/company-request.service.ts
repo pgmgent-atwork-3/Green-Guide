@@ -2,10 +2,11 @@ import { Inject, Injectable, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoryService } from 'src/category/category.service';
 import { Category } from 'src/category/entities/category.entity';
+import { CompanyLabelService } from 'src/company-label/company-label.service';
+import { CreateCompanyLabelInput } from 'src/company-label/dto/create-company-label.input';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 import { CompanyTypeService } from 'src/company-type/company-type.service';
 import { CompanyType } from 'src/company-type/entities/company-type.entity';
-import { Label } from 'src/label/entities/label.entity';
-import { LabelService } from 'src/label/label.service';
 import { Sector } from 'src/sector/entities/sector.entity';
 import { SectorService } from 'src/sector/sector.service';
 import { Repository } from 'typeorm';
@@ -18,8 +19,8 @@ export class CompanyRequestService {
   constructor(
     @InjectRepository(CompanyRequest)
     private companyRequestRepository: Repository<CompanyRequest>,
-    @Inject(forwardRef(() => LabelService))
-    private labelService: LabelService,
+    @Inject(forwardRef(() => CompanyLabelService))
+    private companyLabelService: CompanyLabelService,
     @Inject(forwardRef(() => CompanyTypeService))
     private companyTypeService: CompanyTypeService,
     @Inject(forwardRef(() => SectorService))
@@ -28,22 +29,34 @@ export class CompanyRequestService {
     private categoryService: CategoryService,
   ) {}
 
-  create(
+  async create(
     createCompanyRequestInput: CreateCompanyRequestInput,
-    labels: Label[],
     companyTypes: CompanyType[],
     sectors: Sector[],
     categories: Category[],
   ): Promise<CompanyRequest> {
     const companyRequest = this.companyRequestRepository.create({
       ...createCompanyRequestInput,
-      approved: false,
-      labels,
       companyTypes,
       sectors,
       categories,
+      labels: [],
     });
-    return this.companyRequestRepository.save(companyRequest);
+    const request = await this.companyRequestRepository.save(companyRequest);
+    if (
+      createCompanyRequestInput.labels &&
+      createCompanyRequestInput.labels.length > 0
+    ) {
+      createCompanyRequestInput.labels.forEach(async (label) => {
+        const createCompanyLabelInput: CreateCompanyLabelInput = {
+          motivation: label.motivation,
+          companyRequestId: request.id,
+          companyId: null,
+        };
+        await this.companyLabelService.create(createCompanyLabelInput);
+      });
+      return request;
+    }
   }
 
   findAll(): Promise<CompanyRequest[]> {
@@ -59,7 +72,6 @@ export class CompanyRequestService {
   async update(
     id: number,
     updateCompanyRequestInput: UpdateCompanyRequestInput,
-    labels: Label[],
     companyTypes: CompanyType[],
     sectors: Sector[],
     categories: Category[],
@@ -74,7 +86,6 @@ export class CompanyRequestService {
       );
       return this.companyRequestRepository.save({
         ...companyRequest,
-        labels,
         companyTypes,
         sectors,
         categories,
@@ -93,17 +104,8 @@ export class CompanyRequestService {
     throw new Error('Company-request not found');
   }
 
-  getLabel(labelId): Promise<Label> {
-    return this.labelService.findOne(labelId);
-  }
-
-  getLabels(companyRequestId): Promise<Label[]> {
-    return this.companyRequestRepository
-      .createQueryBuilder('companyRequest')
-      .leftJoinAndSelect('companyRequest.labels', 'label')
-      .where('companyRequest.id = :id', { id: companyRequestId })
-      .getOne()
-      .then((companyRequest) => companyRequest.labels);
+  getLabels(companyRequestId): Promise<CompanyLabel[]> {
+    return this.companyLabelService.findByCompanyRequestId(companyRequestId);
   }
 
   getCompanyType(companyTypeId): Promise<CompanyType> {

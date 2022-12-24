@@ -18,10 +18,10 @@ import { Role } from '../role.enum';
 import { Roles } from '../Decorators/roles.decorator';
 import { CurrentUser } from '../Decorators/currentUser.decorator';
 import { User } from '../user/entities/user.entity';
-import { Label } from 'src/label/entities/label.entity';
 import { CompanyType } from 'src/company-type/entities/company-type.entity';
 import { Sector } from 'src/sector/entities/sector.entity';
 import { Category } from 'src/category/entities/category.entity';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 
 @Resolver(() => CompanyRequest)
 export class CompanyRequestResolver {
@@ -32,13 +32,6 @@ export class CompanyRequestResolver {
     @Args('createCompanyRequestInput')
     createCompanyRequestInput: CreateCompanyRequestInput,
   ): Promise<CompanyRequest> {
-    const labels: Label[] = [];
-    if (createCompanyRequestInput.labelIds) {
-      for (const id of createCompanyRequestInput.labelIds) {
-        labels.push(await this.companyRequestService.getLabel(id));
-      }
-    }
-
     const companyTypes: CompanyType[] = [];
     if (createCompanyRequestInput.companyTypeIds) {
       for (const id of createCompanyRequestInput.companyTypeIds) {
@@ -62,7 +55,6 @@ export class CompanyRequestResolver {
 
     return this.companyRequestService.create(
       createCompanyRequestInput,
-      labels,
       companyTypes,
       sectors,
       categories,
@@ -90,13 +82,6 @@ export class CompanyRequestResolver {
     updateCompanyRequestInput: UpdateCompanyRequestInput,
     @CurrentUser() user: User,
   ): Promise<CompanyRequest> {
-    const labels: Label[] = [];
-    if (updateCompanyRequestInput.labelIds) {
-      for (const id of updateCompanyRequestInput.labelIds) {
-        labels.push(await this.companyRequestService.getLabel(id));
-      }
-    }
-
     const companyTypes: CompanyType[] = [];
     if (updateCompanyRequestInput.companyTypeIds) {
       for (const id of updateCompanyRequestInput.companyTypeIds) {
@@ -121,7 +106,6 @@ export class CompanyRequestResolver {
     return this.companyRequestService.update(
       id,
       updateCompanyRequestInput,
-      labels,
       companyTypes,
       sectors,
       categories,
@@ -138,10 +122,10 @@ export class CompanyRequestResolver {
     return this.companyRequestService.remove(id);
   }
 
-  @ResolveField(() => Label)
+  @ResolveField(() => CompanyLabel)
   async labels(
     @Parent() companyRequest: CompanyRequest,
-  ): Promise<Label[]> | null {
+  ): Promise<CompanyLabel[]> | null {
     return this.companyRequestService.getLabels(companyRequest.id);
   }
 

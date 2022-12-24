@@ -2,15 +2,13 @@ import { CreateCompanyRequestInput } from './create-company-request.input';
 import { InputType, Field, PartialType, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 import { IsEmail } from 'class-validator';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
+import { AddCompanyLabelInput } from 'src/company-label/dto/add-company-label.input';
 
 @InputType()
 export class UpdateCompanyRequestInput extends PartialType(
   CreateCompanyRequestInput,
 ) {
-  @Column()
-  @Field({ nullable: true })
-  approved: boolean;
-
   @Column()
   @Field({ nullable: true })
   companyName: string;
@@ -65,8 +63,8 @@ export class UpdateCompanyRequestInput extends PartialType(
   zipCode: string;
 
   @Column()
-  @Field(() => [Int], { nullable: true })
-  labelIds: number[];
+  @Field(() => [AddCompanyLabelInput], { nullable: true })
+  labels: CompanyLabel[];
 
   @Column()
   @Field(() => [Int], { nullable: true })

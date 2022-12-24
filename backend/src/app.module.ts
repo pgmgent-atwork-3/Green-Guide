@@ -19,6 +19,7 @@ import { RewardModule } from './reward/reward.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { LabelModule } from './label/label.module';
+import { CompanyLabelModule } from './company-label/company-label.module';
 
 @Module({
   imports: [
@@ -81,6 +82,7 @@ import { LabelModule } from './label/label.module';
     PointModule,
     RewardModule,
     LabelModule,
+    CompanyLabelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

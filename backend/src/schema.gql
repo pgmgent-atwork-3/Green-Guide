@@ -51,14 +51,16 @@ type Address {
   zipCode: String
 }
 
-type Label {
+type CompanyLabel {
   id: Int!
-  name: String!
+  companyRequestId: Int
+  companyRequest: CompanyRequest
+  motivation: String!
+  approved: Boolean!
 }
 
 type CompanyRequest {
   id: Int!
-  approved: Boolean!
   companyName: String!
   summary: String
   established: Timestamp
@@ -72,7 +74,7 @@ type CompanyRequest {
   houseNumber: String!
   city: String!
   zipCode: String!
-  labels: [Label!]!
+  labels: [CompanyLabel!]
   companyTypes: [CompanyType!]!
   sectors: [Sector!]!
   categories: [Category!]!
@@ -122,6 +124,11 @@ type User {
   reviews: [Review!]
 }
 
+type Label {
+  id: Int!
+  name: String!
+}
+
 type Query {
   users: [User!]!
   user(id: Int!): User!
@@ -135,12 +142,13 @@ type Query {
   sector(id: Int!): Sector!
   companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
-  labels: [Label!]!
-  label(id: Int!): Label!
+  companyLabel(id: Int!): CompanyLabel!
   companyTypes: [CompanyType!]!
   companyType(id: Int!): CompanyType!
   contactPersons: [ContactPerson!]!
   contactPerson(id: Int!): ContactPerson!
+  labels: [Label!]!
+  label(id: Int!): Label!
 }
 
 type Mutation {
@@ -159,15 +167,18 @@ type Mutation {
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
   updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
   removeCompanyRequest(id: Int!): CompanyRequest!
-  createLabel(createLabelInput: CreateLabelInput!): Label!
-  updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
-  removeLabel(id: Int!): Label!
+  createCompanyLabel(createCompanyLabelInput: CreateCompanyLabelInput!): CompanyLabel!
+  updateCompanyLabel(id: Int!, updateCompanyLabelInput: UpdateCompanyLabelInput!): CompanyLabel!
+  removeCompanyLabel(id: Int!): CompanyLabel!
   createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
   updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
   removeCompanyType(id: Int!): CompanyType!
   createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
   updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
   removeContactPerson(id: Int!): ContactPerson!
+  createLabel(createLabelInput: CreateLabelInput!): Label!
+  updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
+  removeLabel(id: Int!): Label!
 }
 
 input CreateUserInput {
@@ -236,10 +247,14 @@ input CreateCompanyRequestInput {
   houseNumber: String!
   city: String!
   zipCode: String!
-  labelIds: [Int!]
+  labels: [AddCompanyLabelInput!]
   companyTypeIds: [Int!]
   sectorIds: [Int!]
   categoryIds: [Int!]
+}
+
+input AddCompanyLabelInput {
+  motivation: String!
 }
 
 input UpdateCompanyRequestInput {
@@ -256,19 +271,24 @@ input UpdateCompanyRequestInput {
   houseNumber: String
   city: String
   zipCode: String
-  labelIds: [Int!]
+  labels: [AddCompanyLabelInput!]
   companyTypeIds: [Int!]
   sectorIds: [Int!]
   categoryIds: [Int!]
+}
+
+input CreateCompanyLabelInput {
+  companyId: Int
+  companyRequestId: Int
+  motivation: String!
+}
+
+input UpdateCompanyLabelInput {
+  companyId: Int
+  companyRequestId: Int
+  motivation: String
+  labelId: Int
   approved: Boolean
-}
-
-input CreateLabelInput {
-  name: String!
-}
-
-input UpdateLabelInput {
-  name: String!
 }
 
 input CreateCompanyTypeInput {
@@ -291,4 +311,12 @@ input UpdateContactPersonInput {
   lastName: String
   email: String
   phoneNumber: String
+}
+
+input CreateLabelInput {
+  name: String!
+}
+
+input UpdateLabelInput {
+  name: String!
 }

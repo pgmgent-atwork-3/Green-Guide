@@ -4,14 +4,14 @@ import { Module, forwardRef } from '@nestjs/common';
 import { CompanyRequestService } from './company-request.service';
 import { CompanyRequestResolver } from './company-request.resolver';
 import { CompanyTypeModule } from 'src/company-type/company-type.module';
-import { LabelModule } from 'src/label/label.module';
 import { SectorModule } from 'src/sector/sector.module';
 import { CategoryModule } from 'src/category/category.module';
+import { CompanyLabelModule } from 'src/company-label/company-label.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([CompanyRequest]),
-    forwardRef(() => LabelModule),
+    forwardRef(() => CompanyLabelModule),
     forwardRef(() => CompanyTypeModule),
     forwardRef(() => SectorModule),
     forwardRef(() => CategoryModule),
