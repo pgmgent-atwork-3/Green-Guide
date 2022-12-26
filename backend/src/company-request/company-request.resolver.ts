@@ -56,34 +56,7 @@ export class CompanyRequestResolver {
     updateCompanyRequestInput: UpdateCompanyRequestInput,
     @CurrentUser() user: User,
   ): Promise<CompanyRequest> {
-    const companyTypes: CompanyType[] = [];
-    if (updateCompanyRequestInput.companyTypeIds) {
-      for (const id of updateCompanyRequestInput.companyTypeIds) {
-        companyTypes.push(await this.companyRequestService.getCompanyType(id));
-      }
-    }
-
-    const sectors: Sector[] = [];
-    if (updateCompanyRequestInput.sectorIds) {
-      for (const id of updateCompanyRequestInput.sectorIds) {
-        sectors.push(await this.companyRequestService.getSector(id));
-      }
-    }
-
-    const categories: Category[] = [];
-    if (updateCompanyRequestInput.categoryIds) {
-      for (const id of updateCompanyRequestInput.categoryIds) {
-        categories.push(await this.companyRequestService.getCategory(id));
-      }
-    }
-
-    return this.companyRequestService.update(
-      id,
-      updateCompanyRequestInput,
-      companyTypes,
-      sectors,
-      categories,
-    );
+    return this.companyRequestService.update(id, updateCompanyRequestInput);
   }
 
   @Mutation(() => CompanyRequest)

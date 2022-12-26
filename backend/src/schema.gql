@@ -84,7 +84,7 @@ type CompanyRequest {
   houseNumber: String!
   city: String!
   zipCode: String!
-  labels: [CompanyLabel!]
+  labels: [CompanyLabel!]!
   companyTypes: [CompanyType!]!
   sectors: [Sector!]!
   categories: [Category!]!
@@ -130,9 +130,9 @@ type User {
   email: String!
   password: String!
   role: String!
-  company: Company
-  points: [Point!]
-  reviews: [Review!]
+  company: Company!
+  points: [Point!]!
+  reviews: [Review!]!
 }
 
 type Query {
@@ -229,7 +229,8 @@ input CreateCategoryInput {
 
 input UpdateCategoryInput {
   name: String
-  sectorId: Float
+  sectorId: Int
+  sectorIdN: Float
 }
 
 input CreateSectorInput {

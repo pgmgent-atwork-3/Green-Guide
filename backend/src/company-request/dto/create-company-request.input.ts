@@ -1,7 +1,6 @@
 import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
 import { AddCompanyLabelInput } from 'src/company-label/dto/add-company-label.input';
-import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 import { CompanyLabelInput } from 'src/company-label/interfaces/company-label-input.interface';
 import { Column } from 'typeorm';
 

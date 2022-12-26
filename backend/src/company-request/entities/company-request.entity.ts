@@ -80,7 +80,7 @@ export class CompanyRequest {
       cascade: true,
     },
   )
-  @Field(() => [CompanyLabel], { nullable: true })
+  @Field(() => [CompanyLabel])
   labels: CompanyLabel[];
 
   @ManyToMany(() => CompanyType, { cascade: true })

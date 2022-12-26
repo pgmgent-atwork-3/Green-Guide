@@ -56,7 +56,30 @@ export class CompanyRequestService {
       });
     }
 
-    return this.companyRequestRepository.save(companyRequest);
+    if (companyTypeIds && companyTypeIds.length > 0) {
+      companyTypeIds.forEach(async (companyTypeId) => {
+        companyRequest.companyTypes.push(
+          await this.companyTypeService.findOne(companyTypeId),
+        );
+      });
+    }
+
+    if (sectorIds && sectorIds.length > 0) {
+      sectorIds.forEach(async (sectorId) => {
+        companyRequest.sectors.push(await this.sectorService.findOne(sectorId));
+      });
+    }
+
+    if (categoryIds && categoryIds.length > 0) {
+      categoryIds.forEach(async (categoryId) => {
+        companyRequest.categories.push(
+          await this.categoryService.findOne(categoryId),
+        );
+      });
+    }
+
+    await this.companyRequestRepository.save(companyRequest);
+    return companyRequest;
   }
 
   findAll(): Promise<CompanyRequest[]> {
@@ -72,23 +95,76 @@ export class CompanyRequestService {
   async update(
     id: number,
     updateCompanyRequestInput: UpdateCompanyRequestInput,
-    companyTypes: CompanyType[],
-    sectors: Sector[],
-    categories: Category[],
   ): Promise<CompanyRequest> | null {
+    const { labels, companyTypeIds, sectorIds, categoryIds, ...rest } =
+      updateCompanyRequestInput;
+
     const companyRequest = await this.companyRequestRepository.findOne({
       where: { id },
     });
     if (companyRequest) {
-      this.companyRequestRepository.merge(
-        companyRequest,
-        updateCompanyRequestInput,
-      );
+      this.companyRequestRepository.merge(companyRequest, { ...rest });
+
+      if (labels && labels.length > 0) {
+        // Get all labels for the company-request
+        const companyLabels =
+          await this.companyLabelService.findByCompanyRequestId(
+            companyRequest.id,
+          );
+
+        // Delete all labels that are not in the new list
+        companyLabels.forEach(async (companyLabel) => {
+          if (!labels.find((label) => label.labelId == companyLabel.labelId)) {
+            await this.companyLabelService.remove(companyLabel.id);
+          }
+        });
+
+        // Add all labels that are not in the old list
+        labels.forEach(async (label) => {
+          if (
+            !companyLabels.find(
+              (companyLabel) => companyLabel.labelId == label.labelId,
+            )
+          ) {
+            const companyLabelInput: CreateCompanyLabelInput = {
+              ...label,
+              companyRequestId: companyRequest.id,
+            };
+            companyRequest.labels.push(
+              await this.companyLabelService.create(companyLabelInput),
+            );
+          }
+        });
+      }
+
+      if (companyTypeIds && companyTypeIds.length > 0) {
+        companyRequest.companyTypes = [];
+        companyTypeIds.forEach(async (companyTypeId) => {
+          companyRequest.companyTypes.push(
+            await this.companyTypeService.findOne(companyTypeId),
+          );
+        });
+      }
+
+      if (sectorIds && sectorIds.length > 0) {
+        companyRequest.sectors = [];
+        sectorIds.forEach(async (sectorId) => {
+          companyRequest.sectors.push(
+            await this.sectorService.findOne(sectorId),
+          );
+        });
+      }
+
+      if (categoryIds && categoryIds.length > 0) {
+        companyRequest.categories = [];
+        categoryIds.forEach(async (categoryId) => {
+          companyRequest.categories.push(
+            await this.categoryService.findOne(categoryId),
+          );
+        });
+      }
       return this.companyRequestRepository.save({
         ...companyRequest,
-        companyTypes,
-        sectors,
-        categories,
       });
     }
     throw new Error('Company-request not found');
