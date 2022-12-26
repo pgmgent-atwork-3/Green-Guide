@@ -1,22 +1,22 @@
-import { CreateAddressInput } from './create-address.input';
 import { InputType, Field, PartialType } from '@nestjs/graphql';
 import { Column } from 'typeorm';
+import { CreateAddressInput } from './create-address.input';
 
 @InputType()
 export class UpdateAddressInput extends PartialType(CreateAddressInput) {
   @Column()
   @Field({ nullable: true })
-  streetName: string;
+  streetName?: string;
 
   @Column()
   @Field({ nullable: true })
-  number: string;
+  number?: string;
 
   @Column()
   @Field({ nullable: true })
-  city: string;
+  city?: string;
 
   @Column()
   @Field({ nullable: true })
-  zipCode: string;
+  zipCode?: string;
 }

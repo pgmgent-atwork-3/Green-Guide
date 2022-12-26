@@ -6,9 +6,9 @@ import { Column } from 'typeorm';
 export class UpdateCategoryInput extends PartialType(CreateCategoryInput) {
   @Column()
   @Field({ nullable: true })
-  name: string;
+  name?: string;
 
   @Column()
   @Field({ nullable: true })
-  sectorId: number;
+  sectorIdN: number;
 }

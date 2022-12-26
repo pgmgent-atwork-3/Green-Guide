@@ -7,23 +7,23 @@ import { Role } from 'src/role.enum';
 export class UpdateUserInput extends PartialType(CreateUserInput) {
   @Column()
   @Field({ nullable: true })
-  userName: string;
+  userName?: string;
 
   @Column()
   @Field({ nullable: true })
-  firstName: string;
+  firstName?: string;
 
   @Column()
   @Field({ nullable: true })
-  lastName: string;
+  lastName?: string;
 
   @Column()
   @Field({ nullable: true })
-  email: string;
+  email?: string;
 
   @Column()
   @Field({ nullable: true })
-  password: string;
+  password?: string;
 
   @Column({
     default: 'user',
@@ -31,5 +31,5 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
     enum: Role,
   })
   @Field({ nullable: true })
-  role: string;
+  role?: string;
 }

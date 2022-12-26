@@ -1,7 +1,6 @@
 import { Sector } from './entities/sector.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { forwardRef } from '@nestjs/common';
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { SectorService } from './sector.service';
 import { SectorResolver } from './sector.resolver';
 import { CategoryModule } from 'src/category/category.module';
