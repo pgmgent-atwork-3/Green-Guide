@@ -11,23 +11,31 @@ export class CompanyLabel {
   @Field(() => Int)
   id: number;
 
-  //   @ManyToOne(() => Company, (company) => company.labels)
-  //   @Field(() => Company, { nullable: true })
-  //   company: Company;
+  @Column({ nullable: true })
+  @Field(() => Int, { nullable: true })
+  companyId?: number;
+
+  @ManyToOne(() => Company, (company) => company.labels, { nullable: true })
+  @Field(() => Company, { nullable: true })
+  company?: Company;
 
   @Column({ nullable: true })
   @Field(() => Int, { nullable: true })
-  companyRequestId: number;
+  companyRequestId?: number;
 
   @ManyToOne(() => CompanyRequest, (companyRequest) => companyRequest.labels, {
     nullable: true,
   })
   @Field(() => CompanyRequest, { nullable: true })
-  companyRequest: CompanyRequest;
+  companyRequest?: CompanyRequest;
 
-  //   @ManyToOne(() => Label, (label) => label.companies)
-  //   @Field(() => Label)
-  //   label: Label;
+  @Column()
+  @Field(() => Int)
+  labelId: number;
+
+  @ManyToOne(() => Label, (label) => label.companies)
+  @Field(() => Label)
+  label: Label;
 
   @Column()
   @Field()

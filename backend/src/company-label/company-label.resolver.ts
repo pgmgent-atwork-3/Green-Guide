@@ -12,6 +12,8 @@ import { CompanyLabel } from './entities/company-label.entity';
 import { CreateCompanyLabelInput } from './dto/create-company-label.input';
 import { UpdateCompanyLabelInput } from './dto/update-company-label.input';
 import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
+import { Label } from 'src/label/entities/label.entity';
+import { Company } from 'src/company/entities/company.entity';
 
 @Resolver(() => CompanyLabel)
 export class CompanyLabelResolver {
@@ -25,7 +27,7 @@ export class CompanyLabelResolver {
     return this.companyLabelService.create(createCompanyLabelInput);
   }
 
-  @Query(() => [CompanyLabel], { name: 'companyLabel' })
+  @Query(() => [CompanyLabel], { name: 'companyLabels' })
   findAll(): Promise<CompanyLabel[]> {
     return this.companyLabelService.findAll();
   }
@@ -51,6 +53,11 @@ export class CompanyLabelResolver {
     return this.companyLabelService.remove(id);
   }
 
+  //   @ResolveField(() => Company)
+  //   company(@Parent() companyLabel: CompanyLabel): Promise<Company> {
+  //     return this.companyLabelService.getCompany(companyLabel.companyId);
+  //   }
+
   @ResolveField(() => CompanyRequest)
   companyRequest(
     @Parent() companyLabel: CompanyLabel,
@@ -58,5 +65,10 @@ export class CompanyLabelResolver {
     return this.companyLabelService.getCompanyRequest(
       companyLabel.companyRequestId,
     );
+  }
+
+  @ResolveField(() => Label)
+  label(@Parent() companyLabel: CompanyLabel): Promise<Label> {
+    return this.companyLabelService.getLabel(companyLabel.labelId);
   }
 }

@@ -2,6 +2,7 @@ import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
 import { AddCompanyLabelInput } from 'src/company-label/dto/add-company-label.input';
 import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
+import { CompanyLabelInput } from 'src/company-label/interfaces/company-label-input.interface';
 import { Column } from 'typeorm';
 
 @InputType()
@@ -12,19 +13,19 @@ export class CreateCompanyRequestInput {
 
   @Column()
   @Field({ nullable: true })
-  summary: string;
+  summary?: string;
 
   @Column()
   @Field({ nullable: true })
-  established: Date;
+  established?: Date;
 
   @Column()
   @Field({ nullable: true })
-  openingHours: string;
+  openingHours?: string;
 
   @Column()
   @Field({ nullable: true })
-  comment: string;
+  comment?: string;
 
   @Column()
   @Field()
@@ -61,17 +62,17 @@ export class CreateCompanyRequestInput {
 
   @Column()
   @Field(() => [AddCompanyLabelInput], { nullable: true })
-  labels: CompanyLabel[];
+  labels?: CompanyLabelInput[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  companyTypeIds: number[];
+  companyTypeIds?: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  sectorIds: number[];
+  sectorIds?: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  categoryIds: number[];
+  categoryIds?: number[];
 }

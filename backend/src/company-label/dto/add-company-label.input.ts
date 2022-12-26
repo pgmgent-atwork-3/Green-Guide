@@ -3,9 +3,9 @@ import { Column } from 'typeorm';
 
 @InputType()
 export class AddCompanyLabelInput {
-  //   @Column()
-  //   @Field(() => Int)
-  //   labelId: number;
+  @Column()
+  @Field(() => Int)
+  labelId: number;
 
   @Column()
   @Field()

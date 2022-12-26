@@ -5,15 +5,15 @@ import { Column } from 'typeorm';
 export class CreateCompanyLabelInput {
   @Column()
   @Field(() => Int, { nullable: true })
-  companyId: number;
+  companyId?: number;
 
   @Column()
   @Field(() => Int, { nullable: true })
-  companyRequestId: number;
+  companyRequestId?: number;
 
-  //   @Column()
-  //   @Field(() => Int)
-  //   labelId: number;
+  @Column()
+  @Field(() => Int)
+  labelId: number;
 
   @Column()
   @Field()

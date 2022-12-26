@@ -31,32 +31,32 @@ export class CompanyRequestService {
 
   async create(
     createCompanyRequestInput: CreateCompanyRequestInput,
-    companyTypes: CompanyType[],
-    sectors: Sector[],
-    categories: Category[],
   ): Promise<CompanyRequest> {
-    const companyRequest = this.companyRequestRepository.create({
-      ...createCompanyRequestInput,
-      companyTypes,
-      sectors,
-      categories,
-      labels: [],
+    const { labels, companyTypeIds, sectorIds, categoryIds, ...rest } =
+      createCompanyRequestInput;
+
+    const { id } = await this.companyRequestRepository.save({
+      ...rest,
     });
-    const request = await this.companyRequestRepository.save(companyRequest);
-    if (
-      createCompanyRequestInput.labels &&
-      createCompanyRequestInput.labels.length > 0
-    ) {
-      createCompanyRequestInput.labels.forEach(async (label) => {
-        const createCompanyLabelInput: CreateCompanyLabelInput = {
-          motivation: label.motivation,
-          companyRequestId: request.id,
-          companyId: null,
+
+    const companyRequest = await this.companyRequestRepository.findOne({
+      where: { id },
+      relations: ['labels', 'companyTypes', 'sectors', 'categories'],
+    });
+
+    if (labels && labels.length > 0) {
+      labels.forEach(async (label) => {
+        const companyLabelInput: CreateCompanyLabelInput = {
+          ...label,
+          companyRequestId: companyRequest.id,
         };
-        await this.companyLabelService.create(createCompanyLabelInput);
+        companyRequest.labels.push(
+          await this.companyLabelService.create(companyLabelInput),
+        );
       });
-      return request;
     }
+
+    return this.companyRequestRepository.save(companyRequest);
   }
 
   findAll(): Promise<CompanyRequest[]> {

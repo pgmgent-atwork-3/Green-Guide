@@ -18,6 +18,7 @@ import {
 } from 'typeorm';
 import { Address } from 'src/address/entities/address.entity';
 import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 
 @Entity()
 @ObjectType()
@@ -71,6 +72,10 @@ export class Company {
   @Field(() => Address)
   @JoinColumn()
   address: Address;
+
+  @OneToMany(() => CompanyLabel, (label) => label.company, { nullable: true })
+  @Field(() => [CompanyLabel], { nullable: true })
+  labels: CompanyLabel[];
 
   @ManyToMany(() => Sector)
   @Field(() => [Sector])

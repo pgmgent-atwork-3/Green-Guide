@@ -32,33 +32,7 @@ export class CompanyRequestResolver {
     @Args('createCompanyRequestInput')
     createCompanyRequestInput: CreateCompanyRequestInput,
   ): Promise<CompanyRequest> {
-    const companyTypes: CompanyType[] = [];
-    if (createCompanyRequestInput.companyTypeIds) {
-      for (const id of createCompanyRequestInput.companyTypeIds) {
-        companyTypes.push(await this.companyRequestService.getCompanyType(id));
-      }
-    }
-
-    const sectors: Sector[] = [];
-    if (createCompanyRequestInput.sectorIds) {
-      for (const id of createCompanyRequestInput.sectorIds) {
-        sectors.push(await this.companyRequestService.getSector(id));
-      }
-    }
-
-    const categories: Category[] = [];
-    if (createCompanyRequestInput.categoryIds) {
-      for (const id of createCompanyRequestInput.categoryIds) {
-        categories.push(await this.companyRequestService.getCategory(id));
-      }
-    }
-
-    return this.companyRequestService.create(
-      createCompanyRequestInput,
-      companyTypes,
-      sectors,
-      categories,
-    );
+    return this.companyRequestService.create(createCompanyRequestInput);
   }
 
   @Query(() => [CompanyRequest], { name: 'companyRequests' })

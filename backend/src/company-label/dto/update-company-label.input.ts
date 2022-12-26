@@ -8,21 +8,21 @@ export class UpdateCompanyLabelInput extends PartialType(
 ) {
   @Column()
   @Field(() => Int, { nullable: true })
-  companyId: number;
+  companyId?: number;
 
   @Column()
   @Field(() => Int, { nullable: true })
-  companyRequestId: number;
+  companyRequestId?: number;
 
   @Column()
   @Field(() => Int, { nullable: true })
-  labelId: number;
+  labelId?: number;
 
   @Column()
   @Field({ nullable: true })
-  motivation: string;
+  motivation?: string;
 
   @Column()
   @Field({ nullable: true })
-  approved: boolean;
+  approved?: boolean;
 }
