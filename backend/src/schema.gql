@@ -21,6 +21,7 @@ type ContactPerson {
   lastName: String!
   email: String!
   phoneNumber: String!
+  company: Company!
 }
 
 type CompanyType {
@@ -49,24 +50,7 @@ type Address {
   number: String
   city: String
   zipCode: String
-}
-
-type Label {
-  id: Int!
-  name: String!
-  companies: [CompanyLabel!]!
-}
-
-type CompanyLabel {
-  id: Int!
-  companyId: Int
-  company: Company
-  companyRequestId: Int
-  companyRequest: CompanyRequest
-  labelId: Int!
-  label: Label!
-  motivation: String!
-  approved: Boolean!
+  company: Company!
 }
 
 type CompanyRequest {
@@ -95,23 +79,41 @@ type CompanyRequest {
 """
 scalar Timestamp
 
+type Label {
+  id: Int!
+  name: String!
+  companies: [CompanyLabel!]!
+}
+
+type CompanyLabel {
+  id: Int!
+  companyId: Int
+  company: Company
+  companyRequestId: Int
+  companyRequest: CompanyRequest
+  labelId: Int!
+  label: Label!
+  motivation: String!
+  approved: Boolean!
+}
+
 type Company {
   id: Int!
-  btwNumber: Int!
   name: String!
-  summary: String!
-  established: Timestamp!
-  openingHours: String!
-  points: [Point!]
-  rewards: [Reward!]
-  reviews: [Review!]
-  companyTypes: [CompanyType!]
+  summary: String
+  established: Timestamp
+  openingHours: String
+  contactPersonId: Int!
   contactPerson: ContactPerson!
+  addressId: Int!
   address: Address!
-  labels: [CompanyLabel!]
+  labels: [CompanyLabel!]!
+  companyTypes: [CompanyType!]!
   sectors: [Sector!]!
   categories: [Category!]!
-  companyRequest: CompanyRequest!
+  points: [Point!]!
+  rewards: [Reward!]!
+  reviews: [Review!]!
 }
 
 type Review {
@@ -146,16 +148,18 @@ type Query {
   category(id: Int!): Category!
   sectors: [Sector!]!
   sector(id: Int!): Sector!
+  companies: [Company!]!
+  company(id: Int!): Company!
+  contactPersons: [ContactPerson!]!
+  contactPerson(id: Int!): ContactPerson!
+  companyTypes: [CompanyType!]!
+  companyType(id: Int!): CompanyType!
   companyRequests: [CompanyRequest!]!
   companyRequest(id: Int!): CompanyRequest!
   companyLabels: [CompanyLabel!]!
   companyLabel(id: Int!): CompanyLabel!
-  companyTypes: [CompanyType!]!
-  companyType(id: Int!): CompanyType!
   labels: [Label!]!
   label(id: Int!): Label!
-  contactPersons: [ContactPerson!]!
-  contactPerson(id: Int!): ContactPerson!
 }
 
 type Mutation {
@@ -171,21 +175,25 @@ type Mutation {
   createSector(createSectorInput: CreateSectorInput!): Sector!
   updateSector(id: Int!, updateSectorInput: UpdateSectorInput!): Sector!
   removeSector(id: Int!): Sector!
+  createCompany(createCompanyInput: CreateCompanyInput!): Company!
+  updateCompany(id: Int!, updateCompanyInput: UpdateCompanyInput!): Company!
+  removeCompany(id: Int!): Company!
+  createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
+  updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
+  removeContactPerson(id: Int!): ContactPerson!
+  createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
+  updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
+  removeCompanyType(id: Int!): CompanyType!
   createCompanyRequest(createCompanyRequestInput: CreateCompanyRequestInput!): CompanyRequest!
   updateCompanyRequest(id: Int!, updateCompanyRequestInput: UpdateCompanyRequestInput!): CompanyRequest!
+  approveCompanyRequest(id: Int!): Company!
   removeCompanyRequest(id: Int!): CompanyRequest!
   createCompanyLabel(createCompanyLabelInput: CreateCompanyLabelInput!): CompanyLabel!
   updateCompanyLabel(id: Int!, updateCompanyLabelInput: UpdateCompanyLabelInput!): CompanyLabel!
   removeCompanyLabel(id: Int!): CompanyLabel!
-  createCompanyType(createCompanyTypeInput: CreateCompanyTypeInput!): CompanyType!
-  updateCompanyType(id: Int!, updateCompanyTypeInput: UpdateCompanyTypeInput!): CompanyType!
-  removeCompanyType(id: Int!): CompanyType!
   createLabel(createLabelInput: CreateLabelInput!): Label!
   updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
   removeLabel(id: Int!): Label!
-  createContactPerson(createContactPersonInput: CreateContactPersonInput!): ContactPerson!
-  updateContactPerson(id: Int!, updateContactPersonInput: UpdateContactPersonInput!): ContactPerson!
-  removeContactPerson(id: Int!): ContactPerson!
 }
 
 input CreateUserInput {
@@ -238,6 +246,54 @@ input CreateSectorInput {
 }
 
 input UpdateSectorInput {
+  name: String!
+}
+
+input CreateCompanyInput {
+  name: String!
+  summary: String
+  established: Timestamp
+  openingHours: String
+  contactPersonId: Int!
+  addressId: Int!
+  labelIds: Int
+  companyTypeIds: Int
+  sectorIds: Int
+  categoryIds: Int
+}
+
+input UpdateCompanyInput {
+  name: String
+  summary: String
+  established: Timestamp
+  openingHours: String
+  contactPersonId: Int
+  addressId: Int
+  labelIds: Int
+  companyTypeIds: Int
+  sectorIds: Int
+  categoryIds: Int
+}
+
+input CreateContactPersonInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+}
+
+input UpdateContactPersonInput {
+  firstName: String
+  lastName: String
+  email: String
+  phoneNumber: String
+}
+
+input CreateCompanyTypeInput {
+  name: String!
+}
+
+input UpdateCompanyTypeInput {
   name: String!
 }
 
@@ -301,32 +357,10 @@ input UpdateCompanyLabelInput {
   approved: Boolean
 }
 
-input CreateCompanyTypeInput {
-  name: String!
-}
-
-input UpdateCompanyTypeInput {
-  name: String!
-}
-
 input CreateLabelInput {
   name: String!
 }
 
 input UpdateLabelInput {
   name: String!
-}
-
-input CreateContactPersonInput {
-  firstName: String!
-  lastName: String!
-  email: String!
-  phoneNumber: String!
-}
-
-input UpdateContactPersonInput {
-  firstName: String
-  lastName: String
-  email: String
-  phoneNumber: String
 }

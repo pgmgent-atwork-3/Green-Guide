@@ -53,10 +53,10 @@ export class CompanyLabelResolver {
     return this.companyLabelService.remove(id);
   }
 
-  //   @ResolveField(() => Company)
-  //   company(@Parent() companyLabel: CompanyLabel): Promise<Company> {
-  //     return this.companyLabelService.getCompany(companyLabel.companyId);
-  //   }
+  @ResolveField(() => Company)
+  company(@Parent() companyLabel: CompanyLabel): Promise<Company> {
+    return this.companyLabelService.getCompany(companyLabel.companyId);
+  }
 
   @ResolveField(() => CompanyRequest)
   companyRequest(

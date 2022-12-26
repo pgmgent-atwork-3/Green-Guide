@@ -1,5 +1,7 @@
 import { Inject, Injectable, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AddressService } from 'src/address/address.service';
+import { CreateAddressInput } from 'src/address/dto/create-address.input';
 import { CategoryService } from 'src/category/category.service';
 import { Category } from 'src/category/entities/category.entity';
 import { CompanyLabelService } from 'src/company-label/company-label.service';
@@ -7,6 +9,11 @@ import { CreateCompanyLabelInput } from 'src/company-label/dto/create-company-la
 import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 import { CompanyTypeService } from 'src/company-type/company-type.service';
 import { CompanyType } from 'src/company-type/entities/company-type.entity';
+import { CompanyService } from 'src/company/company.service';
+import { CreateCompanyInput } from 'src/company/dto/create-company.input';
+import { Company } from 'src/company/entities/company.entity';
+import { ContactPersonService } from 'src/contact-person/contact-person.service';
+import { CreateContactPersonInput } from 'src/contact-person/dto/create-contact-person.input';
 import { Sector } from 'src/sector/entities/sector.entity';
 import { SectorService } from 'src/sector/sector.service';
 import { Repository } from 'typeorm';
@@ -27,6 +34,12 @@ export class CompanyRequestService {
     private sectorService: SectorService,
     @Inject(forwardRef(() => CategoryService))
     private categoryService: CategoryService,
+    @Inject(forwardRef(() => ContactPersonService))
+    private contactPersonService: ContactPersonService,
+    @Inject(forwardRef(() => AddressService))
+    private addressService: AddressService,
+    @Inject(forwardRef(() => CompanyService))
+    private companyService: CompanyService,
   ) {}
 
   async create(
@@ -166,6 +179,68 @@ export class CompanyRequestService {
       return this.companyRequestRepository.save({
         ...companyRequest,
       });
+    }
+    throw new Error('Company-request not found');
+  }
+
+  async approve(id: number): Promise<Company> | null {
+    const companyRequest = await this.companyRequestRepository.findOne({
+      where: { id },
+      relations: ['labels', 'companyTypes', 'sectors', 'categories'],
+    });
+    if (companyRequest) {
+      // Create a contactperson
+      const contactPersonInput: CreateContactPersonInput = {
+        firstName: companyRequest.firstName,
+        lastName: companyRequest.lastName,
+        email: companyRequest.email,
+        phoneNumber: companyRequest.phoneNumber,
+      };
+
+      const contactPerson = await this.contactPersonService.create(
+        contactPersonInput,
+      );
+
+      // Create an address
+      const addressInput: CreateAddressInput = {
+        streetName: companyRequest.streetName,
+        number: companyRequest.houseNumber,
+        zipCode: companyRequest.zipCode,
+        city: companyRequest.city,
+      };
+
+      const address = await this.addressService.create(addressInput);
+
+      // Create a company
+      const companyInput: CreateCompanyInput = {
+        name: companyRequest.companyName,
+        summary: companyRequest.summary,
+        established: companyRequest.established,
+        openingHours: companyRequest.openingHours,
+
+        contactPersonId: contactPerson.id,
+        addressId: address.id,
+        companyTypeIds: companyRequest.companyTypes.map(
+          (companyType) => companyType.id,
+        ),
+        sectorIds: companyRequest.sectors.map((sector) => sector.id),
+        categoryIds: companyRequest.categories.map((category) => category.id),
+      };
+
+      const company = await this.companyService.create(companyInput);
+
+      // Update company-labels to reference company instead of company-request
+      companyRequest.labels.forEach(async (label) => {
+        await this.companyLabelService.update(label.id, {
+          companyId: company.id,
+          companyRequestId: null,
+        });
+      });
+
+      // Remove company-request
+      await this.remove(companyRequest.id);
+
+      return this.companyService.findOne(company.id);
     }
     throw new Error('Company-request not found');
   }

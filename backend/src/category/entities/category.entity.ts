@@ -17,7 +17,9 @@ export class Category {
   @Field(() => Int)
   sectorId: number;
 
-  @ManyToOne(() => Sector, (sector) => sector.categories)
+  @ManyToOne(() => Sector, (sector) => sector.categories, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Sector)
   sector: Sector;
 }

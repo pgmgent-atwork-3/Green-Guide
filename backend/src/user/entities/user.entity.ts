@@ -62,11 +62,11 @@ export class User {
   @JoinColumn()
   company: Company;
 
-  @OneToMany(() => Point, (point) => point.user)
+  @OneToMany(() => Point, (point) => point.user, { cascade: true })
   @Field(() => [Point])
   points: Point[];
 
-  @OneToMany(() => Review, (review) => review.user)
+  @OneToMany(() => Review, (review) => review.user, { cascade: true })
   @Field(() => [Review])
   reviews: Review[];
 }

@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Company } from 'src/company/entities/company.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -23,4 +24,8 @@ export class Address {
   @Column()
   @Field({ nullable: true })
   zipCode: string;
+
+  @OneToOne(() => Company, { onDelete: 'CASCADE' })
+  @Field(() => Company)
+  company: Company;
 }

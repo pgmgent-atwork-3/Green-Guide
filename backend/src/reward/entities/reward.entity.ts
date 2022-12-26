@@ -23,7 +23,9 @@ export class Reward {
   @Min(0)
   points: number;
 
-  @ManyToOne(() => Company, (company) => company.rewards)
+  @ManyToOne(() => Company, (company) => company.rewards, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Company)
   company: Company;
 }

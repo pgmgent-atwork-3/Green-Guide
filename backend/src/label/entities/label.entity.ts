@@ -13,7 +13,9 @@ export class Label {
   @Field()
   name: string;
 
-  @OneToMany(() => CompanyLabel, (company) => company.label)
+  @OneToMany(() => CompanyLabel, (company) => company.label, {
+    cascade: true,
+  })
   @Field(() => [CompanyLabel])
   companies: CompanyLabel[];
 }

@@ -21,11 +21,15 @@ export class Review {
   @Max(5)
   rating: number;
 
-  @ManyToOne(() => User, (user) => user.reviews)
+  @ManyToOne(() => User, (user) => user.reviews, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => User)
   user: User;
 
-  @ManyToOne(() => Company, (company) => company.reviews)
+  @ManyToOne(() => Company, (company) => company.reviews, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Company)
   company: Company;
 }

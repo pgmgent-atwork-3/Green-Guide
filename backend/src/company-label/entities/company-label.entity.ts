@@ -15,7 +15,10 @@ export class CompanyLabel {
   @Field(() => Int, { nullable: true })
   companyId?: number;
 
-  @ManyToOne(() => Company, (company) => company.labels, { nullable: true })
+  @ManyToOne(() => Company, (company) => company.labels, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
   @Field(() => Company, { nullable: true })
   company?: Company;
 
@@ -25,6 +28,7 @@ export class CompanyLabel {
 
   @ManyToOne(() => CompanyRequest, (companyRequest) => companyRequest.labels, {
     nullable: true,
+    onDelete: 'CASCADE',
   })
   @Field(() => CompanyRequest, { nullable: true })
   companyRequest?: CompanyRequest;
@@ -33,7 +37,9 @@ export class CompanyLabel {
   @Field(() => Int)
   labelId: number;
 
-  @ManyToOne(() => Label, (label) => label.companies)
+  @ManyToOne(() => Label, (label) => label.companies, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Label)
   label: Label;
 

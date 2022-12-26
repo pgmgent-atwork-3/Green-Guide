@@ -14,11 +14,15 @@ export class Point {
   @Field(() => Int)
   amount: number;
 
-  @ManyToOne(() => User, (user) => user.points)
+  @ManyToOne(() => User, (user) => user.points, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => User)
   user: User;
 
-  @ManyToOne(() => Company, (company) => company.points)
+  @ManyToOne(() => Company, (company) => company.points, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Company)
   company: Company;
 }

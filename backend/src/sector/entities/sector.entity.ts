@@ -13,7 +13,9 @@ export class Sector {
   @Field()
   name: string;
 
-  @OneToMany(() => Category, (category) => category.sector)
+  @OneToMany(() => Category, (category) => category.sector, {
+    cascade: true,
+  })
   @Field(() => [Category])
   categories: Category[];
 }

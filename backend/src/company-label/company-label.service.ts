@@ -74,9 +74,9 @@ export class CompanyLabelService {
     throw new Error('CompanyLabel not found');
   }
 
-  //   getCompany(companyId: number): Promise<Company> {
-  //     return this.companyService.findOne(companyId);
-  //   }
+  getCompany(companyId: number): Promise<Company> {
+    return this.companyService.findOne(companyId);
+  }
 
   getCompanyRequest(companyRequestId: number): Promise<CompanyRequest> {
     return this.companyRequestService.findOne(companyRequestId);
