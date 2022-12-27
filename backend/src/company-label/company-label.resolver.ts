@@ -14,6 +14,11 @@ import { UpdateCompanyLabelInput } from './dto/update-company-label.input';
 import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
 import { Label } from 'src/label/entities/label.entity';
 import { Company } from 'src/company/entities/company.entity';
+import { UseGuards } from '@nestjs/common/decorators';
+import { GqlAuthGuard } from 'src/auth/gql-auth.guard';
+import { RolesGuard } from 'src/auth/role.guard';
+import { Roles } from 'src/Decorators/roles.decorator';
+import { Role } from 'src/role.enum';
 
 @Resolver(() => CompanyLabel)
 export class CompanyLabelResolver {
@@ -38,6 +43,8 @@ export class CompanyLabelResolver {
   }
 
   @Mutation(() => CompanyLabel)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
   updateCompanyLabel(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateCompanyLabelInput')
@@ -47,6 +54,8 @@ export class CompanyLabelResolver {
   }
 
   @Mutation(() => CompanyLabel)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.SUPERADMIN, Role.ADMIN)
   approveCompanyLabel(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<CompanyLabel> {
@@ -54,6 +63,8 @@ export class CompanyLabelResolver {
   }
 
   @Mutation(() => CompanyLabel)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
   removeCompanyLabel(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<CompanyLabel> | null {

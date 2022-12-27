@@ -25,8 +25,8 @@ export class RewardResolver {
   constructor(private readonly rewardService: RewardService) {}
 
   @Mutation(() => Reward)
-  //   @UseGuards(GqlAuthGuard, RolesGuard)
-  //   @Roles(Role.COMPANY)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY)
   createReward(
     @Args('createRewardInput') createRewardInput: CreateRewardInput,
     @CurrentUser() user: User,
@@ -45,8 +45,8 @@ export class RewardResolver {
   }
 
   @Mutation(() => Reward)
-  //   @UseGuards(GqlAuthGuard, RolesGuard)
-  //   @Roles(Role.COMPANY)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY)
   updateReward(
     @Args('id') id: number,
     @Args('updateRewardInput') updateRewardInput: UpdateRewardInput,
@@ -56,8 +56,8 @@ export class RewardResolver {
   }
 
   @Mutation(() => Reward)
-  //   @UseGuards(GqlAuthGuard, RolesGuard)
-  //   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
   removeReward(
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
