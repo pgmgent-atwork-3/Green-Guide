@@ -32,8 +32,9 @@ type CompanyType {
 type Reward {
   id: Int!
   name: String!
-  description: String!
-  points: Float!
+  description: String
+  points: Int!
+  companyId: Int!
   company: Company!
 }
 
@@ -160,6 +161,8 @@ type Query {
   companyLabel(id: Int!): CompanyLabel!
   labels: [Label!]!
   label(id: Int!): Label!
+  rewards: [Reward!]!
+  reward(id: Int!): Reward!
 }
 
 type Mutation {
@@ -195,6 +198,9 @@ type Mutation {
   createLabel(createLabelInput: CreateLabelInput!): Label!
   updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
   removeLabel(id: Int!): Label!
+  createReward(createRewardInput: CreateRewardInput!): Reward!
+  updateReward(id: Float!, updateRewardInput: UpdateRewardInput!): Reward!
+  removeReward(id: Int!): Reward!
 }
 
 input CreateUserInput {
@@ -364,4 +370,18 @@ input CreateLabelInput {
 
 input UpdateLabelInput {
   name: String!
+}
+
+input CreateRewardInput {
+  name: String!
+  description: String
+  points: Int!
+  companyId: Int!
+}
+
+input UpdateRewardInput {
+  name: String
+  description: String
+  points: Int
+  companyId: Int
 }

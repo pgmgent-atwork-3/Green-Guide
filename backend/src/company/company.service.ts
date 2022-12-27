@@ -68,14 +68,30 @@ export class CompanyService {
 
   findAll(): Promise<Company[]> {
     return this.companyRepository.find({
-      relations: ['labels', 'companyTypes', 'sectors', 'categories'],
+      relations: [
+        'labels',
+        'companyTypes',
+        'sectors',
+        'categories',
+        'points',
+        'rewards',
+        'reviews',
+      ],
     });
   }
 
   findOne(id: number): Promise<Company> {
     return this.companyRepository.findOne({
       where: { id },
-      relations: ['labels', 'companyTypes', 'sectors', 'categories'],
+      relations: [
+        'labels',
+        'companyTypes',
+        'sectors',
+        'categories',
+        'points',
+        'rewards',
+        'reviews',
+      ],
     });
   }
 

@@ -9,8 +9,8 @@ export class CreateRewardInput {
   name: string;
 
   @Column()
-  @Field()
-  description: string;
+  @Field({ nullable: true })
+  description?: string;
 
   @Column()
   @Field(() => Int)

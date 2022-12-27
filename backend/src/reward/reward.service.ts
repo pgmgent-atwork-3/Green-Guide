@@ -1,26 +1,63 @@
 import { Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common/decorators';
+import { forwardRef } from '@nestjs/common/utils';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CompanyService } from 'src/company/company.service';
+import { Company } from 'src/company/entities/company.entity';
+import { Repository } from 'typeorm';
 import { CreateRewardInput } from './dto/create-reward.input';
 import { UpdateRewardInput } from './dto/update-reward.input';
+import { Reward } from './entities/reward.entity';
 
 @Injectable()
 export class RewardService {
-  create(createRewardInput: CreateRewardInput) {
-    return 'This action adds a new reward';
+  constructor(
+    @InjectRepository(Reward)
+    private rewardRepository: Repository<Reward>,
+    @Inject(forwardRef(() => CompanyService))
+    private companyService: CompanyService,
+  ) {}
+
+  create(createRewardInput: CreateRewardInput): Promise<Reward> {
+    const reward = this.rewardRepository.create(createRewardInput);
+    return this.rewardRepository.save(reward);
   }
 
-  findAll() {
-    return `This action returns all reward`;
+  findAll(): Promise<Reward[]> {
+    return this.rewardRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} reward`;
+  findOne(id: number): Promise<Reward> {
+    return this.rewardRepository.findOne({
+      where: { id },
+    });
   }
 
-  update(id: number, updateRewardInput: UpdateRewardInput) {
-    return `This action updates a #${id} reward`;
+  async update(
+    id: number,
+    updateRewardInput: UpdateRewardInput,
+  ): Promise<Reward> | null {
+    const reward = await this.rewardRepository.findOne({
+      where: { id },
+    });
+    if (reward) {
+      this.rewardRepository.merge(reward, updateRewardInput);
+      return this.rewardRepository.save(reward);
+    }
+    throw new Error('Reward not found');
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} reward`;
+  async remove(id: number): Promise<Reward> | null {
+    const reward = await this.rewardRepository.findOne({
+      where: { id },
+    });
+    if (reward) {
+      return this.rewardRepository.remove(reward);
+    }
+    throw new Error('Reward not found');
+  }
+
+  getCompany(companyId: number): Promise<Company> {
+    return this.companyService.findOne(companyId);
   }
 }

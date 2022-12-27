@@ -7,18 +7,19 @@ import { Min } from 'class-validator';
 export class UpdateRewardInput extends PartialType(CreateRewardInput) {
   @Column()
   @Field({ nullable: true })
-  name: string;
+  name?: string;
 
   @Column()
   @Field({ nullable: true })
-  description: string;
+  description?: string;
 
   @Column()
   @Field(() => Int, { nullable: true })
   @Min(0)
-  points: number;
+  points?: number;
 
+  //   TODO: Determine if this is needed
   @Column()
   @Field(() => Int, { nullable: true })
-  companyId: number;
+  companyId?: number;
 }
