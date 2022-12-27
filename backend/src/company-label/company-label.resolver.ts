@@ -47,6 +47,13 @@ export class CompanyLabelResolver {
   }
 
   @Mutation(() => CompanyLabel)
+  approveCompanyLabel(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<CompanyLabel> {
+    return this.companyLabelService.approve(id);
+  }
+
+  @Mutation(() => CompanyLabel)
   removeCompanyLabel(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<CompanyLabel> | null {

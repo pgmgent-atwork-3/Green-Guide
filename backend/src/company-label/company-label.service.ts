@@ -64,6 +64,17 @@ export class CompanyLabelService {
     throw new Error('CompanyLabel not found');
   }
 
+  async approve(id: number): Promise<CompanyLabel> | null {
+    const companyLabel = await this.companyLabelRepository.findOne({
+      where: { id },
+    });
+    if (companyLabel) {
+      this.companyLabelRepository.merge(companyLabel, { approved: true });
+      return this.companyLabelRepository.save(companyLabel);
+    }
+    throw new Error('CompanyLabel not found');
+  }
+
   async remove(id: number): Promise<CompanyLabel> | null {
     const companyLabel = await this.companyLabelRepository.findOne({
       where: { id },

@@ -190,6 +190,7 @@ type Mutation {
   removeCompanyRequest(id: Int!): CompanyRequest!
   createCompanyLabel(createCompanyLabelInput: CreateCompanyLabelInput!): CompanyLabel!
   updateCompanyLabel(id: Int!, updateCompanyLabelInput: UpdateCompanyLabelInput!): CompanyLabel!
+  approveCompanyLabel(id: Int!): CompanyLabel!
   removeCompanyLabel(id: Int!): CompanyLabel!
   createLabel(createLabelInput: CreateLabelInput!): Label!
   updateLabel(id: Int!, updateLabelInput: UpdateLabelInput!): Label!
