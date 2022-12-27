@@ -5,14 +5,16 @@ import { Column } from 'typeorm';
 @InputType()
 export class UpdatePointInput extends PartialType(CreatePointInput) {
   @Column()
-  @Field(() => Int)
-  amount: number;
+  @Field(() => Int, { nullable: true })
+  amount?: number;
 
+  // TODO: Determine if this is needed
   @Column()
-  @Field(() => Int)
-  userId: number;
+  @Field(() => Int, { nullable: true })
+  userId?: number;
 
+  // TODO: Determine if this is needed
   @Column()
-  @Field(() => Int)
-  companyId: number;
+  @Field(() => Int, { nullable: true })
+  companyId?: number;
 }
