@@ -1,0 +1,237 @@
+/* v2.2.0
+Lyttle Reset ~ Recommended to use with Lyttle Defaults:
+https://github.com/Stualyttle/LyttleTools/blob/main/CSS/defaults.css
+*/
+
+@use 'abstracts/variables' as v;
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    content: "";
+    content: none;
+    margin: 0;
+    padding: 0;
+    /* word-wrap: break-word; */
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        -webkit-animation-duration: .01ms !important;
+                animation-duration: .01ms !important;
+        -webkit-animation-iteration-count: 1 !important;
+                animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        -webkit-transition-duration: .01ms !important;
+            -o-transition-duration: .01ms !important;
+                transition-duration: .01ms !important;
+    }
+
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    line-height: 1;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+button,
+[type="button"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+img,
+picture {
+    border-style: none;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+::-webkit-input-placeholder {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    opacity: 1;
+    overflow: visible;
+    text-transform: inherit;
+}
+
+::-moz-placeholder {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    opacity: 1;
+    overflow: visible;
+    text-transform: inherit;
+}
+
+:-ms-input-placeholder {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    opacity: 1;
+    overflow: visible;
+    text-transform: inherit;
+}
+
+::-ms-input-placeholder {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    opacity: 1;
+    overflow: visible;
+    text-transform: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+::placeholder {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    opacity: 1;
+    overflow: visible;
+    text-transform: inherit;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    border: 0;
+    color: inherit;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    text-decoration: inherit;
+    vertical-align: baseline;
+}
