@@ -1,0 +1,96 @@
+// All Variables
+
+// Primary colors
+$primary-100: rgba(148, 212, 11, 1);
+// $primary-75: rgba(148, 212, 11, 0.75);
+// $primary-50: rgba(148, 212, 11, 0.5);
+// $primary-25: rgba(148, 212, 11, 0.25);
+
+// .bg-primary-100 { background-color: $primary-100; }
+// .bg-primary-75 { background-color: $primary-75; }
+// .bg-primary-50 { background-color: $primary-50; }
+// .bg-primary-25 { background-color: $primary-25; }
+// .text-primary-100 { color: $primary-100; }
+
+// Secondary colors
+$secondary-100: rgba(26, 86, 50, 1);
+// $secondary-75: rgba(26, 86, 50, 0.75);
+// $secondary-50: rgba(26, 86, 50, 0.5);
+// $secondary-25: rgba(26, 86, 50, 0.25);
+
+// .bg-secondary-100 { 
+//     background-color: $secondary-100; 
+//     .hover { background-color: $secondary-100; } 
+// }
+// .bg-secondary-75 { background-color: $secondary-75; }
+// .bg-secondary-50 { background-color: $secondary-50; }
+// .bg-secondary-25 { background-color: $secondary-25; }
+// .text-secondary-100 { color: $secondary-100; }
+
+// Accent colors
+$accent-100: rgba(252, 173, 54, 1);
+// $accent-75: rgba(252, 173, 54, 0.75);
+// $accent-50: rgba(252, 173, 54, 0.5);
+// $accent-25: rgba(252, 173, 54, 0.25);
+
+// .bg-accent-100 { background-color: $accent-100; }
+// .bg-accent-75 { background-color: $accent-75; }
+// .bg-accent-50 { background-color: $accent-50; }
+// .bg-accent-25 { background-color: $accent-25; }
+// .text-accent-100 { color: $accent-100; }
+
+// background colors
+$bg-100: rgba(221, 212, 195, 1);
+$bg-75: rgba(225, 223, 216, 1);
+$bg-50: rgba(234, 233, 229, 1);
+$bg-25: rgba(245, 245, 245, 1);
+
+// neutrals
+$black: rgba(0, 0, 0, 1);
+$grey-100: rgba(171, 169, 169, 1);
+$grey-50: rgba(206, 206, 206, 1);
+$white: rgb(255, 255, 255);
+
+// .bg-100 { background-color: $bg-100; }
+// .bg-75 { background-color: $bg-75; }
+// .bg-50 { background-color: $bg-50; }
+// .bg-25 { background-color: $bg-25; }
+
+// .bg-50:hover { background-color: $bg-50;}
+
+
+// Fonts
+
+$primary-font : 'Sansita', sans-serif; 
+$secondary-font : 'Open Sans', sans-serif;
+.primary-font { font-family: '$primary-font'}
+.secondary-font { font-family: '$secondary-font' }
+
+// Spacers
+$spacer-1: 1rem;
+$spacer-2: 2rem;
+$spacer-3: 3rem;
+$spacer-4: 4rem;
+$spacer-5: 5rem;
+
+// global media vars
+$def: 20rem;
+$xs: 23.5em;    // 376px @media (max-width: $xs) {}
+$sm: 36em;      // (min-width: 576px)
+$md: 48em;      // (min-width: 768px)
+$lg: 62em;      // (min-width: 992px)
+$gl: 64em;      //! gap `lg - xl` (min-width: 1024px)
+$xl: 75em;      // (min-width: 1200px)
+
+// to container
+$col-sm: 33.75rem;  // (max-width: 540px)
+$col-md: 45rem;  // (max-width: 720px)
+$col-lg: 60rem;  // (max-width: 960px)
+$col-xl: 71.25rem; // (max-width: 1140px)
+
+$breakpoints: (
+    sm: $sm,
+    md: $md,
+    lg: $lg,
+    xl: $xl
+);
