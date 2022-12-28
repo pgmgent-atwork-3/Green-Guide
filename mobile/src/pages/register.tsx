@@ -9,7 +9,7 @@ const Register = () => {
         height: 98,
     }
 
-    const [width, setWidth] = useState(480);
+    const [width, setWidth] = useState(380);
     const [height, setHeight] = useState(800 / 5.3);
 
     // useEffect(() => {

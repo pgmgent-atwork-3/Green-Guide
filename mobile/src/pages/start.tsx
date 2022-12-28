@@ -1,18 +1,22 @@
-import Navbar from '../components/Navbar'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+
 import styles from '../../styles/Home.module.scss'
+import Navbar from '../components/Navbar'
+import Header from '../components/Header'
+import Card from '../components/Card'
+import Carousel from '../components/Carousel'
 
 const Start = () => {
     const container = useRef(null);
     const logoDimensions = {
-        width: 98,
-        height: 98,
+        width: 68,
+        height: 68,
     }
 
     const [width, setWidth] = useState(480);
-    const [height, setHeight] = useState(800 / 5.3);
+    const [height, setHeight] = useState(550 / 5.3);
 
     // useEffect(() => {
     //     if (container.current !== null){
@@ -23,24 +27,24 @@ const Start = () => {
 
 return (
     <div className={styles.app_container} ref={container}>
-        <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
-        <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
-        
+        <Header />
         <Navbar />
         <div className={styles.content_container}>
-            <h1 className={styles.title}>Start</h1>
-            
-            <div className={styles.btn_group}>
+            <Card/>
 
-                <ol>
-                    <li>header</li>
-                    <li>intro text - COPY</li>
-                    <li>newest GG vendors - DB</li>
-                    <li>text block - COPY</li>
-                    <li>most popular GG vendors - DB</li>
-                    <li>social media links</li>
-                </ol>
-            </div>
+            <h2 className={styles.title}>Popular Green vendors</h2>
+            <p className={styles.subtitle}>Give them some love from us!</p>
+            <Carousel/>
+
+            <Card/>
+
+            <h2 className={styles.title}>Newest Green vendors</h2>
+            <p className={styles.subtitle}>Give them a warm welcome from us!</p>
+            <Carousel/>
+            
+            <ol>
+                <li>social media links</li>
+            </ol>
         </div>
     </div>
     )

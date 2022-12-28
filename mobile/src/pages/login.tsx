@@ -10,7 +10,7 @@ const Login = () => {
         height: 98,
     }
 
-    const [width, setWidth] = useState(480);
+    const [width, setWidth] = useState(380);
     const [height, setHeight] = useState(800 / 5.3);
 
     // useEffect(() => {
@@ -40,11 +40,11 @@ const Login = () => {
                     </div>
 
                     <span  className={styles.grey_text}>Forgot your password?</span>
-                    <button className={`${styles.btn} ${styles.btn_secondary}`}>Login with Google</button>
+                    <button className={`${styles.btn} ${styles.btn_secondary}`}> <a href="/start">Login with Google</a> </button>
 
                     <button className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
                 </form>
-                <span className={styles.grey_text}>Dont have an account yet?</span>
+                <span className={styles.grey_text}>Dont have an account?</span>
                 <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/register">Register</a></button>
             </div>
         </div>
