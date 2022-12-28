@@ -5,28 +5,26 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    min-height: 3.75rem;
-    width: 75vw;
+    max-height: 4.5rem;
+    width: 90vw;
     margin: 0 auto;
-    padding: 0 1rem;
-
-    position: absolute;
+    /* padding: 0 1rem; */
+    position: fixed;
     left: 0;
-    bottom: 2rem;
+    bottom: 1rem;
     right: 0;
     z-index: 100;
-
-    background-color: v.$white;
-    border-radius: .5rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    border-radius: 0.5rem;
 
     .nav_item {
         display: flex;
         flex-direction: column;
         align-items: center;
         list-style: none;
-        height: 3rem; 
-        padding: .8rem;;
+        // height: 3rem; 
+        padding: 1rem;
     }       
 
 
@@ -38,8 +36,8 @@
     .green_icon {
         background-color: v.$primary-100;
         border-radius: 50%;
-        width: 2.5rem;
-        height: 2.5rem;
+        // width: 3.5rem;
+        // height: 3.5rem;
     }
 
     .nav_link {
