@@ -1,14 +1,15 @@
 import React from 'react'
+import styles from '../../styles/Home.module.scss'
 
 const Navbar = () => {
 return (
     <div>
-        <ul>
-            <li><a href="/start">start</a></li>
-            <li><a href="/score">score</a></li>
-            <li><a href="/scan">scan</a></li>
-            <li><a href="/search">search</a></li>
-            <li><a href="/profile">profile</a></li>
+        <ul className={styles.navbar}>
+            <li  className={styles.nav_item}><a className={styles.nav_link} href="/start">start</a></li>
+            <li  className={styles.nav_item}><a className={styles.nav_link} href="/score">score</a></li>
+            <li  className={styles.nav_item}><a className={styles.nav_link} href="/scan">scan</a></li>
+            <li  className={styles.nav_item}><a className={styles.nav_link} href="/search">search</a></li>
+            <li  className={styles.nav_item}><a className={styles.nav_link} href="/profile">profile</a></li>
         </ul>
     </div>
     )
