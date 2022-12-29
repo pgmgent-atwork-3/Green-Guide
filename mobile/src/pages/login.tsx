@@ -25,7 +25,7 @@ const Login = () => {
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className={styles.content_container}>
+            <div className={`${styles.content_container} ${styles.spaced}`}>
                 <h1 className={styles.title}>Login</h1>
                 <form className={styles.form} action="">
                     <label htmlFor="">E-mail</label>
