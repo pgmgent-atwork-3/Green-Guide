@@ -24,15 +24,12 @@ const Register = () => {
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className={styles.content_container}>
+            <div className={`${styles.content_container} ${styles.spaced}`}>
                 <h1 className={styles.title}>Register</h1>
                 <form className={styles.form} action="">
 
                     <label htmlFor="">First name</label>
                     <input className={styles.input_field} type="text" name="text" id="firstName" placeholder="First name"/>
-
-
-                    
 
                     <label htmlFor="">Last name</label>
                     <input className={styles.input_field} type="text" name="text" id="lastName" placeholder="Last name"/>
