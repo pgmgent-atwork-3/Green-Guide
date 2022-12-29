@@ -19,8 +19,7 @@ return (
                 <a className={styles.nav_link} href="/score">score</a>
             </li>
             <li className={`${styles.nav_item} ${styles.green_icon}`}>
-                 <a className={styles.nav_link} href="/scan"><Image src='/svg/scan.svg' width={iconDimensions.width} height={iconDimensions.height} alt='scan-icon' className={styles.nav_icon}/></a>
-                {/*scan */}
+                <a className={styles.nav_link} href="/scan"><Image src='/svg/scan.svg' width={iconDimensions.width} height={iconDimensions.height} alt='scan-icon' className={styles.nav_icon}/></a>
             </li>
             <li className={styles.nav_item}>
                 <Image src='/svg/search.svg' width={iconDimensions.width} height={iconDimensions.height} alt='search-icon' className={styles.nav_icon}/>
