@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
+import Header from '../components/Header'
 
 const score = () => {
     const container = useRef(null);
@@ -23,21 +24,37 @@ const score = () => {
 
 return (
     <div className={styles.app_container} ref={container}>
-        <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
-        <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
-        
+        <Header />
         <Navbar />
+
         <div className={styles.content_container}>
-            <h1 className={styles.title}>Score</h1>
             
-            <div className={styles.btn_group}>
+            {/* this card need to become a component with type = info-card */}
+            <div className={styles.info_card}>
+                <p>How it works: When you visit a vendor you can collect loyalty points and earn amazing rewards.</p>
+            </div>
+
+            {/* this card need to become a component with type = reward-card */}
+            <div className={styles.reward_card}>
+                <p className={styles.subtitle}>You collected <span>72</span> points at</p>
+                <h2 className={styles.title}>Ohne</h2>            
+            </div>
+
+            <div className={styles.reward_card}>
+                <p className={styles.subtitle}>You collected <span>15</span> points at</p>
+                <h2 className={styles.title}>Tasty World</h2>            
+            </div>
+
+            <div className={styles.reward_card}>
+                <p className={styles.subtitle}>You collected <span>10</span> points at</p>
+                <h2 className={styles.title}>Appelier</h2>            
+            </div>
+            
+            
                 <ol>            
-                    <li>header</li>
-                    <li>intro text</li>
-                    <li>points collected from vendors - DB</li>
                     <li>details of the rewards</li>
                 </ol>
-            </div>
+            
         </div>
     </div>
 )
