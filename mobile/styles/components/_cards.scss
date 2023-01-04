@@ -96,7 +96,6 @@
     }
 }
 
-
 .reward_card {
     background-color: v.$bg-25;
     border-radius: .5rem;
@@ -108,6 +107,21 @@
     line-height: 1.5rem;
     box-shadow: .2rem .2rem .5rem v.$grey-50;
     position: relative;
+
+    .reward_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img {
+        transform: rotate(90deg);
+
+        &.open {
+            transform: rotate(-90deg);
+        }
+    }
 
     .card_title {
         font-family: v.$primary-font;
@@ -138,5 +152,49 @@
         background-color: v.$primary-100;
         color: v.$bg-50;
         transition: all 0.3s ease-in-out;
+    }
+
+
+    .rewards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .reward {
+
+            margin-top: 1rem;
+
+            .points_bubble {
+                background-color: v.$accent-100;
+                border-radius: 50%;
+                width: 4.5rem;
+                height: 4.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: v.$white;
+                font-size: 1rem;
+                font-weight: 700;
+                line-height: 1rem;
+                text-align: center;
+                font-family: v.$primary-font;
+            }
+
+            .points {
+
+            }
+
+            .point_name {
+                color: v.$secondary-100;
+                font-size: .9rem;
+                font-weight: 700;
+                line-height: 1rem;
+                text-align: center;
+                margin: .5rem 0;
+            }
+        }
     }
 }
