@@ -12,6 +12,11 @@ const search = () => {
         height: 20,
     }
 
+    const iconDimensions = {
+        width: 55,
+        height: 60,
+    }
+
     const mapDimensions = {
         width: 400,
         height: 200,
@@ -48,24 +53,42 @@ return (
             </div>
 
             {/* vendor addresses */}
-            <div className={styles.reward_card}>
-                <a href="/vendor-detail">
-                    <h2 className={styles.title}>Ohne</h2>            
-                    <p className={styles.subtitle}>Steendam 68, 9000 Gent</p>
-                </a>
+            <div className={styles.vendor_card}>
+                <div className={styles.vendor_header}>
+                    <Image src="/svg/map-pointer.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
+                    <div className={styles.header}>
+                        <a href="/vendor-detail">
+                            <h2 className={styles.title}>Ohne</h2>            
+                            <p className={styles.subtitle}>Steendam 68, 9000 Gent</p>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div className={styles.reward_card}>
-                <a href="/vendor-detail">
-                    <h2 className={styles.title}>Tasty World</h2>            
-                    <p className={styles.subtitle}>Reep 14B, 9000 Gent</p>
-                </a>
+            <div className={styles.vendor_card}>
+                <div className={styles.vendor_header}>
+                    <Image src="/svg/map-pointer.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
+                    <div className={styles.header}>
+                        <a href="/vendor-detail">
+                            <h2 className={styles.title}>Tasty World</h2>            
+                            <p className={styles.subtitle}>Reep 14B, 9000 Gent</p>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div className={styles.reward_card}>
+            <div className={styles.vendor_card}>
+                <div className={styles.vendor_header}>
+                    <Image src="/svg/map-pointer.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
+                    <div className={styles.header}>
+                        <a href="/vendor-detail">
+                            <h2 className={styles.title}>Appelier</h2>            
+                            <p className={styles.subtitle}>Oude Houtlei 122, 9000 Gent</p>
+                        </a>
+                    </div>
+                </div>
                 <a href="/vendor-detail">
-                    <h2 className={styles.title}>Appelier</h2>            
-                    <p className={styles.subtitle}>Oude Houtlei 122, 9000 Gent</p>
+
                 </a>
             </div>
         </div>
