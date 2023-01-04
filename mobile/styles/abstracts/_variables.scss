@@ -73,6 +73,10 @@ $spacer-3: 3rem;
 $spacer-4: 4rem;
 $spacer-5: 5rem;
 
+.spaced {
+    padding: 12rem 2rem 15rem 2rem;
+}
+
 // global media vars
 $def: 20rem;
 $xs: 23.5em;    // 376px @media (max-width: $xs) {}
