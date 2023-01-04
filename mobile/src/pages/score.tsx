@@ -46,7 +46,7 @@ return (
                         <p className={styles.subtitle}>You collected <span className={styles.accent_color}>72</span> points at</p>
                         <h2 className={styles.title}>Ohne</h2>   
                     </div>
-                    <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
+                    <Image className={`${styles.img} ${styles.open}`} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
                 <div className={styles.flex_row}>
                     <h3 className={styles.h3}>Collect rewards</h3>
@@ -94,19 +94,23 @@ return (
             </div>
 
             <div className={styles.reward_card}>
-                <div className={styles.card_content}>
-                    <p className={styles.subtitle}>You collected <span className={styles.accent_color}>15</span> points at</p>
-                    <h2 className={styles.title}>Tasty World</h2>  
+                <div className={styles.reward_header}>
+                    <div className={styles.header}>
+                        <p className={styles.subtitle}>You collected <span className={styles.accent_color}>15</span> points at</p>
+                        <h2 className={styles.title}>Tasty World</h2>  
+                    </div>
+                    <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
-                <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
             </div>
 
             <div className={styles.reward_card}>
-                <div className={styles.card_content}>
-                    <p className={styles.subtitle}>You collected <span className={styles.accent_color}>10</span> points at</p>
-                    <h2 className={styles.title}>Appelier</h2>   
+                <div className={styles.reward_header}>
+                    <div className={styles.header}>
+                        <p className={styles.subtitle}>You collected <span className={styles.accent_color}>10</span> points at</p>
+                        <h2 className={styles.title}>Appelier</h2>   
+                    </div>
+                    <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
-                <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
             </div>
         </div>
     </div>
