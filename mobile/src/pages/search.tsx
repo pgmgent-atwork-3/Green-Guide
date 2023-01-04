@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
+import Filter from '../components/Filter'
 
 const search = () => {
     const container = useRef(null);
@@ -21,7 +22,6 @@ const search = () => {
         width: 400,
         height: 200,
     }
-
 
 return (
     <div className={styles.app_container} ref={container}>
@@ -46,6 +46,8 @@ return (
                     </button>
                 </div>
             </div>
+
+            <Filter/>
 
             {/* map */}
             <div className={styles.map}>
@@ -87,9 +89,6 @@ return (
                         </a>
                     </div>
                 </div>
-                <a href="/vendor-detail">
-
-                </a>
             </div>
         </div>
     </div>
