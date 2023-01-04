@@ -34,7 +34,7 @@ return (
                         initialValues={{ email: '', password: '' }}
                         validationSchema={loginValidationSchema}
                         onSubmit={ async (values, { setSubmitting }) => {
-                           await fetch('http://localhost:3001/auth/login', {
+                            await fetch('http://localhost:3001/auth/login', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
