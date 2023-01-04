@@ -198,3 +198,29 @@
         }
     }
 }
+
+.vendor_card {
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    position: relative;
+
+    .vendor_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: .5rem;
+        align-items: center;
+    }
+
+    .subtitle {
+        margin-top: .5rem;
+        line-height: 1.2rem;
+    }
+}
