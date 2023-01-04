@@ -21,8 +21,8 @@ const search = () => {
 return (
     <div className={styles.app_container} ref={container}>
         <Header />
-
         <Navbar />
+        
         <div className={styles.content_container}>
 
             <div className={styles.search_field}>
