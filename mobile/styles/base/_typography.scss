@@ -1,0 +1,59 @@
+@use '../abstracts/variables' as v;
+
+.h3 {
+    font-family: v.$secondary-font;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: v.$secondary-100;
+    margin-top: 1rem;
+}
+
+.large_title {
+    font-family: v.$primary-font;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: v.$primary-100;
+}
+
+.title {
+    font-family: v.$primary-font;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    text-align: start;
+    color: v.$primary-100;
+} 
+
+.subtitle {
+    font-family: v.$secondary-font;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 2rem;
+    text-align: start;
+    color: v.$secondary-100;
+}
+
+.accent_color {
+    color: v.$accent-100;
+    font-family: v.$primary-font;
+    font-size: 1.3rem;
+}
+
+.grey_text {
+    font-family: v.$secondary-font;
+    color: v.$grey-100;
+    font-weight: 600;
+    font-size: .9rem;
+    margin: 1rem 0;
+}
+
+.link {
+    font-family: v.$secondary-font;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+}
