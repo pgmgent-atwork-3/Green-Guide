@@ -18,8 +18,6 @@ return (
     <div className="min-h-screen">
         <main>
             <div className="mx-auto max-w-7xl py-36 sm:px-20 lg:px-40">
-            
-            {/* Main content */}
 
             <h1 className="pb-6 text-4xl font-bold tracking-tight text-primary-100 primary-font">Sign Up</h1>
 
@@ -459,8 +457,6 @@ return (
                 </div>
             </section>
 
-            {/* End Main content */}
-            
             </div>
         </main>
     </div>
