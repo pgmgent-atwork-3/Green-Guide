@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PointService } from './point.service';
 import { Point } from './entities/point.entity';
 import { CreatePointInput } from './dto/create-point.input';
@@ -22,16 +22,22 @@ export class PointResolver {
     @Args('createPointInput') createPointInput: CreatePointInput,
     @CurrentUser() user: User,
   ): Promise<Point> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.pointService.create(createPointInput);
   }
 
   @Query(() => [Point], { name: 'point' })
   findAll(): Promise<Point[]> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.pointService.findAll();
   }
 
   @Query(() => Point, { name: 'point' })
   findOne(@Args('id', { type: () => Int }) id: number): Promise<Point> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.pointService.findOne(id);
   }
 
@@ -43,6 +49,8 @@ export class PointResolver {
     @Args('id') id: number,
     @CurrentUser() user: User,
   ): Promise<Point> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.pointService.update(updatePointInput.id, updatePointInput);
   }
 
@@ -53,6 +61,8 @@ export class PointResolver {
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
   ): Promise<Point> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.pointService.remove(id);
   }
 }
