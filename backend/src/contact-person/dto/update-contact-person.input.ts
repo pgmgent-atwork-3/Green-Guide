@@ -8,17 +8,17 @@ export class UpdateContactPersonInput extends PartialType(
 ) {
   @Column()
   @Field({ nullable: true })
-  firstName: string;
+  firstName?: string;
 
   @Column()
   @Field({ nullable: true })
-  lastName: string;
+  lastName?: string;
 
   @Column()
   @Field({ nullable: true })
-  email: string;
+  email?: string;
 
   @Column()
   @Field({ nullable: true })
-  phoneNumber: string;
+  phoneNumber?: string;
 }

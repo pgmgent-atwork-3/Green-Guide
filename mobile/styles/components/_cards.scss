@@ -1,0 +1,226 @@
+@use 'abstracts/variables' as v;
+
+.card {
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .card_title {
+        font-family: v.$primary-font;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_text {
+        font-family: v.$secondary-font;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_btn {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem 2rem;
+        margin: .5rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: v.$primary-100;
+        color: v.$bg-50;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.info_card {
+    background-color: v.$bg-75;
+    border-radius: .5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    // box-shadow: .2rem .2rem .5rem v.$grey-50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .card_title {
+        font-family: v.$primary-font;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_text {
+        font-family: v.$secondary-font;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_btn {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem 2rem;
+        margin: .5rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: v.$primary-100;
+        color: v.$bg-50;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.reward_card {
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    position: relative;
+
+    .reward_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img {
+        transform: rotate(90deg);
+
+        &.open {
+            transform: rotate(-90deg);
+        }
+    }
+
+    .card_title {
+        font-family: v.$primary-font;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_text {
+        font-family: v.$secondary-font;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: v.$primary-100;
+        margin: 1rem 0;
+    }
+
+    .card_btn {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem 2rem;
+        margin: .5rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: v.$primary-100;
+        color: v.$bg-50;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .rewards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .reward {
+
+            margin-top: 1rem;
+
+            .points_bubble {
+                background-color: v.$accent-100;
+                border-radius: 50%;
+                width: 4.5rem;
+                height: 4.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: v.$white;
+                font-size: 1rem;
+                font-weight: 700;
+                line-height: 1rem;
+                text-align: center;
+                font-family: v.$primary-font;
+            }
+
+            .points {
+
+            }
+
+            .point_name {
+                color: v.$secondary-100;
+                font-size: .9rem;
+                font-weight: 700;
+                line-height: 1rem;
+                text-align: center;
+                margin: .5rem 0;
+            }
+        }
+    }
+}
+
+.vendor_card {
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    position: relative;
+
+    .vendor_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: .5rem;
+        align-items: center;
+    }
+
+    .subtitle {
+        margin-top: .5rem;
+        line-height: 1.2rem;
+    }
+}

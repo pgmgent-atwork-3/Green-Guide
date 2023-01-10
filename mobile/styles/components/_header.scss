@@ -1,0 +1,47 @@
+@use 'abstracts/variables' as v;
+
+.header_text {
+    font-weight: 600;
+    line-height: 3rem;
+    color: v.$primary-100;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 2rem;
+    padding-top: 1.8rem;
+    line-height: .1rem;
+    
+    .intro {
+        font-family: v.$secondary-font;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: v.$secondary-100;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .title {
+        font-family: v.$primary-font;
+        font-size: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.profile_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0;
+
+    .profile_image {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: v.$bg-25;
+    }
+}
+

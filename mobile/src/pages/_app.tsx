@@ -1,8 +1,5 @@
-// import '../src/scss/main.scss'
-// import styles from '../styles/Home.module.scss'
-import './styles/globals.css'
 import type { AppProps } from 'next/app'
-
+import '../../styles/base/reset.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
     return <Component {...pageProps} />

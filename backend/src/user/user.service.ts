@@ -15,12 +15,14 @@ export class UserService {
   findOneByEmail(email: string): Promise<User> {
     return this.userRepository.findOne({
       where: { email },
+      relations: ['points', 'reviews'],
     });
   }
 
   findOneByUserName(userName: string): Promise<User> {
     return this.userRepository.findOne({
       where: { userName },
+      relations: ['points', 'reviews'],
     });
   }
 
@@ -30,12 +32,13 @@ export class UserService {
   }
 
   findAll(): Promise<User[]> {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['points', 'reviews'] });
   }
 
   findOne(id: number): Promise<User> {
     return this.userRepository.findOne({
       where: { id },
+      relations: ['points', 'reviews'],
     });
   }
 

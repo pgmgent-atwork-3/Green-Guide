@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as v;
+
+.btn_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    margin: .5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.btn_primary {
+    background-color: v.$accent-100;
+    color: v.$white;
+}
+
+.btn_secondary {
+    background-color: v.$bg-75;
+    color: v.$grey-100
+}

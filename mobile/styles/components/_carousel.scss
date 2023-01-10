@@ -1,0 +1,22 @@
+@use 'abstracts/variables' as v;
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 1rem;
+    overflow: auto;
+
+    .carousel_title {
+        font-family: v.$secondary-font;
+        font-size: .85rem;
+        font-weight: 600;
+        color: v.$secondary-100;
+    }
+
+    .img {
+        object-fit: cover;
+        border-radius: 0.5rem;
+        background-color: v.$primary-100;
+    }
+}

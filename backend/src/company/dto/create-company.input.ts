@@ -8,36 +8,16 @@ export class CreateCompanyInput {
   name: string;
 
   @Column()
-  @Field()
-  summary: string;
+  @Field({ nullable: true })
+  summary?: string;
 
   @Column()
-  @Field()
-  established: Date;
+  @Field({ nullable: true })
+  established?: Date;
 
   @Column()
-  @Field()
-  openingHours: string;
-
-  @Column()
-  @Field()
-  btwNumber: number;
-
-  @Column()
-  @Field(() => Int, { nullable: true })
-  pointIds: number[];
-
-  @Column()
-  @Field(() => Int, { nullable: true })
-  rewardIds: number[];
-
-  @Column()
-  @Field(() => Int, { nullable: true })
-  reviewIds: number[];
-
-  @Column()
-  @Field(() => Int, { nullable: true })
-  companyTypeIds: number[];
+  @Field({ nullable: true })
+  openingHours?: string;
 
   @Column()
   @Field(() => Int)
@@ -48,14 +28,18 @@ export class CreateCompanyInput {
   addressId: number;
 
   @Column()
-  @Field(() => Int)
-  sectorIds: number[];
+  @Field(() => Int, { nullable: true })
+  labelIds?: number[];
 
   @Column()
-  @Field(() => Int)
-  categoryIds: number[];
+  @Field(() => Int, { nullable: true })
+  companyTypeIds?: number[];
 
   @Column()
-  @Field(() => Int)
-  companyRequestId: number;
+  @Field(() => Int, { nullable: true })
+  sectorIds?: number[];
+
+  @Column()
+  @Field(() => Int, { nullable: true })
+  categoryIds?: number[];
 }

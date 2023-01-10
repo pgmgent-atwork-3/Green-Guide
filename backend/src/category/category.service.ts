@@ -25,6 +25,12 @@ export class CategoryService {
     return this.categoryRepository.find();
   }
 
+  findBySectorId(sectorId: number): Promise<Category[]> {
+    return this.categoryRepository.find({
+      where: { sectorId },
+    });
+  }
+
   findOne(id: number): Promise<Category> {
     return this.categoryRepository.findOne({
       where: { id },

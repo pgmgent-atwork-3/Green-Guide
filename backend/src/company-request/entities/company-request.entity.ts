@@ -1,14 +1,15 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { IsEmail } from 'class-validator';
 import { Category } from 'src/category/entities/category.entity';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 import { CompanyType } from 'src/company-type/entities/company-type.entity';
-import { Label } from 'src/label/entities/label.entity';
 import { Sector } from 'src/sector/entities/sector.entity';
 import {
   Column,
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -18,10 +19,6 @@ export class CompanyRequest {
   @PrimaryGeneratedColumn()
   @Field(() => Int)
   id: number;
-
-  @Column()
-  @Field()
-  approved: boolean;
 
   @Column()
   @Field()
@@ -76,23 +73,28 @@ export class CompanyRequest {
   @Field()
   zipCode: string;
 
-  @ManyToMany(() => Label, { cascade: true })
-  @JoinTable({ name: 'company_request_labels' })
-  @Field(() => [Label], { nullable: true })
-  labels: Label[];
+  @OneToMany(
+    () => CompanyLabel,
+    (companyLabel) => companyLabel.companyRequest,
+    {
+      cascade: true,
+    },
+  )
+  @Field(() => [CompanyLabel])
+  labels: CompanyLabel[];
 
   @ManyToMany(() => CompanyType, { cascade: true })
   @JoinTable({ name: 'company_request_company_types' })
-  @Field(() => [CompanyType], { nullable: true })
+  @Field(() => [CompanyType])
   companyTypes: CompanyType[];
 
   @ManyToMany(() => Sector, { cascade: true })
   @JoinTable({ name: 'company_request_sectors' })
-  @Field(() => [Sector], { nullable: true })
+  @Field(() => [Sector])
   sectors: Sector[];
 
   @ManyToMany(() => Category, { cascade: true })
   @JoinTable({ name: 'company_request_categories' })
-  @Field(() => [Category], { nullable: true })
+  @Field(() => [Category])
   categories: Category[];
 }

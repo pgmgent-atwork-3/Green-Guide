@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as v;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: flex-start;
+    font-family: v.$secondary-font;
+
+    .form_row {
+        flex-direction: row;
+    }
+
+    .input_field {
+        padding: 1rem 2rem;
+        margin: 0.5rem 0;
+        background-color: v.$bg-75;
+        border: none;
+        border-radius: 0.5rem;
+        width: 100%;
+    }
+}

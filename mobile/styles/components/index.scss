@@ -1,0 +1,90 @@
+/*
+This file is used to contain all components imports.
+*/
+
+//Import Components files
+@use 'navbar';
+@use 'header';
+@use 'footer';
+@use 'buttons';
+@use "forms";
+@use "cards";
+@use "carousel";
+
+@use '../abstracts/variables' as v;
+
+.search_bar {
+    position: relative;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    font-weight: 600;
+    color: v.$grey-100;
+    width: 85%;
+
+    .search_input {
+        padding: 1rem;
+        margin: .5rem 0 1rem 0;
+        background-color: v.$bg-25;
+        border: none;
+        border-radius: 0.5rem;
+        width: 100%;
+    }
+
+    .search_button {
+        position: absolute;
+        right: 1.4rem;
+        top: 1.4rem;
+        cursor: pointer;
+    }
+}
+
+.search_field {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.filter_item {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .5rem;
+    border-radius: 50%;
+
+    margin: 0.5rem 0;
+    cursor: pointer;
+    background-color: v.$accent-100;
+
+    .filter_icon {
+        margin-right: 0.5rem;
+    }
+}
+
+.settings_card {
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 0 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    position: relative;
+    margin: 1rem 0;
+}
+
+.profile_settings_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: .125rem solid v.$bg-75;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

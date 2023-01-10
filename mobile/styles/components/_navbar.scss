@@ -1,0 +1,50 @@
+@use 'abstracts/variables' as v;
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 4.5rem;
+    width: 90vw;
+    margin: 0 auto;
+    /* padding: 0 1rem; */
+    position: fixed;
+    left: 0;
+    bottom: 1rem;
+    right: 0;
+    z-index: 100;
+    background-color: rgb(255, 255, 255);
+    box-shadow: .2rem .2rem .5rem v.$grey-50;
+    border-radius: 0.5rem;
+
+    .nav_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        // height: 3rem; 
+        padding: 1rem;
+    }       
+
+    .nav_icon {
+        font-size: 1.5rem;
+        color: v.$secondary-100;
+    }
+
+    .green_icon {
+        background-color: v.$primary-100;
+        border-radius: 50%;
+        // width: 3.5rem;
+        // height: 3.5rem;
+    }
+
+    .nav_link {
+        font-family: v.$secondary-font;
+        color: v.$secondary-100;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: .85rem;
+    }
+}   
+

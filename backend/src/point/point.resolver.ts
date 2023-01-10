@@ -1,4 +1,12 @@
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { PointService } from './point.service';
 import { Point } from './entities/point.entity';
 import { CreatePointInput } from './dto/create-point.input';
@@ -10,6 +18,7 @@ import { Roles } from '../Decorators/roles.decorator';
 import { Role } from '../role.enum';
 import { User } from '../user/entities/user.entity';
 import { CurrentUser } from '../Decorators/currentUser.decorator';
+import { Company } from 'src/company/entities/company.entity';
 
 @Resolver(() => Point)
 export class PointResolver {
@@ -22,22 +31,16 @@ export class PointResolver {
     @Args('createPointInput') createPointInput: CreatePointInput,
     @CurrentUser() user: User,
   ): Promise<Point> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.pointService.create(createPointInput);
   }
 
-  @Query(() => [Point], { name: 'point' })
+  @Query(() => [Point], { name: 'points' })
   findAll(): Promise<Point[]> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.pointService.findAll();
   }
 
   @Query(() => Point, { name: 'point' })
   findOne(@Args('id', { type: () => Int }) id: number): Promise<Point> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.pointService.findOne(id);
   }
 
@@ -45,13 +48,11 @@ export class PointResolver {
   @UseGuards(GqlAuthGuard, RolesGuard)
   @Roles(Role.COMPANY, Role.SUPERADMIN, Role.ADMIN)
   updatePoint(
-    @Args('updatePointInput') updatePointInput: UpdatePointInput,
     @Args('id') id: number,
+    @Args('updatePointInput') updatePointInput: UpdatePointInput,
     @CurrentUser() user: User,
   ): Promise<Point> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return this.pointService.update(updatePointInput.id, updatePointInput);
+    return this.pointService.update(id, updatePointInput);
   }
 
   @Mutation(() => Point)
@@ -61,8 +62,16 @@ export class PointResolver {
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
   ): Promise<Point> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.pointService.remove(id);
+  }
+
+  @ResolveField(() => User)
+  user(@Parent() point: Point): Promise<User> {
+    return this.pointService.getUser(point.userId);
+  }
+
+  @ResolveField(() => Company)
+  company(@Parent() point: Point): Promise<Company> {
+    return this.pointService.getCompany(point.companyId);
   }
 }

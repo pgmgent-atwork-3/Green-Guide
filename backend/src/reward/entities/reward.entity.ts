@@ -14,16 +14,22 @@ export class Reward {
   @Field()
   name: string;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   description: string;
 
   @Column()
-  @Field()
+  @Field(() => Int)
   @Min(0)
   points: number;
 
-  @ManyToOne(() => Company, (company) => company.rewards)
+  @Column()
+  @Field(() => Int)
+  companyId: number;
+
+  @ManyToOne(() => Company, (company) => company.rewards, {
+    onDelete: 'CASCADE',
+  })
   @Field(() => Company)
-  company?: Company;
+  company: Company;
 }

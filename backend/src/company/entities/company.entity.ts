@@ -17,7 +17,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Address } from 'src/address/entities/address.entity';
-import { CompanyRequest } from 'src/company-request/entities/company-request.entity';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
 
 @Entity()
 @ObjectType()
@@ -27,63 +27,67 @@ export class Company {
   id: number;
 
   @Column()
-  @Field(() => Int)
-  btwNumber: number;
-
-  @Column()
   @Field()
   name: string;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   summary: string;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   established: Date;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   openingHours: string;
 
-  @OneToMany(() => Point, (point) => point.company)
-  @Field(() => [Point], { nullable: true })
-  points: Point[];
+  @Column()
+  @Field(() => Int)
+  contactPersonId: number;
 
-  @OneToMany(() => Reward, (reward) => reward.company)
-  @Field(() => [Reward], { nullable: true })
-  rewards: Reward[];
-
-  @OneToMany(() => Review, (review) => review.company)
-  @Field(() => [Review], { nullable: true })
-  reviews: Review[];
-
-  @ManyToMany(() => CompanyType)
-  @Field(() => [CompanyType], { nullable: true })
-  companyTypes: CompanyType[];
-
-  @OneToOne(() => ContactPerson)
+  @OneToOne(() => ContactPerson, { cascade: true })
   @Field(() => ContactPerson)
   @JoinColumn()
   contactPerson: ContactPerson;
 
-  @OneToOne(() => Address)
+  @Column()
+  @Field(() => Int)
+  addressId: number;
+
+  @OneToOne(() => Address, { cascade: true })
   @Field(() => Address)
   @JoinColumn()
   address: Address;
 
-  @ManyToMany(() => Sector)
+  @OneToMany(() => CompanyLabel, (label) => label.company, { cascade: true })
+  @Field(() => [CompanyLabel])
+  labels: CompanyLabel[];
+
+  @ManyToMany(() => CompanyType, { cascade: true })
+  @JoinTable({ name: 'company_company_type' })
+  @Field(() => [CompanyType])
+  companyTypes: CompanyType[];
+
+  @ManyToMany(() => Sector, { cascade: true })
   @Field(() => [Sector])
-  @JoinTable()
+  @JoinTable({ name: 'company_sector' })
   sectors: Sector[];
 
-  @ManyToMany(() => Category)
+  @ManyToMany(() => Category, { cascade: true })
   @Field(() => [Category])
-  @JoinTable()
+  @JoinTable({ name: 'company_category' })
   categories: Category[];
 
-  @OneToOne(() => CompanyRequest)
-  @Field(() => CompanyRequest)
-  @JoinColumn()
-  companyRequest: CompanyRequest;
+  @OneToMany(() => Point, (point) => point.company, { cascade: true })
+  @Field(() => [Point])
+  points: Point[];
+
+  @OneToMany(() => Reward, (reward) => reward.company, { cascade: true })
+  @Field(() => [Reward])
+  rewards: Reward[];
+
+  @OneToMany(() => Review, (review) => review.company, { cascade: true })
+  @Field(() => [Review])
+  reviews: Review[];
 }

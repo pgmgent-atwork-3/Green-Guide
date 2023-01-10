@@ -1,12 +1,15 @@
 import { Reward } from './entities/reward.entity';
-import { Company } from 'src/company/entities/company.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { RewardService } from './reward.service';
 import { RewardResolver } from './reward.resolver';
+import { CompanyModule } from 'src/company/company.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Reward]), Company],
+  imports: [
+    TypeOrmModule.forFeature([Reward]),
+    forwardRef(() => CompanyModule),
+  ],
   exports: [RewardService],
   providers: [RewardResolver, RewardService],
 })

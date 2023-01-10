@@ -58,15 +58,15 @@ export class User {
   role: string;
 
   @OneToOne(() => Company)
-  @Field(() => Company, { nullable: true })
+  @Field(() => Company)
   @JoinColumn()
-  company?: Company;
+  company: Company;
 
-  @OneToMany(() => Point, (point) => point.user)
-  @Field(() => [Point], { nullable: true })
-  points?: Point[];
+  @OneToMany(() => Point, (point) => point.user, { cascade: true })
+  @Field(() => [Point])
+  points: Point[];
 
-  @OneToMany(() => Review, (review) => review.user)
-  @Field(() => [Review], { nullable: true })
-  reviews?: Review[];
+  @OneToMany(() => Review, (review) => review.user, { cascade: true })
+  @Field(() => [Review])
+  reviews: Review[];
 }

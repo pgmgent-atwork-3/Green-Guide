@@ -2,6 +2,9 @@ import { CreateCompanyRequestInput } from './create-company-request.input';
 import { InputType, Field, PartialType, Int } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 import { IsEmail } from 'class-validator';
+import { CompanyLabel } from 'src/company-label/entities/company-label.entity';
+import { AddCompanyLabelInput } from 'src/company-label/dto/add-company-label.input';
+import { CompanyLabelInput } from 'src/company-label/interfaces/company-label-input.interface';
 
 @InputType()
 export class UpdateCompanyRequestInput extends PartialType(
@@ -9,74 +12,70 @@ export class UpdateCompanyRequestInput extends PartialType(
 ) {
   @Column()
   @Field({ nullable: true })
-  approved: boolean;
+  companyName?: string;
 
   @Column()
   @Field({ nullable: true })
-  companyName: string;
+  summary?: string;
 
   @Column()
   @Field({ nullable: true })
-  summary: string;
+  established?: Date;
 
   @Column()
   @Field({ nullable: true })
-  established: Date;
+  openingHours?: string;
 
   @Column()
   @Field({ nullable: true })
-  openingHours: string;
+  comment?: string;
 
   @Column()
   @Field({ nullable: true })
-  comment: string;
+  firstName?: string;
 
   @Column()
   @Field({ nullable: true })
-  firstName: string;
-
-  @Column()
-  @Field({ nullable: true })
-  lastName: string;
+  lastName?: string;
 
   @Column()
   @Field({ nullable: true })
   @IsEmail()
-  email: string;
+  email?: string;
 
   @Column()
   @Field({ nullable: true })
-  phoneNumber: string;
+  phoneNumber?: string;
 
   @Column()
   @Field({ nullable: true })
-  streetName: string;
+  streetName?: string;
 
   @Column()
   @Field({ nullable: true })
-  houseNumber: string;
+  houseNumber?: string;
 
   @Column()
   @Field({ nullable: true })
-  city: string;
+  city?: string;
 
   @Column()
   @Field({ nullable: true })
-  zipCode: string;
+  zipCode?: string;
+
+  @Column()
+  @Field(() => [AddCompanyLabelInput], { nullable: true })
+  labels?: CompanyLabelInput[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  labelIds: number;
+  companyTypeIds?: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  companyTypeIds: number;
+  sectorIds?: number[];
 
   @Column()
   @Field(() => [Int], { nullable: true })
-  sectorIds: number;
-
-  @Column()
-  @Field(() => [Int], { nullable: true })
-  categoryIds: number;
+  categoryIds?: number[];
 }

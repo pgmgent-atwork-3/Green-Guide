@@ -1,4 +1,12 @@
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { RewardService } from './reward.service';
 import { Reward } from './entities/reward.entity';
 import { CreateRewardInput } from './dto/create-reward.input';
@@ -10,6 +18,7 @@ import { GqlAuthGuard } from '../auth/gql-auth.guard';
 import { RolesGuard } from '../auth/role.guard';
 import { CurrentUser } from '../Decorators/currentUser.decorator';
 import { User } from '../user/entities/user.entity';
+import { Company } from 'src/company/entities/company.entity';
 
 @Resolver(() => Reward)
 export class RewardResolver {
@@ -22,22 +31,16 @@ export class RewardResolver {
     @Args('createRewardInput') createRewardInput: CreateRewardInput,
     @CurrentUser() user: User,
   ): Promise<Reward> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.rewardService.create(createRewardInput);
   }
 
-  @Query(() => [Reward], { name: 'reward' })
+  @Query(() => [Reward], { name: 'rewards' })
   findAll(): Promise<Reward[]> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.rewardService.findAll();
   }
 
   @Query(() => Reward, { name: 'reward' })
   findOne(@Args('id', { type: () => Int }) id: number): Promise<Reward> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.rewardService.findOne(id);
   }
 
@@ -45,13 +48,11 @@ export class RewardResolver {
   @UseGuards(GqlAuthGuard, RolesGuard)
   @Roles(Role.COMPANY)
   updateReward(
-    @Args('updateRewardInput') updateRewardInput: UpdateRewardInput,
     @Args('id') id: number,
+    @Args('updateRewardInput') updateRewardInput: UpdateRewardInput,
     @CurrentUser() user: User,
   ): Promise<Reward> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return this.rewardService.update(updateRewardInput.id, updateRewardInput);
+    return this.rewardService.update(id, updateRewardInput);
   }
 
   @Mutation(() => Reward)
@@ -61,8 +62,11 @@ export class RewardResolver {
     @Args('id', { type: () => Int }) id: number,
     @CurrentUser() user: User,
   ): Promise<Reward> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     return this.rewardService.remove(id);
+  }
+
+  @ResolveField(() => Company)
+  company(@Parent() reward: Reward): Promise<Company> {
+    return this.rewardService.getCompany(reward.companyId);
   }
 }

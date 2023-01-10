@@ -1,0 +1,25 @@
+@use 'abstracts';
+@use 'abstracts/variables' as v;
+@use 'base';
+@use 'components';
+@use 'layouts';
+
+.app_container {
+    width: 100vw;
+    margin: 0 auto;
+    background-color: v.$bg-50;
+    color: v.$black;
+}
+
+.blob {
+    position: absolute;
+}
+
+.logo {
+    position: absolute;
+}
+
+.content_container {
+    text-align: center;
+    padding: 7rem 2rem 8rem 2rem;
+}

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
+import styles from '../../styles/Home.module.scss'
 
 const Login = () => {
     const container = useRef(null);
@@ -9,33 +10,42 @@ const Login = () => {
         height: 98,
     }
 
-    const [width, setWidth] = useState(480);
+    const [width, setWidth] = useState(380);
     const [height, setHeight] = useState(800 / 5.3);
 
+    // useEffect(() => {
+    //     if (container.current !== null){
+    //         setWidth(container.current.offsetWidth);
+    //         setHeight(container.current.offsetHeight/5.3);
+    //     }
+    // }, []);
+
     return (
-        <div className='app-container' ref={container}>
-            <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className='blob'/>
-            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className='logo' style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
+        <div className={styles.app_container} ref={container}>
+            <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
+            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className='content-container'>
-                <h1>Login</h1>
-                <form action="">
+            <div className={`${styles.content_container} ${styles.spaced}`}>
+                <h1 className={styles.title}>Login</h1>
+                <form className={styles.form} action="">
                     <label htmlFor="">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="E-mail"/>
+                    <input className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
 
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password"/>
+                    <input className={styles.input_field} type="password" name="password" id="password" placeholder="Password"/>
 
-                    <input type="checkbox" name="remember" id="remember"/>
-                    <label htmlFor="remember">Remember me</label>
+                    <div className="form_row">
+                        <input className={styles.checkbox} type="checkbox" name="remember" id="remember"/>
+                        <label htmlFor="remember">Remember me</label>
+                    </div>
 
-                    <span>Forgot your password?</span>
-                    <button>Sign in with Google</button>
+                    <span  className={styles.grey_text}>Forgot your password?</span>
+                    <button className={`${styles.btn} ${styles.btn_secondary}`}> <a href="/start">Login with Google</a> </button>
 
-                    <button className='btn btn-primary'>Login</button>
+                    <button className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
                 </form>
-                <span>Dont have an account yet?</span>
-                <button className='btn btn-secondary'><a href="/register">Register</a></button>
+                <span className={styles.grey_text}>Dont have an account?</span>
+                <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/register">Register</a></button>
             </div>
         </div>
     )
