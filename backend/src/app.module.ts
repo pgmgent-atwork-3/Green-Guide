@@ -44,7 +44,7 @@ import { CompanyLabelModule } from './company-label/company-label.module';
         dateScalarMode: 'timestamp',
       },
       cors: {
-        origin: 'http://localhost:3000, http://localhost:3001',
+        origin: 'http://localhost:3000',
         credentials: true,
       },
     }),
