@@ -4,22 +4,26 @@
 @use 'components';
 @use 'layouts';
 
+@import "leaflet/dist/leaflet.css";
+
+;
+
 .app_container {
-    width: 100vw;
-    margin: 0 auto;
-    background-color: v.$bg-50;
-    color: v.$black;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: v.$bg-50;
+  color: v.$black;
 }
 
 .blob {
-    position: absolute;
+  position: absolute;
 }
 
 .logo {
-    position: absolute;
+  position: absolute;
 }
 
 .content_container {
-    text-align: center;
-    padding: 7rem 2rem 8rem 2rem;
+  text-align: center;
+  padding: 7rem 2rem 8rem 2rem;
 }
