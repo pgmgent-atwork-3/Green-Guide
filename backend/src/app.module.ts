@@ -50,7 +50,7 @@ import { CompanyLabelModule } from './company-label/company-label.module';
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => {
-        if (process.env.VERCEL_ENV === 'production') {
+        if (process.env.NODE_ENV === 'production') {
           return {
             url: process.env.DB_URL,
             username: process.env.DB_USERNAME,
