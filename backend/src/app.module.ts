@@ -53,6 +53,8 @@ import { CompanyLabelModule } from './company-label/company-label.module';
         if (process.env.NODE_ENV === 'production') {
           return {
             url: process.env.DATABASE_URL,
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
             type: 'postgres',
             ssl: {
               rejectUnauthorized: false,
