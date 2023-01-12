@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import TranslateButton from './TranslateButton'
 
 const user = {
     name: 'Tom Cook',
@@ -78,6 +79,8 @@ return (
                     </div>
                 </div>
             </div>
+
+            <TranslateButton/>
 
             {/* Profile dropdown */}
             <div className="hidden md:block">
