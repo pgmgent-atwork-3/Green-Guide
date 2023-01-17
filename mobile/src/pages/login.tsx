@@ -21,7 +21,7 @@ const Login = () => {
     //     }
     // }, []);
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL.substring(0, process.env.NEXT_PUBLIC_API_URL.length - 8) + "/auth/login";
+    const API_URL = process.env.NEXT_PUBLIC_API_URL?.substring(0, process.env?.NEXT_PUBLIC_API_URL.length - 8) + "/auth/login";
 
     return (
         <div className={styles.app_container} ref={container}>
