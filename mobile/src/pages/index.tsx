@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 
@@ -28,8 +29,8 @@ const Home = () => {
             <div className={`${styles.content_container} ${styles.spaced}`}>
                 <h1 className={styles.large_title}>Welcome</h1>
                 <div className={styles.btn_group}>
-                    <button className={`${styles.btn} ${styles.btn_primary}`}><a className={styles.link} href="/login">Login</a></button>
-                    <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/register">Register</a></button>
+                    <button className={`${styles.btn} ${styles.btn_primary}`}><Link className={styles.link} href="/login">Login</Link></button>
+                    <button className={`${styles.btn} ${styles.btn_secondary}`}><Link className={styles.link} href="/register">Register</Link></button>
                 </div>
             </div>
         </div>

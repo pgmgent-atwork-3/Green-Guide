@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 const Register = () => {
@@ -56,7 +57,7 @@ const Register = () => {
                     <button className={`${styles.btn} ${styles.btn_primary}`}>Register</button>
                 </form>
                 <span className={styles.grey_text}>Already have an account yet?</span>
-                <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/login">Login</a></button>
+                <button className={`${styles.btn} ${styles.btn_secondary}`}><Link className={styles.link} href="/login">Login</Link></button>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
 
-const profile = () => {
+const Profile = () => {
     const container = useRef(null);
     const profileDimensions = {
         width: 60,
@@ -55,4 +55,4 @@ return (
 )
 }
 
-export default profile
+export default Profile

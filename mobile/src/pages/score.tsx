@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
 
-const score = () => {
+const Score = () => {
     const container = useRef(null);
     const logoDimensions = {
         width: 98,
@@ -117,4 +117,4 @@ return (
 )
 }
 
-export default score
+export default Score

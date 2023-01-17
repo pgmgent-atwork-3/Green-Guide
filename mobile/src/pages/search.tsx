@@ -6,10 +6,11 @@ import Header from "../components/Header";
 import Filter from "../components/Filter";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
-const search = () => {
+const Search = () => {
   const container = useRef(null);
   const logoDimensions = {
     width: 20,
@@ -95,10 +96,10 @@ const search = () => {
               alt="profile-img"
             />
             <div className={styles.header}>
-              <a href="/vendor-detail">
+              <Link href="/vendor-detail">
                 <h2 className={styles.title}>Ohne</h2>
                 <p className={styles.subtitle}>Steendam 68, 9000 Gent</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -112,10 +113,10 @@ const search = () => {
               alt="profile-img"
             />
             <div className={styles.header}>
-              <a href="/vendor-detail">
+              <Link href="/vendor-detail">
                 <h2 className={styles.title}>Tasty World</h2>
                 <p className={styles.subtitle}>Reep 14B, 9000 Gent</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -129,10 +130,10 @@ const search = () => {
               alt="profile-img"
             />
             <div className={styles.header}>
-              <a href="/vendor-detail">
+              <Link href="/vendor-detail">
                 <h2 className={styles.title}>Appelier</h2>
                 <p className={styles.subtitle}>Oude Houtlei 122, 9000 Gent</p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -141,4 +142,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default Search;

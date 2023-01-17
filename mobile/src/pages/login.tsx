@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from 'formik'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 
@@ -68,7 +69,7 @@ const Login = () => {
                     </Form>
                 </Formik>
                 <span className={styles.grey_text}>Dont have an account?</span>
-                <button className={`${styles.btn} ${styles.btn_secondary}`}><a className={styles.link} href="/register">Register</a></button>
+                <button className={`${styles.btn} ${styles.btn_secondary}`}><Link className={styles.link} href="/register">Register</Link></button>
             </div>
         </div>
     )
