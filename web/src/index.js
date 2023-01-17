@@ -14,10 +14,10 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",
+  uri: process.env.API_URL,
   cache: new InMemoryCache(),
   headers: {
-    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Origin": process.env.CORS_URL,
   },
   credentials: "include",
 });
