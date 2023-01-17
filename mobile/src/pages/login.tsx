@@ -63,7 +63,7 @@ const Login = () => {
                         </div>
 
                         <span  className={styles.grey_text}>Forgot your password?</span>
-                        <button className={`${styles.btn} ${styles.btn_secondary}`}> <a href="/start">Login with Google</a> </button>
+                        <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button>
 
                         <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
                     </Form>
