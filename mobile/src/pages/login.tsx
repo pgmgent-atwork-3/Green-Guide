@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik'
-import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 
 const Login = () => {
@@ -21,6 +20,8 @@ const Login = () => {
     //     }
     // }, []);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL.substring(0, process.env.NEXT_PUBLIC_API_URL.length - 8) + "/auth/login";
+
     return (
         <div className={styles.app_container} ref={container}>
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
@@ -35,7 +36,7 @@ const Login = () => {
                         remember: false,
                     }}
                     onSubmit={async (values, { setSubmitting }) => {
-                        await fetch("http://localhost:3001/auth/login", {
+                        await fetch(API_URL, {
                           method: "POST",
                           headers: {
                             "Content-Type": "application/json",

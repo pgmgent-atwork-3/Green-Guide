@@ -15,6 +15,8 @@ function Login() {
   //const data = useCustomHook(GET_USERS);
   //console.log(data?.users)
 
+  const API_URL = process.env.API_URL.substring(0, process.env.API_URL.length - 8) + "/auth/login";
+
   return (
     <div className="Login bg-25">
       <div className="min-h-screen">
@@ -37,7 +39,7 @@ function Login() {
                     initialValues={{ email: "", password: "" }}
                     validationSchema={loginValidationSchema}
                     onSubmit={async (values, { setSubmitting }) => {
-                      await fetch("http://localhost:3001/auth/login", {
+                      await fetch(API_URL, {
                         method: "POST",
                         headers: {
                           "Content-Type": "application/json",
