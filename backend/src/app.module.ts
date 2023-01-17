@@ -43,10 +43,6 @@ import { CompanyLabelModule } from './company-label/company-label.module';
       buildSchemaOptions: {
         dateScalarMode: 'timestamp',
       },
-      cors: {
-        origin: 'http://localhost:3000',
-        credentials: true,
-      },
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => {
