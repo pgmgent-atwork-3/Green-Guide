@@ -7,7 +7,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   env: {
-    API_URL: NEXT_PUBLIC_API_URL,
+    API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 }
 
