@@ -36,11 +36,11 @@ return (
     <Navbar />
     <div className={styles.content_container}>
         <Card/>
-        <h2 className={styles.title}>Popular Green vendors</h2>
+        <h2 className={styles.h2_title}>Popular Green vendors</h2>
         <p className={styles.subtitle}>Give them some love from us!</p>
         <Carousel/>
         <Card/>
-        <h2 className={styles.title}>Newest Green vendors</h2>
+        <h2 className={styles.h2_title}>Newest Green vendors</h2>
         <p className={styles.subtitle}>Give them a warm welcome from us!</p>
         <Carousel/>
         {/* this card need to become a component with type = info-card */}
