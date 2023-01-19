@@ -26,7 +26,7 @@ const Register = () => {
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
             <div className={`${styles.container} ${styles.spaced}`}>
-                <h1 className={styles.title}>Register</h1>
+                <h1 className={styles.h1_title}>Register</h1>
                 <form className={styles.form} action="">
 
                     <label className={styles.label} htmlFor="">First name</label>
@@ -54,7 +54,7 @@ const Register = () => {
 
                     <button className={`${styles.btn} ${styles.btn_primary}`}>Register</button>
                 </form>
-                <span className={styles.grey_text}>Already have an account yet?</span>
+                <span className={styles.grey_text}>Already have an account?</span>
                 <button className={`${styles.btn} ${styles.btn_secondary}`}><Link className={styles.link} href="/login">Login</Link></button>
             </div>
         </div>
