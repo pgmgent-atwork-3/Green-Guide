@@ -52,7 +52,7 @@ const Login = () => {
                             setSubmitting(false);
                         }}
                     >
-                        <Form className={styles.form} action="">
+                        <Form className={styles.form}>
                             <label htmlFor="email">E-mail</label>
                             <Field className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
 

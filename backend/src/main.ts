@@ -11,6 +11,12 @@ async function bootstrap() {
     credentials: true,
   });
   app.use(cookieParser());
+  app.use((req, res, next) => {
+    if (req.headers.origin) {
+      res.header('Access-Control-Allow-Origin', req.headers.origin);
+    }
+    next();
+  });
   await app.listen(3001);
 }
 
