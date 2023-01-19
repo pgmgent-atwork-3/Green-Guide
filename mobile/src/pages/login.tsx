@@ -29,7 +29,7 @@ const Login = () => {
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className={`${styles.content_container} ${styles.spaced}`}>
+            <div className={`${styles.container} ${styles.spaced}`}>
                 <h1 className={styles.title}>Login</h1>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Formik
@@ -53,10 +53,10 @@ const Login = () => {
                         }}
                     >
                         <Form className={styles.form}>
-                            <label htmlFor="email">E-mail</label>
+                            <label className={styles.label} htmlFor="email">E-mail</label>
                             <Field className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
 
-                            <label htmlFor="password">Password</label>
+                            <label className={styles.label} htmlFor="password">Password</label>
                             <Field className={styles.input_field} type="password" name="password" id="password" placeholder="Password"/>
 
                             <div className="form_row">
@@ -65,7 +65,9 @@ const Login = () => {
                             </div>
 
                             <span  className={styles.grey_text}>Forgot your password?</span>
-                            <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button>
+                            
+                            {/* This is a button for an extra feature to login with Google */}
+                            {/* <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button> */}
 
                             <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
                         </Form>

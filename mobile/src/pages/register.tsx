@@ -25,34 +25,32 @@ const Register = () => {
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className={`${styles.content_container} ${styles.spaced}`}>
+            <div className={`${styles.container} ${styles.spaced}`}>
                 <h1 className={styles.title}>Register</h1>
                 <form className={styles.form} action="">
 
-                    <label htmlFor="">First name</label>
+                    <label className={styles.label} htmlFor="">First name</label>
                     <input className={styles.input_field} type="text" name="text" id="firstName" placeholder="First name"/>
 
-                    <label htmlFor="">Last name</label>
+                    <label className={styles.label} htmlFor="">Last name</label>
                     <input className={styles.input_field} type="text" name="text" id="lastName" placeholder="Last name"/>
 
-                    <label htmlFor="">E-mail</label>
+                    <label className={styles.label} htmlFor="">E-mail</label>
                     <input className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
 
-                    <label htmlFor="">Password</label>
+                    <label className={styles.label} htmlFor="">Password</label>
                     <input className={styles.input_field} type="password" name="password" id="password" placeholder="Password"/>
 
-                    <label htmlFor="">Birth date</label>
+                    <label className={styles.label} htmlFor="">Birth date</label>
                     <input  className={styles.input_field} type="date" name="date" id="date" placeholder="Date"/>
 
-                    <label htmlFor="">Phone number</label>
+                    <label className={styles.label} htmlFor="">Phone number</label>
                     <input  className={styles.input_field} type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone number"/>
 
                     <div className="form_row">
                         <input className={styles.checkbox} type="checkbox" name="remember" id="remember"/>
                         <label htmlFor="remember">Remember me</label>
                     </div>
-
-                    <button className={`${styles.btn} ${styles.btn_secondary}`}>Register with Google</button>
 
                     <button className={`${styles.btn} ${styles.btn_primary}`}>Register</button>
                 </form>

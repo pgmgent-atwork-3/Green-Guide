@@ -26,7 +26,7 @@ const Home = () => {
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
             <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
             
-            <div className={`${styles.content_container} ${styles.spaced}`}>
+            <div className={`${styles.container} ${styles.spaced}`}>
                 <h1 className={styles.large_title}>Welcome</h1>
                 <div className={styles.btn_group}>
                     <button className={`${styles.btn} ${styles.btn_primary}`}><Link className={styles.link} href="/login">Login</Link></button>

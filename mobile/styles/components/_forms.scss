@@ -1,5 +1,9 @@
 @use '../abstracts/variables' as v;
 
+.label {
+    font-weight: 600;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -12,11 +16,12 @@
     }
 
     .input_field {
-        padding: 1rem 2rem;
-        margin: 0.5rem 0;
+        padding: 1rem 1.5rem;
+        margin: 0.25rem 0 1.5rem 0;
         background-color: v.$bg-75;
         border: none;
         border-radius: 0.5rem;
         width: 100%;
+        color: v.$grey-100;
     }
 }

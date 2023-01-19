@@ -21,10 +21,11 @@
 .title {
     font-family: v.$primary-font;
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     line-height: 2rem;
     text-align: start;
     color: v.$primary-100;
+    margin-bottom: 1.5rem;
 } 
 
 .subtitle {
@@ -48,6 +49,7 @@
     font-weight: 600;
     font-size: .9rem;
     margin: 1rem 0;
+    padding-right: 1rem;
 }
 
 .link {
