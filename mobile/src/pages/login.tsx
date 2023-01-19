@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { Suspense, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 
 const Login = () => {
@@ -21,7 +21,8 @@ const Login = () => {
     //     }
     // }, []);
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL?.substring(0, process.env?.NEXT_PUBLIC_API_URL.length - 8) + "/auth/login";
+    const URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_URL = URL?.substring(0, URL.length - 8) + "/auth/login";
 
     return (
         <div className={styles.app_container} ref={container}>
@@ -30,44 +31,46 @@ const Login = () => {
             
             <div className={`${styles.content_container} ${styles.spaced}`}>
                 <h1 className={styles.title}>Login</h1>
-                <Formik
-                    initialValues={{
-                        email: '',
-                        password: '',
-                        remember: false,
-                    }}
-                    onSubmit={async (values, { setSubmitting }) => {
-                        await fetch(API_URL, {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          credentials: "include",
-                          body: JSON.stringify(values),
-                        })
-                          .then((res) => res.json())
-                          .catch((err) => console.error(err));
-                        setSubmitting(false);
-                      }}
-                >
-                    <Form className={styles.form} action="">
-                        <label htmlFor="email">E-mail</label>
-                        <Field className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Formik
+                        initialValues={{
+                            email: '',
+                            password: '',
+                            remember: false,
+                        }}
+                        onSubmit={async (values, { setSubmitting }) => {
+                            await fetch(API_URL, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            credentials: "include",
+                            body: JSON.stringify(values),
+                            })
+                            .then((res) => res.json())
+                            .catch((err) => console.error(err));
+                            setSubmitting(false);
+                        }}
+                    >
+                        <Form className={styles.form} action="">
+                            <label htmlFor="email">E-mail</label>
+                            <Field className={styles.input_field} type="email" name="email" id="email" placeholder="E-mail"/>
 
-                        <label htmlFor="password">Password</label>
-                        <Field className={styles.input_field} type="password" name="password" id="password" placeholder="Password"/>
+                            <label htmlFor="password">Password</label>
+                            <Field className={styles.input_field} type="password" name="password" id="password" placeholder="Password"/>
 
-                        <div className="form_row">
-                            <Field className={styles.checkbox} type="checkbox" name="remember" id="remember"/>
-                            <label htmlFor="remember">Remember me</label>
-                        </div>
+                            <div className="form_row">
+                                <Field className={styles.checkbox} type="checkbox" name="remember" id="remember"/>
+                                <label htmlFor="remember">Remember me</label>
+                            </div>
 
-                        <span  className={styles.grey_text}>Forgot your password?</span>
-                        <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button>
+                            <span  className={styles.grey_text}>Forgot your password?</span>
+                            <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button>
 
-                        <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
-                    </Form>
-                </Formik>
+                            <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
+                        </Form>
+                    </Formik>
+                </Suspense>
                 <span className={styles.grey_text}>Dont have an account?</span>
                 <button className={`${styles.btn} ${styles.btn_secondary}`}><Link className={styles.link} href="/register">Register</Link></button>
             </div>
