@@ -35,7 +35,7 @@ return (
 
         <div className={styles.content_container}>
             
-        <Model />
+        {/* <Model /> */}
             
             {/* this card need to become a component with type = info-card */}
             <div className={styles.info_card}>
