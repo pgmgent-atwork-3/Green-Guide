@@ -1,0 +1,30 @@
+@use 'abstracts/variables' as v;
+
+
+.model_card {
+    position: relative;
+    z-index: 200;
+
+    background-color: v.$bg-25;
+    border-radius: .5rem;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    max-height: 26rem;
+    overflow: auto;
+    text-align: start;
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    box-shadow: .2rem .2rem .5rem v.$primary-100;
+    // transform: translateY(1rem);
+}
+
+.overlay {
+    background-color: v.$primary-50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+}

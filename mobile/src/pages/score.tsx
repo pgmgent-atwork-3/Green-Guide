@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
+import Model from '../components/Model'
 
 const Score = () => {
     const container = useRef(null);
@@ -34,10 +35,12 @@ return (
 
         <div className={styles.content_container}>
             
+        <Model />
+            
             {/* this card need to become a component with type = info-card */}
             <div className={styles.info_card}>
                 <p>How it works: When you visit a vendor you can collect loyalty points and earn amazing rewards.</p>
-            </div>
+            </div>            
 
             {/* this card need to become a component with type = reward-card */}
             <div className={styles.reward_card}>
@@ -61,31 +64,31 @@ return (
                     </div>
                     <div className={styles.reward}>
                         <div className={styles.points_bubble}>
-                            <p className={styles.points}>10 <br /> pnts</p>
+                            <p className={styles.points}>50 <br /> pnts</p>
                         </div>
                         <p className={styles.point_name}>Free coffee</p>
                     </div>
                     <div className={styles.reward}>
                         <div className={styles.points_bubble}>
-                            <p className={styles.points}>10 <br /> pnts</p>
+                            <p className={styles.points}>125 <br /> pnts</p>
                         </div>
                         <p className={styles.point_name}>Dessert</p>
                     </div>
                     <div className={styles.reward}>
                         <div className={styles.points_bubble}>
-                            <p className={styles.points}>10 <br /> pnts</p>
+                            <p className={styles.points}>200 <br /> pnts</p>
                         </div>
                         <p className={styles.point_name}>Tote bag</p>
                     </div>
                     <div className={styles.reward}>
                         <div className={styles.points_bubble}>
-                            <p className={styles.points}>10 <br /> pnts</p>
+                            <p className={styles.points}>250 <br /> pnts</p>
                         </div>
                         <p className={styles.point_name}>Free coffee</p>
                     </div>
                     <div className={styles.reward}>
                         <div className={styles.points_bubble}>
-                            <p className={styles.points}>10 <br /> pnts</p>
+                            <p className={styles.points}>350 <br /> pnts</p>
                         </div>
                         <p className={styles.point_name}>Dessert</p>
                     </div>

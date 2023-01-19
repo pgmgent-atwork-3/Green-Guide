@@ -153,48 +153,68 @@
         color: v.$bg-50;
         transition: all 0.3s ease-in-out;
     }
+}
 
+.rewards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 
-    .rewards {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
+    .text {
+        max-width: 65%;
+    }
 
-        .reward {
+    .reward {
+        margin-top: 1rem;
 
-            margin-top: 1rem;
+        .points_bubble {
+            background-color: v.$accent-100;
+            border-radius: 50%;
+            width: 4.5rem;
+            height: 4.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: v.$white;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1rem;
+            text-align: center;
+            font-family: v.$primary-font;
+        }
 
-            .points_bubble {
-                background-color: v.$accent-100;
-                border-radius: 50%;
-                width: 4.5rem;
-                height: 4.5rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                color: v.$white;
-                font-size: 1rem;
-                font-weight: 700;
-                line-height: 1rem;
-                text-align: center;
-                font-family: v.$primary-font;
-            }
+        .points_bubble_line {
+            background-color: transparent;
+            border: 3px solid v.$accent-100;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            color: v.$accent-100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1rem;
+            text-align: center;
+            font-family: v.$primary-font;
+        }
 
-            .points {
+        .points {
 
-            }
+        }
 
-            .point_name {
-                color: v.$secondary-100;
-                font-size: .9rem;
-                font-weight: 700;
-                line-height: 1rem;
-                text-align: center;
-                margin: .5rem 0;
-            }
+        .point_name {
+            color: v.$secondary-100;
+            font-size: .9rem;
+            font-weight: 700;
+            line-height: 1rem;
+            text-align: center;
+            margin: .5rem 0;
         }
     }
 }
