@@ -12,10 +12,9 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', [
-      process.env.WEB_URL,
-      process.env.MOBILE_URL,
-    ]);
+    if (req.headers.origin) {
+      res.header('Access-Control-Allow-Origin', req.headers.origin);
+    }
   });
   await app.listen(3001);
 }
