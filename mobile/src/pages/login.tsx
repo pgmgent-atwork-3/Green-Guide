@@ -69,7 +69,7 @@ const Login = () => {
                             {/* This is a button for an extra feature to login with Google */}
                             {/* <button className={`${styles.btn} ${styles.btn_secondary}`}> <Link href="/start">Login with Google</Link> </button> */}
 
-                            <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}>Login</button>
+                            <button type="submit" className={`${styles.btn} ${styles.btn_primary}`}><Link href="/start">Login</Link></button>
                         </Form>
                     </Formik>
                 </Suspense>
