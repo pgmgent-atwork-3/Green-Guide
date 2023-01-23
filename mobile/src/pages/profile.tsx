@@ -21,11 +21,12 @@ return (
     <div className={styles.app_container} ref={container}>
         <Header />    
         <Navbar />
+        
         <div className={styles.content_container}>
 
             <div className={styles.profile_header}>
                 <Image className={styles.profile_image} src="/svg/profile.svg" width={profileDimensions.width} height={profileDimensions.height} alt="profile-img"/>
-                <h1 className={styles.title}>Jane Doe</h1>
+                <h1 className={styles.h2_title}>Jane Doe</h1>
             </div>
 
             {/* this card needs to become a component with type = settings-card */}
