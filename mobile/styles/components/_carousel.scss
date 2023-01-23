@@ -3,20 +3,33 @@
 .carousel {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
     margin-top: 1rem;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    .carousel_title {
+    .carousel_link {
+        width: 6rem;
+        height: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .carousel_name {
         font-family: v.$secondary-font;
-        font-size: .85rem;
+        font-size: 1rem;
         font-weight: 600;
+        padding: .5rem;
         color: v.$secondary-100;
+        line-height: 110%;
     }
 
     .img {
         object-fit: cover;
-        border-radius: 0.5rem;
+        border-radius: 50%;
         background-color: v.$primary-100;
+        width: 5rem;
+        height: 5rem;
     }
 }
