@@ -14,23 +14,16 @@ const Login = () => {
     const [width, setWidth] = useState(380);
     const [height, setHeight] = useState(800 / 5.3);
 
-    // useEffect(() => {
-    //     if (container.current !== null){
-    //         setWidth(container.current.offsetWidth);
-    //         setHeight(container.current.offsetHeight/5.3);
-    //     }
-    // }, []);
-
     const URL = process.env.NEXT_PUBLIC_API_URL;
     const API_URL = URL?.substring(0, URL.length - 8) + "/auth/login";
 
     return (
         <div className={styles.app_container} ref={container}>
             <Image src='/Blob.png' width={width} height={height} alt='A decorative background' className={styles.blob}/>
-            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo} style={{ marginTop: height-76, marginLeft: (width-logoDimensions.width)/2 }}/>
+            <Image src='/Logo.png' width={logoDimensions.width} height={logoDimensions.height} alt='Green Guide logo' className={styles.logo}/>
             
             <div className={`${styles.container} ${styles.spaced}`}>
-                <h1 className={styles.title}>Login</h1>
+                <h1 className={styles.h1_title}>Login</h1>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Formik
                         initialValues={{
