@@ -15,10 +15,20 @@
 
 .blob {
     position: absolute;
+    width: 100vw;
 }
 
 .logo {
     position: absolute;
+    top: 6rem;
+    left: 35%;
+}
+
+
+.logo_left {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
 }
 
 .container {
@@ -30,5 +40,16 @@
 .content_container {
     text-align: center;
     min-height: 100vh;
-    padding: 7rem 2rem 8rem 2rem;
+    padding: 7rem 2rem 6rem 2rem;
+}
+
+.flex_col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+}
+
+.input[type=checkbox] {
+    margin-right: .5rem;
 }

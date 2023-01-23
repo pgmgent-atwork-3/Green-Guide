@@ -1,5 +1,10 @@
 @use '../abstracts/variables' as v;
 
+.filter {
+    font-family: v.$secondary-font;
+    text-align: start;
+}
+
 .label {
     font-weight: 600;
 }
