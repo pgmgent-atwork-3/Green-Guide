@@ -4,40 +4,44 @@ import styles from '../../styles/Home.module.scss'
 
 const Carousel = () => {
 return (
-    <div className={styles.carousel}>
-        <div className={styles.carousel_item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel__item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel_item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel__item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel_item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel__item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel_item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-        <div className={styles.carousel__item}>
-            <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
-            <h3 className={styles.carousel_title}>Name</h3>
-        </div>
-    </div>
+    <ul className={styles.carousel}>
+        <li className={styles.carousel_item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Name</span>
+            </a>
+        </li>
+        <li className={styles.carousel__item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Longer Name</span>
+            </a>
+        </li>
+        <li className={styles.carousel_item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Name</span>
+            </a>
+        </li>
+        <li className={styles.carousel__item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Longer Name</span>
+            </a>
+        </li>
+        <li className={styles.carousel_item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Name</span>
+            </a>
+        </li>
+        <li className={styles.carousel__item}>
+            <a href="" className={styles.carousel_link}>
+                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <span className={styles.carousel_name}>Name</span>
+            </a>
+        </li>
+    </ul>
 )
 }
 
