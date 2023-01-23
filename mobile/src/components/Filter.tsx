@@ -1,52 +1,50 @@
 import React from 'react'
+import styles from '../../styles/Home.module.scss'
 
 const Filter = () => {
 return (
-    <div>
-        <h2>Filter on:</h2>
-        <ul>
-            <li>
-                <label>Transport</label>
-                <select id="transport">
-                    <option value="public-transport">public transport</option>
-                    <option value="bicycle-rental">bicycle rental</option>
-                    <option value="bus-service">bus service</option>
-                    <option value="tram">tram</option>
-                    <option value="train">train</option>
-                </select>
-            </li>
-            <li>
-                <label>Food</label>
-                <select id="food">
-                    <option value="vegetarian">vegetarian</option>
-                    <option value="vegan">vegan</option>
-                    <option value="lactose-free">lactose free</option>
-                    <option value="gluten-free">gluten free</option>
-                    <option value="organic">organic</option>
-                    <option value="local-products">local products</option>
-                    <option value="delivery">delivery</option>
-                    <option value="take-away">take away</option>
-                </select>
-            </li>
-            <li>
-                <label>Shopping</label>
-                <select id="shopping">
-                    <option value="second-hand">second hand</option>
-                    <option value="clothing">clothing</option>
-                    <option value="living">living</option>
-                    <option value="supermarket">supermarket</option>
-                    <option value="organic farming">organic farming</option>
-                </select>
-            </li>
-            <li>
-            <label>Nature</label>
-                <select id="nature">
-                    <option value="parks">parks</option>
-                    <option value="swimming">swimming</option>
-                    <option value="picnic-area">picnic area</option>
-                </select>
-            </li>
-        </ul>
+    <div className={styles.filter}>
+        <h2 className={styles.h2_title}>Filter on:</h2>
+
+        <h3 className={styles.subtitle}>Transport</h3>
+            <ul className={styles.flex_col}>
+                <li><input className={styles.input} type="checkbox" id="transport" name="transport" value="public-transport" />Public Transport</li>
+                <li><input className={styles.input} type="checkbox" id="transport" name="transport" value="bicycle-rental" />Bicycle Rental</li>
+                <li><input className={styles.input} type="checkbox" id="transport" name="transport" value="bus-service" />Bus Service</li>
+                <li><input className={styles.input} type="checkbox" id="transport" name="transport" value="tram" />Tram</li>
+                <li><input className={styles.input} type="checkbox" id="transport" name="transport" value="train" />Train</li>
+            </ul>
+
+        <h3 className={styles.subtitle}>Food</h3>
+            <ul className={styles.flex_col}>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="vegetarian" />Vegetarian</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="vegan" />Vegan</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="living" />Lactose Free</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="gluten-free" />Gluten Free</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="organic" />Organic</li>
+
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="local-products" />Local Products</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="delivery" />Delivery</li>
+                <li><input className={styles.input} type="checkbox" id="food" name="food" value="take-away" />Take Away</li>
+            </ul>
+
+        <h3 className={styles.subtitle}>Shopping</h3>
+            <ul className={styles.flex_col}>
+                <li><input className={styles.input} type="checkbox" id="shopping" name="shopping" value="second-hand" />Second-hand</li>
+                <li><input className={styles.input} type="checkbox" id="shopping" name="shopping" value="clothing" />Clothing</li>
+                <li><input className={styles.input} type="checkbox" id="shopping" name="shopping" value="living" />Living</li>
+                <li><input className={styles.input} type="checkbox" id="shopping" name="shopping" value="supermarket" />Supermarket</li>
+                <li><input className={styles.input} type="checkbox" id="shopping" name="shopping" value="organic-farming" />Organic Farming</li>
+            </ul>
+
+        <h3 className={styles.subtitle}>Nature</h3>
+            <ul className={styles.flex_col}>
+                <li><input className={styles.input} type="checkbox" id="nature" name="nature" value="parks" />Parks</li>
+                <li><input className={styles.input} type="checkbox" id="nature" name="nature" value="swimming" />Swimming</li>
+                <li><input className={styles.input} type="checkbox" id="nature" name="nature" value="picnic-area" />Picnic Area</li>
+            </ul>
+
+        <button className={`${styles.btn} ${styles.btn_primary}`}>Filter</button>
     </div>
 )
 }
