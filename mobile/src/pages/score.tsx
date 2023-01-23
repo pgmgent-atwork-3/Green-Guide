@@ -1,33 +1,17 @@
 import Navbar from '../components/Navbar'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
 import Model from '../components/Model'
 
 const Score = () => {
     const container = useRef(null);
-    const logoDimensions = {
-        width: 98,
-        height: 98,
-    }
-
     const iconDimensions = {
         width: 15,
         height: 15,
     }
-
-    const [width, setWidth] = useState(480);
-    const [height, setHeight] = useState(800 / 5.3);
-
-    // useEffect(() => {
-    //     if (container.current !== null){
-    //         setWidth(container.current.offsetWidth);
-    //         setHeight(container.current.offsetHeight/5.3);
-    //     }
-    // }, []);
-
 return (
     <div className={styles.app_container} ref={container}>
         <Header />
@@ -47,7 +31,7 @@ return (
                 <div className={styles.reward_header}>
                     <div className={styles.header}>
                         <p className={styles.subtitle}>You collected <span className={styles.accent_color}>72</span> points at</p>
-                        <h2 className={styles.title}>Ohne</h2>   
+                        <h2 className={styles.h2_title}>Ohne</h2>   
                     </div>
                     <Image className={`${styles.img} ${styles.open}`} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
@@ -100,7 +84,7 @@ return (
                 <div className={styles.reward_header}>
                     <div className={styles.header}>
                         <p className={styles.subtitle}>You collected <span className={styles.accent_color}>15</span> points at</p>
-                        <h2 className={styles.title}>Tasty World</h2>  
+                        <h2 className={styles.h2_title}>Tasty World</h2>  
                     </div>
                     <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
@@ -110,7 +94,7 @@ return (
                 <div className={styles.reward_header}>
                     <div className={styles.header}>
                         <p className={styles.subtitle}>You collected <span className={styles.accent_color}>10</span> points at</p>
-                        <h2 className={styles.title}>Appelier</h2>   
+                        <h2 className={styles.h2_title}>Appelier</h2>   
                     </div>
                     <Image className={styles.img} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
                 </div>
