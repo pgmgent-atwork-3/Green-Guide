@@ -68,3 +68,18 @@
     text-decoration: none;
     color: inherit;
 }
+
+.text_block {
+    font-family: v.$secondary-font;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.bold_text {
+    font-weight: 700;
+}
