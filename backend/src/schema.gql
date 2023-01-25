@@ -50,6 +50,8 @@ type Point {
 type Address {
   id: Int!
   streetName: String
+  lat: String
+  long: String
   number: String
   city: String
   zipCode: String
