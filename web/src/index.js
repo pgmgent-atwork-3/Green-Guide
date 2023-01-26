@@ -17,7 +17,7 @@ const client = new ApolloClient({
   uri: process.env.API_URL,
   cache: new InMemoryCache(),
   headers: {
-    "Access-Control-Allow-Origin": process.env.CORS_URL,
+    "Access-Control-Allow-Origin": process.env.REACT_APP_CORS_URL,
   },
   credentials: "include",
 });
