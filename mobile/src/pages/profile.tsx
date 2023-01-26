@@ -4,12 +4,13 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import styles from '../../styles/Home.module.scss'
 import Header from '../components/Header'
+import Link from 'next/link'
 
 const Profile = () => {
     const container = useRef(null);
     const profileDimensions = {
-        width: 60,
-        height: 60,
+        width: 80,
+        height: 80,
     }
 
     const iconDimensions = {
@@ -30,23 +31,44 @@ return (
             </div>
 
             {/* this card needs to become a component with type = settings-card */}
-            <div className={styles.settings_card}>
-                <div className={styles.profile_settings_item}>
-                    <h2 className={styles.subtitle}>Profile details</h2>
+            <div className={styles.detail_card}>
+                <ul>
+                    <li className={styles.text_block}>
+                        <span className={styles.bold_text}>Firstname: </span>
+                        Eva
+                    </li>
+                    <li className={styles.text_block}>
+                        <span className={styles.bold_text}>Lastname: </span>
+                        Leaves
+                    </li>
+                    <li className={styles.text_block}>
+                        <span className={styles.bold_text}>E-mail: </span>
+                        Leava@gmail.com
+                    </li>
+                    <li className={styles.text_block}>
+                        <span className={styles.bold_text}>Birth date: </span>
+                        10 / 03 / 1997
+                    </li>  
+                    <li className={styles.text_block}>
+                        <span className={styles.bold_text}>Telephone: </span>
+                        +32 464 663 918
+                    </li>   
+                </ul>
+
+                <hr className={styles.line}/>
+
+                <Link href="/settings" className={styles.profile_settings_item}>
+                    <h2 className={styles.subtitle}>Notifications</h2>
                     <Image className={styles.profile_settings_icon} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
-                </div>
-                <div className={styles.profile_settings_item}>
-                    <h2 className={styles.subtitle}>My reviews</h2>
-                    <Image className={styles.profile_settings_icon} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
-                </div>
-                <div className={styles.profile_settings_item}>
-                    <h2 className={styles.subtitle}>Favorite vendors</h2>
-                    <Image className={styles.profile_settings_icon} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
-                </div>
-                <div className={styles.profile_settings_item}>
+                </Link>
+                <Link href="/settings" className={styles.profile_settings_item}>
                     <h2 className={styles.subtitle}>Settings</h2>
                     <Image className={styles.profile_settings_icon} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
-                </div>
+                </Link>
+                <Link href="/settings" className={styles.profile_settings_item}>
+                    <h2 className={styles.subtitle}>Help</h2>
+                    <Image className={styles.profile_settings_icon} src="/svg/arrow.svg" width={iconDimensions.width} height={iconDimensions.height} alt="profile-img"/>
+                </Link>
             </div>
 
             {/* sign off button */}
