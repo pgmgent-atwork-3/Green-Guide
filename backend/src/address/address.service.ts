@@ -52,8 +52,7 @@ export class AddressService {
       if (
         updateAddressInput.streetName &&
         updateAddressInput.number &&
-        updateAddressInput.city &&
-        updateAddressInput.zipCode
+        updateAddressInput.city
       ) {
         const location = await fetch(
           'http://api.positionstack.com/v1/forward?access_key=60155f6f5fdb189d7580a99ead74c445&query=' +

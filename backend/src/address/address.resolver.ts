@@ -16,11 +16,11 @@ export class AddressResolver {
   constructor(private readonly addressService: AddressService) {}
 
   @Mutation(() => Address)
-  // @UseGuards(GqlAuthGuard, RolesGuard)
-  // @Roles(Role.COMPANY)
+  @UseGuards(GqlAuthGuard, RolesGuard)
+  @Roles(Role.COMPANY)
   createAddress(
     @Args('createAddressInput') createAddressInput: CreateAddressInput,
-    // @CurrentUser() user: User,
+    @CurrentUser() user: User,
   ): Promise<Address> {
     return this.addressService.create(createAddressInput);
   }
