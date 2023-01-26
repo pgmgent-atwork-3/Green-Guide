@@ -8,37 +8,37 @@ return (
     <ul className={styles.carousel}>
         <li className={styles.carousel_item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
         <li className={styles.carousel__item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
         <li className={styles.carousel_item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
         <li className={styles.carousel__item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
         <li className={styles.carousel_item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
         <li className={styles.carousel__item}>
             <Link className={styles.carousel_link} href="/detail">
-                <Image className={styles.img} width={40} height={40} src="/logo.png" alt="alt" />
+                <Image className={styles.img} width={40} height={40} src="/Logo.png" alt="alt" />
                 <span className={styles.carousel_name}>Name</span>
             </Link>
         </li>
