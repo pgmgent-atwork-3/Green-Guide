@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Company } from 'src/company/entities/company.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -12,6 +12,14 @@ export class Address {
   @Column()
   @Field({ nullable: true })
   streetName: string;
+
+  @Column()
+  @Field({ nullable: true })
+  lat: string;
+
+  @Column()
+  @Field({ nullable: true })
+  long: string;
 
   @Column()
   @Field({ nullable: true })

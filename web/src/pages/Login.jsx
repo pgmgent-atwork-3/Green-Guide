@@ -15,7 +15,7 @@ function Login() {
   //const data = useCustomHook(GET_USERS);
   //console.log(data?.users)
 
-  const API_URL = process.env.API_URL.substring(0, process.env.API_URL.length - 8) + "/auth/login";
+  const API_URL = process.env.REACT_APP_API_URL.substring(0, process.env.REACT_APP_API_URL.length - 8) + "/auth/login";
 
   return (
     <div className="Login bg-25">
